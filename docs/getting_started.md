@@ -17,7 +17,8 @@ Before you begin the installation, ensure that you have the following prerequisi
 
 ## Step 1: Provisioning the Infrastructure
 
-1. Start by setting up an account with your preferred cloud provider if you haven't done so already.
+1. Start by setting up an account with your preferred cloud provider if you haven't done so already:
+	- [Prepare an AWS account](account_setup/aws_account_setup.md)
 2. Create a new project or select an existing project where you want to deploy CGDevX.
 
 ## Step 2: Configuring CGDevX Core Components
