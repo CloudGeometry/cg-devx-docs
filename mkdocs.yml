@@ -2,3 +2,4 @@ site_name: CG DevX User Guidelines
 nav:
     - Home: index.md
     - Getting started: getting_started.md
+    - Dashboard User Guide: dashboard_user_guide.md
