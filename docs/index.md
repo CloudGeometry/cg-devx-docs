@@ -8,7 +8,7 @@ Welcome to CGDevX, an all-in-one platform designed to simplify and enhance the d
 
 ### Infrastructure as Code (IaC)
 
-With CGDevX, you can leverage the power of Infrastructure as Code (IaC) to automate the provisioning and management of your cloud infrastructure. Define your infrastructure using simple configuration files, and CGDevX will handle the rest. Say goodbye to manual provisioning and hello to consistent, reproducible environments.
+With CGDevX, you can leverage the power of Infrastructure as Code (IaC) to automate the provisioning and management of your cloud infrastructure. Define your infrastructure using simple configuration files, and CGDevX will handle the rest. Say goodbye to manual provisioning and hello to consistent, reproducible environments. CGDevX integrates seamlessly with Terraform, one of the leading IaC tools available. Terraform provides a simple, declarative language for defining and managing infrastructure resources across various cloud providers.
 
 ### Continuous Integration and Delivery (CI/CD)
 
@@ -18,7 +18,7 @@ CGDevX offers robust CI/CD capabilities to accelerate your software delivery lif
 
 Harness the power of Kubernetes, the leading container orchestration platform, with CGDevX. Benefit from its scalability, resilience, and flexibility without getting bogged down by its complexities. CGDevX provides a simplified interface to deploy and manage your services, allowing you to focus on what matters most—building and running your applications.
 
-### Observability and Monitoring
+### Observability
 
 Gain deep insights into the health and performance of your applications with CGDevX's observability and monitoring features. Collect and analyze metrics, trace application behavior, and troubleshoot issues effectively. CGDevX integrates seamlessly with popular monitoring tools, providing real-time visibility and empowering you to make informed decisions about your systems.
 

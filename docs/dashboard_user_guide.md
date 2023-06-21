@@ -22,14 +22,7 @@ Welcome to the CGDevX Dashboard User Guide! This comprehensive guide will walk y
    	- Incident Triage and Resolution
    	- Collaboration and Communication
    	- Post-Incident Analysis
-6. Cloud Services Management
-   	- Cloud Asset Catalog
-   	- Cost Monitoring and Optimization
-7. Identity and Access Management
-   	- Organization Structure
-   	- Landing Zone and Account Management
-   	- Single Sign-On (SSO)
-8. Support and Resources
+6. Support and Resources
    	- Documentation and Knowledge Base
    	- Support Channels
    	- Community and Forums
@@ -158,47 +151,7 @@ The Incident Response section of the dashboard helps you efficiently handle and 
 3. Share the post-mortem report with the team and stakeholders.
 4. Identify lessons learned and implement preventive measures to avoid similar incidents in the future.
 
-## 6. Cloud Services Management
-
-The Cloud Services section of the dashboard provides tools for managing and optimizing your cloud assets. Let's explore its functionalities:
-
-### Cloud Asset Catalog
-
-1. Access the **Cloud Services** section from the navigation menu.
-2. Explore the catalog of available cloud services and resources.
-3. Get detailed information and documentation about each service.
-4. Find recommended best practices for provisioning and configuring cloud services.
-
-### Cost Monitoring and Optimization
-
-1. Navigate to the **Cloud Services** section.
-2. Select the **Cost Management** tab.
-3. Analyze cost breakdowns and trends for different cloud services.
-4. Set up budget alerts and optimize resource usage to minimize costs.
-
-## 7. Identity and Access Management
-
-The Identity and Access Management section of the dashboard allows you to manage user access and organization structure. Let's explore its functionalities:
-
-### Organization Structure
-
-1. Access the **Identity and Access Management** section from the navigation menu.
-2. Define the organization's structure, including teams, departments, or projects.
-3. Set up hierarchical relationships between different organizational units.
-
-### Landing Zone and Account Management
-
-1. Navigate to the **Identity and Access Management** section.
-2. Configure the landing zone settings for your cloud accounts.
-3. Manage cloud accounts and their access permissions from a centralized location.
-
-### Single Sign-On (SSO)
-
-1. Access the **Identity and Access Management** section.
-2. Set up Single Sign-On (SSO) integration with your organization's identity provider.
-3. Enable seamless and secure access to the CGDevX dashboard using SSO.
-
-## 8. Support and Resources
+## 6. Support and Resources
 
 The Support and Resources section provides access to documentation, support channels, and community resources. Let's explore what's available:
 
