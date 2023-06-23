@@ -15,13 +15,12 @@ Before you begin the installation, ensure that you have the following prerequisi
 - Basic knowledge of cloud services and concepts
 - Git client installed on your local machine
 
-## Step 1: Provisioning the Infrastructure
+## Step 1: Prerequisites for the Infrastructure
 
 1. Start by setting up an account with your preferred cloud provider if you haven't done so already:
 	- [Prepare an AWS account](account_setup/aws_account_setup.md)
-2. Create a new project or select an existing project where you want to deploy CGDevX.
 
-## Step 2: Configuring CGDevX Core Components
+## Step 2: Installing CGDevX Core Components
 
 
 Before getting started with CGDevX on your local machine, ensure that you have the necessary prerequisites installed. The following steps outline the installation process:
@@ -43,9 +42,9 @@ brew upgrade cgdevx
 
 ### Other Operating Systems
 
-For installation on different operating systems, architectures, or containerized environments, please refer to the [CGDevX Installation README](https://docs.cgdevx.io/cli/installation) for detailed instructions.
+For installation on different operating systems, architectures, or containerized environments, please refer to the [CGDevX Installation README]() for detailed instructions.
 
-### Create Your New CGDevX Cluster
+## Step 3:  Create Your New CGDevX Cluster
 
 To create a new CGDevX cluster, you need to provide a YAML configuration file with the required input parameters. Follow these steps:
 
@@ -93,13 +92,13 @@ This command will create the cluster based on the configuration specified in the
 **Root Credentials**: To obtain the initial passwords for your cluster, run the following command:
 
 ```bash
-cgdevx aws root-credentials
+cgdevx show root-credentials
 ```
 
 **Connecting to Kubernetes**: To connect to your newly created Kubernetes cluster, execute the following command:
 
 ```bash
-export KUBECONFIG=~/.k1/kubeconfig
+export KUBECONFIG=~/.cgdevx/kubeconfig
 ```
 
 **View Cluster Pods**: To list all pods running in your cluster, use the following command:
