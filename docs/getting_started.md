@@ -107,4 +107,50 @@ export KUBECONFIG=~/.cgdevx/kubeconfig
 kubectl get pods -A
 ```
 
-By following these steps and providing the required input parameters in the YAML configuration file, you can create a new CGDevX cluster and begin managing your applications and workloads.
+## Step 4: GitHub Repositories
+
+With CGDevX, managing your application configurations and infrastructure as code (IaC) becomes effortless through the integration of GitHub repositories. These repositories serve as a centralized hub for storing and versioning your infrastructure and application configurations.
+
+![Screenshot](img/CGDevX_gitops.png)
+
+### Repository Summary
+
+When setting up CGDevX on AWS, a dedicated repository called `gitops` will be created within your GitHub account. The `gitops` repository is where you will find all the IaC and GitOps configurations. It contains the necessary definitions to manage your CGDevX platform's infrastructure using tools like Terraform and Argo CD. Any changes or additions to your infrastructure can be made by submitting pull requests to the `gitops` repository.
+
+### GitHub Repository Management
+
+Managing GitHub repositories for CGDevX is made easy with Terraform. To create additional repositories:
+
+1. Open the `terraform/github/repos.tf` file in your `gitops` repository.
+
+2. Add a new section of Terraform code to define the properties of the new repository. For example:
+
+```hcl
+	module "your_repo_name" {
+     source             = "./modules/repository"
+     visibility         = "private"
+     repo_name          = "your-repo-name"
+     archive_on_destroy = true
+     auto_init          = false
+	}
+```
+
+3. Customize the properties as needed. Specify the desired `visibility`, provide a unique `repo_name`, and configure any other options required.
+
+4. Save the changes and commit them to the `gitops` repository.
+
+### Making Terraform Changes
+
+To make changes to your infrastructure and configurations using Terraform:
+
+1. Open a pull request targeting the relevant Terraform directory within the `gitops` repository.
+
+2. Clearly describe the changes you intend to make in the pull request.
+
+3. CGDevX will automatically generate plans, apply the changes, and provide state locks. The progress of the apply process will be reflected in comments on the pull request.
+
+4. Benefit from a streamlined and auditable change management process. The pull request and associated comments will serve as a transparent changelog of all infrastructure and configuration modifications.
+
+![Screenshot](img/CGDevX_demo_gitops_pull.png)
+
+By following these steps, you can effectively manage and version control your infrastructure and application configurations using GitHub repositories and Terraform with CGDevX.
