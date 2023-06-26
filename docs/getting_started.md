@@ -153,4 +153,32 @@ To make changes to your infrastructure and configurations using Terraform:
 
 ![Screenshot](img/CGDevX_demo_gitops_pull.png)
 
-By following these steps, you can effectively manage and version control your infrastructure and application configurations using GitHub repositories and Terraform with CGDevX.
+## Step 5: Argo CD Integration
+
+CGDevX seamlessly integrates with Argo CD, a powerful GitOps continuous delivery tool designed for Kubernetes. Argo CD simplifies the management of applications across your Kubernetes clusters, providing an efficient way to handle Helm charts, their versions, configuration overrides, and ensuring synchronization with your desired state.
+
+### Argo CD Applications
+
+All your application configurations within your Kubernetes cluster can be found in the dedicated gitops repository under the path `/registry/<cluster-name>`. The gitops repository acts as a centralized location for managing your applications and their associated settings.
+
+![Screenshot](img/CGDevX_gitops_registry.png)
+
+These YAML files contain comprehensive details about each application, including its source, destination, and any Helm configuration overrides.
+
+### Managing Applications in Argo CD
+
+To make changes to your applications and ensure synchronization with the desired state:
+
+1. Modify the desired state of the application in the main branch of the gitops repository.
+2. The registered app-of-apps will automatically sync, ensuring that any necessary adjustments are propagated to the Kubernetes cluster.
+3. The state of the applications in the cluster will be reconciled with the changes stored in the git repository.
+
+### Adding Applications to Argo CD
+
+To add new applications to Argo CD:
+
+1. Navigate to the `/registry` root directory of the gitops repository.
+2. Add the necessary application details and configurations. You can also create app-of-apps entries if you require multiple components to be delivered as a suite.
+3. Take advantage of the provided examples in the `/registry` directory to guide you in defining your applications.
+
+For further information and detailed documentation about Argo CD, refer to the [Argo CD documentation](https://argo-cd.readthedocs.io/en/stable/).
