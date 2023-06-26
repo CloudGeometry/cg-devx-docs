@@ -157,6 +157,8 @@ To make changes to your infrastructure and configurations using Terraform:
 
 CGDevX seamlessly integrates with Argo CD, a powerful GitOps continuous delivery tool designed for Kubernetes. Argo CD simplifies the management of applications across your Kubernetes clusters, providing an efficient way to handle Helm charts, their versions, configuration overrides, and ensuring synchronization with your desired state.
 
+![Screenshot](img/CGDecX_Argo_CD.png)
+
 ### Argo CD Applications
 
 All your application configurations within your Kubernetes cluster can be found in the dedicated gitops repository under the path `/registry/<cluster-name>`. The gitops repository acts as a centralized location for managing your applications and their associated settings.
