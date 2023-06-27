@@ -3,3 +3,4 @@ nav:
     - Home: index.md
     - Getting started: getting_started.md
     - Dashboard User Guide: dashboard_user_guide.md
+    - Workload Management: workload_management.md

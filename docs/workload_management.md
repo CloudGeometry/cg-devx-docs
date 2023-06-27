@@ -1,0 +1,40 @@
+# Creating a New Workload using CGDevX CLI
+
+In this guide, we will explore how to create a new workload using the CGDevX Command Line Interface (CLI). The CLI provides a convenient and efficient way to interact with CGDevX and automate various tasks. By following the steps below, you'll be able to create a new workload with ease.
+
+## Prerequisites
+
+Before we begin, make sure you have the following:
+
+- A CGDevX account with CLI access
+- CGDevX CLI installed and properly configured on your local machine
+- Basic familiarity with the command line interface
+
+## Step 1: Launching the CGDevX CLI
+
+To start the process of creating a new workload, open your preferred terminal application and launch the CGDevX CLI. Ensure that you are logged in with your CGDevX account credentials. If you haven't installed the CLI or set it up yet, please refer to the CGDevX documentation for installation instructions.
+
+## Step 2: Running the workload-create Command
+
+Once you have the CLI up and running, it's time to use the `workload-create` command to create your new workload. The `workload-create` command allows you to define various parameters for your workload, such as the workload name and optional repository details. Here's an example command:
+
+```shell
+cgdevx workload-create --workload-name <workload-name> --workloadrepository-name <workloadrepository-name> --workload-gitopsrepository-name <workload-gitopsrepository-name>
+```
+
+Make sure to replace `<workload-name>`, `<workloadrepository-name>`, and `<workload-gitopsrepository-name>` with the actual values you want to use. The `--workload-name` parameter specifies the name of your workload, while the `--workloadrepository-name` and `--workload-gitopsrepository-name` parameters are optional and allow you to associate a workload with specific repositories.
+
+## Step 3: Providing Additional Input Parameters
+
+In addition to the command options mentioned above, there are also hidden input parameters that you can use to customize your workload further. These parameters are related to workload templates and GitOps repositories. Although they are hidden, they play an important role in defining the behavior and configuration of your workload. Here are the hidden parameters:
+
+- `--workloadtemplate-url`: Specifies the URL of the workload template.
+- `--workloadtemplate-branch`: Specifies the branch of the workload template.
+- `--workload-gitopstemplate-url`: Specifies the URL of the GitOps template.
+- `--workload-gitopstemplate-branch`: Specifies the branch of the GitOps template.
+
+These hidden parameters allow you to leverage predefined templates and configurations to streamline your workload creation process.
+
+## Step 4: Verifying the Workload Creation
+
+Once you've executed the `workload-create` command with the required and optional parameters, the CLI will initiate the workload creation process. It will provide feedback and status updates as it progresses. After completion, the CLI will display relevant information about the newly created workload, including its ID, name, and associated repositories (if specified).
