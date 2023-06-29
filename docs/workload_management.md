@@ -50,7 +50,7 @@ It's important to note that you may encounter a waiting period where manual appr
 
 To keep track of the provisioning progress, you can periodically check the status of your workload using the CGDevX CLI or the platform's web interface. Look for indicators or notifications that signal the completion of the provisioning process. Once the provisioning is complete, you can proceed with using and managing your workload as intended.
 
-## Step 6: Bootstrapping Your Workload
+## Step 5: Bootstrapping Your Workload
 
 Once the provisioning process for your workload is complete, you can proceed with bootstrapping it using the `workload-bootstrap` command in the CGDevX CLI. This step involves setting up the initial configurations and dependencies required for your workload to function properly.
 
@@ -61,7 +61,7 @@ cgdevx workload-bootstrap --workload-name <workload-name> --workloadrepository-n
 
 Make sure to replace `<workload-name>`, `<workloadrepository-name>`, and `<workload-gitopsrepository-name>` with the actual values you want to use. The `--workload-name` parameter specifies the name of your workload, while the `--workloadrepository-name` and `--workload-gitopsrepository-name` parameters are optional and allow you to associate a workload with specific repositories.
    
-### Step 6.1: Providing Additional Input Parameters
+### Step 5.1: Providing Additional Input Parameters
 
 In addition to the command options mentioned above, there are also hidden input parameters that you can use to customize your workload further. These parameters are related to workload templates and GitOps repositories. Although they are hidden, they play an important role in defining the behavior and configuration of your workload. Here are the hidden parameters:
 
@@ -72,6 +72,6 @@ In addition to the command options mentioned above, there are also hidden input 
 
 These hidden parameters allow you to leverage predefined templates and configurations to streamline your workload creation process.
 
-## Step 7: Wait for the bootstrapping process to complete. 
+## Step 6: Wait for the bootstrapping process to complete. 
 
 Once the bootstrapping process is finished, your workload will be ready for further customization and deployment. You can now proceed to the next steps to manage and operate your workload effectively.
