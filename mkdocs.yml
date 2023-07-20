@@ -4,3 +4,6 @@ nav:
     - Getting started: getting_started.md
     - Dashboard User Guide: dashboard_user_guide.md
     - Workload Management: workload_management.md
+    - CGDevX Applications: 
+       - ArgoCD: cgdevx_apps/cgdevx_argocd.md
+       - Grafana: cgdevx_apps/cgdevx_grafana.md
