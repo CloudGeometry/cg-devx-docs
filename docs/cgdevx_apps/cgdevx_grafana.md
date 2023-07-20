@@ -14,7 +14,7 @@ In CGDevX, we understand the importance of access control in collaborative envir
 
 ### Empowering Direct Configuration Changes
 
-To expedite workflows and foster flexibility, CGDevX allows certain direct configuration changes within Grafana. However, these changes are limited to non-conflicting settings to ensure the stability and consistency of the system.
+To expedite workflows and foster flexibility, CGDevX allows certain direct configuration changes within Grafana. However, these changes are limited to non-conflicting settings to ensure the stability and consistency of the system. Data sources are preconfigured and must not be edited as changes will be lost when Grafana is redeployed.
 
 ### Preconfigured Data Sources: A Solid Foundation
 

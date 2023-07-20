@@ -1,10 +1,10 @@
 # ArgoCD: Your GitOps Continuous Delivery Solution
 
-ArgoCD presents a declarative, GitOps continuous delivery tool designed exclusively for Kubernetes. ArgoCD is seamlessly integrated with CGDevX, leveraging the capabilities of Keycloak for Single Sign-On (SSO), streamlining access control while ensuring a seamless user experience.
+ArgoCD presents a declarative, GitOps continuous delivery tool designed exclusively for Kubernetes. ArgoCD is seamlessly integrated with CGDevX, leveraging the capabilities of Vault for Single Sign-On (SSO), streamlining access control while ensuring a seamless user experience.
 
-### Effortless Access Control with CGDevX and Keycloak Integration
+### Effortless Access Control with CGDevX and Vault Integration
 
-As a CGDevX user, you'll enjoy the smooth integration of ArgoCD with Keycloak for SSO, making authentication and authorization a breeze. Let's explore how CGDevX maps groups to ArgoCD roles:
+As a CGDevX user, you'll enjoy the smooth integration of ArgoCD with Vault for SSO, making authentication and authorization a breeze. Let's explore how CGDevX maps groups to ArgoCD roles:
 
 1. **Elevate Your Capabilities: The Super Admin Role**
    Within ArgoCD, the super admin role is granted to the designated CGDevX administrators. This ensures comprehensive access and control over ArgoCD operations.
@@ -32,6 +32,6 @@ With ArgoCD and CGDevX, your team can fully focus on innovation and development,
 
 ### Embrace the Future of Kubernetes Application Management with ArgoCD and CGDevX
 
-ArgoCD, integrated seamlessly with CGDevX through Keycloak, offers an intuitive and powerful solution for continuous delivery. Embrace the GitOps philosophy and witness the ease with which your team can deploy and manage applications in Kubernetes.
+ArgoCD, integrated seamlessly with CGDevX through Vault, offers an intuitive and powerful solution for continuous delivery. Embrace the GitOps philosophy and witness the ease with which your team can deploy and manage applications in Kubernetes.
 
 Experience the true potential of ArgoCD and CGDevX today - the future of Kubernetes application management awaits!
