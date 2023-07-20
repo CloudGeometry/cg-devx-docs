@@ -7,3 +7,4 @@ nav:
     - CGDevX Applications: 
        - ArgoCD: cgdevx_apps/cgdevx_argocd.md
        - Grafana: cgdevx_apps/cgdevx_grafana.md
+       - CertManager: cgdevx_apps/cgdevx_certmanager.md
