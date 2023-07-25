@@ -1,10 +1,10 @@
 #Getting started
 
-Welcome to the CGDevX Installation Guide! This guide will walk you through the process of installing CGDevX, a powerful platform that simplifies application management in Cloud Native and Cloud Agnostic environments. By following these steps, you'll be able to set up CGDevX and leverage its capabilities to build, deploy, and operate your services.
+Welcome to the CG DevX Installation Guide! This guide will walk you through the process of installing CGDevX, a powerful platform that simplifies application management in Cloud Native and Cloud Agnostic environments. By following these steps, you'll be able to set up CG DevX and leverage its capabilities to build, deploy, and operate your services.
 
 ## Introduction
 
-CGDevX simplifies the management of Cloud Native and Cloud Agnostic runtime environments. By following the CGDevX Golden Path, you can optimize your application development and deployment processes, enhance observability, ensure compliance, and embrace DevSecOps practices.
+CG DevX simplifies the management of Cloud Native and Cloud Agnostic runtime environments. By following the CG DevX Golden Path, you can optimize your application development and deployment processes, enhance observability, ensure compliance, and embrace DevSecOps practices.
 
 ## Prerequisites
 
@@ -18,22 +18,22 @@ Before you begin the installation, ensure that you have the following prerequisi
 ## Step 1: Prerequisites for the Infrastructure
 
 1. Start by setting up an account with your preferred cloud provider if you haven't done so already:
-	- [Prepare an AWS account](account_setup/aws_account_setup.md)
+	- [Prepare a Cloud account](account_setup/cloud_account_setup.md)
 
-## Step 2: Installing CGDevX Core Components
+## Step 2: Installing CG DevX Core Components
 
 
-Before getting started with CGDevX on your local machine, ensure that you have the necessary prerequisites installed. The following steps outline the installation process:
+Before getting started with CG DevX on your local machine, ensure that you have the necessary prerequisites installed. The following steps outline the installation process:
 
 ### macOS (using Homebrew)
 
-If you are using macOS and have Homebrew installed, you can install the CGDevX CLI by running the following command:
+If you are using macOS and have Homebrew installed, you can install the CG DevX CLI by running the following command:
 
 ```bash
 brew install cgdevx/cli/cgdevx
 ```
 
-To upgrade an existing CGDevX CLI installation to the latest version, run:
+To upgrade an existing CG DevX CLI installation to the latest version, run:
 
 ```bash
 brew update
@@ -42,11 +42,11 @@ brew upgrade cgdevx
 
 ### Other Operating Systems
 
-For installation on different operating systems, architectures, or containerized environments, please refer to the [CGDevX Installation README]() for detailed instructions.
+For installation on different operating systems, architectures, or containerized environments, please refer to the [CG DevX Installation README]() for detailed instructions.
 
-## Step 3:  Create Your New CGDevX Cluster
+## Step 3:  Create Your New CG DevX Cluster
 
-To create a new CGDevX cluster, you need to provide a YAML configuration file with the required input parameters. Follow these steps:
+To create a new CG DevX cluster, you need to provide a YAML configuration file with the required input parameters. Follow these steps:
 
 **Create Cluster Configuration YAML**: Create a YAML file, e.g., `config.yaml`, and define the configuration for your cluster. Below is an example of a cluster configuration with the required input parameters:
 
@@ -58,28 +58,37 @@ metadata:
 spec:
   email: your-email@example.com
   cloud: aws
-  cloudRegion: us-west-2
-  clusterName: my-cluster
-  gitOrg: your-github-organization-name
-  dnsRegistrar: my-dns-registrar
-  domainName: your-domain.com
-  gitAccessToken: your-git-access-token
+  cloud-region: us-west-2
+  cluster-name: my-cluster
+  git-org: your-github-organization-name
+  dns-registrar: my-dns-registrar
+  domain-name: your-domain.com
+  git-access-token: your-git-access-token
 ```
 
 Adjust the values in the YAML file according to your specific environment and preferences. You can also include optional parameters if needed.
 
 - `email`: Specify the email address to receive alerts and ownership notifications.
 - `cloud`: Specify the cloud provider type for the initial setup (e.g., `aws`, `gcp`, `azure`).
-- `cloudRegion`: Specify the cloud region where the cluster will be deployed.
-- `clusterName`: Provide a name for your cluster.
-- `gitOrg`: Specify the GitHub organization name associated with the cluster.
-- `dnsRegistrar`: Specify the DNS registrar for the domain configuration.
-- `domainName`: Specify the domain name for the cluster.
-- `gitAccessToken`: Provide a valid Git access token with the necessary permissions.
+- `cloud-region`: Specify the cloud region where the cluster will be deployed.
+- `cluster-name`: Provide a name for your cluster.
+- `git-org`: Specify the GitHub organization name associated with the cluster.
+- `dns-registrar`: Specify the DNS registrar for the domain configuration.
+- `domain-name`: Specify the domain name for the cluster.
+- `git-access-token`: Provide a valid Git access token with the necessary permissions.
 
-You can also include additional optional parameters such as `cloudProfile`, `cloudKey`, `cloudSecret`, `gitopsRepoName`, `setupDemoWorkload`, `gitopsTemplateURL`, and `gitopsTemplateBranch`. Adjust these parameters based on your specific requirements.
+You can also include additional optional parameters such as `cloud-profile`, `cloud-key`, `cloud-secret`, `gitops-repo-name`, `setup-demo-workload`, `gitops-template-url`, and `gitops-template-branch`. Adjust these parameters based on your specific requirements.
 
-**Create the Cluster**: Use the CGDevX CLI to create the cluster by applying the YAML configuration file:
+
+Optional Parameters:
+
+- `cloud-profile`: Specifies the cloud profile to use for cluster deployment (if predefined).
+- `cloud-key`, `cloud-secret` Provide cloud credentials directly for authentication with the cloud provider's API.
+- `gitops-repo-name`: Name of the GitOps repository for cluster configurations (if using an existing one).
+- `setup-demo-workload`: Enable automatic setup of a demo workload on the cluster (for testing).
+- `gitops-template-url``, `gitops-template-branch`: URL and branch of the GitOps template for cluster configuration.
+
+**Create the Cluster**: Use the CG DevX CLI to create the cluster by applying the YAML configuration file:
 
 ```bash
 cgdevx create -f config.yaml
@@ -109,17 +118,17 @@ kubectl get pods -A
 
 ## Step 4: GitHub Repositories
 
-With CGDevX, managing your application configurations and infrastructure as code (IaC) becomes effortless through the integration of GitHub repositories. These repositories serve as a centralized hub for storing and versioning your infrastructure and module configurations.
+With CG DevX, managing your application configurations and infrastructure as code (IaC) becomes effortless through the integration of GitHub repositories. These repositories serve as a centralized hub for storing and versioning your infrastructure and module configurations.
 
 ![Screenshot](img/CGDevX_gitops.png)
 
 ### Repository Summary
 
-When setting up CGDevX on AWS, a dedicated repository called `gitops` will be created within your GitHub account. The `gitops` repository is where you will find all the IaC and GitOps configurations. It contains the necessary definitions to manage your CGDevX platform's infrastructure using tools like Terraform and Argo CD. Any changes or additions to your infrastructure can be made by submitting pull requests to the `gitops` repository.
+When setting up CG DevX on AWS, a dedicated repository called `gitops` will be created within your GitHub account. The `gitops` repository is where you will find all the IaC and GitOps configurations. It contains the necessary definitions to manage your CG DevX platform's infrastructure using tools like Terraform and Argo CD. Any changes or additions to your infrastructure can be made by submitting pull requests to the `gitops` repository.
 
 ### GitHub Repository Management
 
-Managing GitHub repositories for CGDevX is made easy with Terraform. To create additional repositories:
+Managing GitHub repositories for CG DevX is made easy with Terraform. To create additional repositories:
 
 1. Open the `terraform/github/repos.tf` file in your `gitops` repository.
 
@@ -147,7 +156,7 @@ To make changes to your infrastructure and configurations using Terraform:
 
 2. Clearly describe the changes you intend to make in the pull request.
 
-3. CGDevX will automatically generate plans, apply the changes, and provide state locks. The progress of the apply process will be reflected in comments on the pull request.
+3. CG DevX will automatically generate plans, apply the changes, and provide state locks. The progress of the apply process will be reflected in comments on the pull request.
 
 4. Benefit from a streamlined and auditable change management process. The pull request and associated comments will serve as a transparent changelog of all infrastructure and configuration modifications.
 
@@ -155,9 +164,9 @@ To make changes to your infrastructure and configurations using Terraform:
 
 ## Step 5: Argo CD Integration
 
-CGDevX seamlessly integrates with Argo CD, a powerful GitOps continuous delivery tool designed for Kubernetes. Argo CD simplifies the management of applications across your Kubernetes clusters, providing an efficient way to handle Helm charts, their versions, configuration overrides, and ensuring synchronization with your desired state.
+CG DevX seamlessly integrates with Argo CD, a powerful GitOps continuous delivery tool designed for Kubernetes. Argo CD simplifies the management of applications across your Kubernetes clusters, providing an efficient way to handle Helm charts, their versions, configuration overrides, and ensuring synchronization with your desired state.
 
-![Screenshot](img/CGDecX_Argo_CD.png)
+![Screenshot](img/CGDevX_Argo_CD.png)
 
 ### Argo CD Applications
 
