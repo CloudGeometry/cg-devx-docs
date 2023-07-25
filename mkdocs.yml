@@ -8,3 +8,12 @@ nav:
        - ArgoCD: cgdevx_apps/cgdevx_argocd.md
        - Grafana: cgdevx_apps/cgdevx_grafana.md
        - CertManager: cgdevx_apps/cgdevx_certmanager.md
+       - Alertmanager: cgdevx_apps/cgdevx_alertmanager.md
+       - ExternalDNS: cgdevx_apps/cgdevx_externaldns.md
+       - Harbor: cgdevx_apps/cgdevx_harbor.md
+       - Ingress-nginx: cgdevx_apps/cgdevx_nginxingress.md
+       - Loki: cgdevx_apps/cgdevx_loki.md
+       - Prometheus: cgdevx_apps/cgdevx_prometheus.md
+       - Thanos: cgdevx_apps/cgdevx_thanos.md
+       - Trivy Operator: cgdevx_apps/cgdevx_trivyoperator.md
+       - Hashicorp Vault: cgdevx_apps/cgdevx_hashicorpvault.md
