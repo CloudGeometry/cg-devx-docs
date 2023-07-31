@@ -28,7 +28,9 @@ Optimize your cloud costs with CGDevX's cost management capabilities. Gain insig
 
 ## Modular approach
 
-One of the defining strengths of CG DevX lies in its modular approach, which offers a plethora of benefits to users and administrators. Let's explore the key advantages that arise from this innovative design:
+One of the defining strengths of CG DevX lies in its modular approach, which offers a plethora of benefits to users and administrators. Let's explore the key advantages that arise from this innovative design.
+
+![Screenshot](img/modular_approach.jpg)
 
 #### 1. Isolated Modules within their Area of Usage
 
