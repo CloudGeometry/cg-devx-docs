@@ -1,0 +1,5 @@
+site_name: CGDevX Docs
+nav:
+  - Home: home.md
+  - Getting started: getting_started/getting_started_main.md
+  - Under the hood: under_the_hood/under_the_hood_main.md
