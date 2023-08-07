@@ -1,4 +1,4 @@
-#Getting started
+# Getting started
 
 Welcome to the CG DevX Installation Guide! This guide will walk you through the process of installing CGDevX, a powerful platform that simplifies application management in Cloud Native and Cloud Agnostic environments. By following these steps, you'll be able to set up CG DevX and leverage its capabilities to build, deploy, and operate your services.
 
