@@ -1,5 +1,20 @@
-site_name: CGDevX Docs
+site_name: CG DevX User Guidelines
 nav:
-  - Home: home.md
-  - Getting started: getting_started/getting_started_main.md
-  - Under the hood: under_the_hood/under_the_hood_main.md
+    - Home: index.md
+    - Getting started: getting_started.md
+    - Dashboard User Guide: dashboard_user_guide.md
+    - Workload Management: workload_management.md
+    - CGDevX Applications: 
+       - ArgoCD: cgdevx_apps/cgdevx_argocd.md
+       - Grafana: cgdevx_apps/cgdevx_grafana.md
+       - CertManager: cgdevx_apps/cgdevx_certmanager.md
+       - Alertmanager: cgdevx_apps/cgdevx_alertmanager.md
+       - ExternalDNS: cgdevx_apps/cgdevx_externaldns.md
+       - Harbor: cgdevx_apps/cgdevx_harbor.md
+       - Ingress-nginx: cgdevx_apps/cgdevx_nginxingress.md
+       - Loki: cgdevx_apps/cgdevx_loki.md
+       - Prometheus: cgdevx_apps/cgdevx_prometheus.md
+       - Thanos: cgdevx_apps/cgdevx_thanos.md
+       - Trivy Operator: cgdevx_apps/cgdevx_trivyoperator.md
+       - Hashicorp Vault: cgdevx_apps/cgdevx_hashicorpvault.md
+    - Under the hood: under_the_hood/under_the_hood_main.md

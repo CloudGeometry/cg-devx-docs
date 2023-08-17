@@ -38,7 +38,7 @@ Before you begin the installation, ensure that you have the following prerequisi
 #### Cloud accounts preparation
 
 Start by setting up an account with your preferred cloud provider if you haven't done so already:
-	- [Prepare a Cloud account](account_setup/cloud_account_setup.md)
+	- [Prepare a Cloud account](/docs/account_setup/cloud_account_setup.md)
 
 #### VCS provider
 
@@ -62,7 +62,7 @@ Remember to store your access keys securely, as they provide full access to your
 
 With CG DevX, managing your application configurations and infrastructure as code (IaC) becomes effortless through the integration of GitHub repositories. These repositories serve as a centralized hub for storing and versioning your infrastructure and module configurations.
 
-![Screenshot](img/CGDevX_gitops.png)
+![Screenshot](/docs/img/CGDevX_gitops.png)
 
 
 #### User management
@@ -266,19 +266,19 @@ To make changes to your infrastructure and configurations using Terraform:
 
 4. Benefit from a streamlined and auditable change management process. The pull request and associated comments will serve as a transparent changelog of all infrastructure and configuration modifications.
 
-![Screenshot](img/CGDevX_demo_gitops_pull.png)
+![Screenshot](/docs/img/CGDevX_demo_gitops_pull.png)
 
 **Step 5: Argo CD Integration**
 
 CG DevX seamlessly integrates with Argo CD, a powerful GitOps continuous delivery tool designed for Kubernetes. Argo CD simplifies the management of applications across your Kubernetes clusters, providing an efficient way to handle Helm charts, their versions, configuration overrides, and ensuring synchronization with your desired state.
 
-![Screenshot](img/CGDevX_Argo_CD.png)
+![Screenshot](/docs/img/CGDevX_Argo_CD.png)
 
 **Argo CD Applications**
 
 All your application configurations within your Kubernetes cluster can be found in the dedicated gitops repository under the path `/registry/<cluster-name>`. The gitops repository acts as a centralized location for managing your applications and their associated settings.
 
-![Screenshot](img/CGDevX_gitops_registry.png)
+![Screenshot](/docs/img/CGDevX_gitops_registry.png)
 
 These YAML files contain comprehensive details about each application, including its source, destination, and any Helm configuration overrides.
 
