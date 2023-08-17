@@ -17,3 +17,4 @@ nav:
        - Thanos: cgdevx_apps/cgdevx_thanos.md
        - Trivy Operator: cgdevx_apps/cgdevx_trivyoperator.md
        - Hashicorp Vault: cgdevx_apps/cgdevx_hashicorpvault.md
+    - Under the hood: under_the_hood/under_the_hood_main.md
