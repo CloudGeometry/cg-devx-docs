@@ -1,0 +1,88 @@
+site_name: CG DevX Guide
+nav:
+  - 'Home': index.md
+  - 'CG DevX':
+      - 'Platform Engineering': 'platform_engineering.md'
+      - 'Why CG DevX': 'cgdevx.md'
+      - 'Concept': 'approach.md'
+      - 'Capabilities':
+          - 'Capabilities Overview': 'capabilities/capabilities.md'
+          - 'Reference Implementation': capabilities/reference_implementation.md
+          - 'Shared Responsibility': capabilities/known_limitations.md
+
+  - 'Operators Guide':
+      - operators_guide/concept.md
+      - operators_guide/supported_platforms.md
+      - 'Installation':
+          - operators_guide/installation/quickstart.md
+          - 'CLI':
+              - operators_guide/installation/installing_cli.md
+              - operators_guide/installation/building_cli.md
+              - operators_guide/installation/cli_commands.md
+          - 'Cloud':
+              - operators_guide/installation/cloud/aws_setup.md
+              - operators_guide/installation/cloud/azure_setup.md
+          - 'Git':
+              - operators_guide/installation/vcs/github_setup.md
+              - operators_guide/installation/vcs/gitlab_setup.md
+      - 'Platform Management':
+          - operators_guide/platform_management/core_infrastructure_management.md
+          - operators_guide/platform_management/vcs_management.md
+          - operators_guide/platform_management/secrets_management.md
+          - operators_guide/platform_management/users_management.md
+          - operators_guide/platform_management/core_services.md
+          - operators_guide/platform_management/platform_repo.md
+      - 'Workload Management':
+          - operators_guide/workload_management/workloads.md
+          - operators_guide/workload_management/cli_commands.md
+          - operators_guide/workload_management/bootstrap_templates.md
+          - operators_guide/workload_management/environments.md
+      - 'Delivery Pipelines':
+          - operators_guide/delivery_pipelines/core_services_delivery.md
+
+  - 'Developers Guide':
+      - developers_guide/concept.md
+      - 'Workloads':
+          - developers_guide/workloads/concept.md
+          - developers_guide/workloads/gitops_environments.md
+      - 'Pipelines':
+          - developers_guide/cd/promotion.md
+          - developers_guide/ci/code_quality.md
+          - developers_guide/ci/devsecops.md
+      - 'Observability':
+          - developers_guide/monitoring/dashboards.md
+      - 'Artifacts':
+          - developers_guide/artifacts/registry.md
+          - developers_guide/artifacts/registry_proxy.md
+
+  - 'Under the hood':
+      - 'Architecture':
+          - under_the_hood/architecture.md
+          - under_the_hood/cost_management/cost_management.md
+          - under_the_hood/delivery_pipelines/delivery_pipelines.md
+          - under_the_hood/devsecops/devsecops.md
+          - under_the_hood/iam/iam.md
+          - under_the_hood/network/networking.md
+          - under_the_hood/observability/observability.md
+          - under_the_hood/runtime/runtime.md
+          - under_the_hood/workloads/workload_management.md
+
+
+
+
+
+theme:
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - hcl
+    - python
+    - bash
+
+plugins:
+  - drawio_file
+  - search
+  - mermaid2
+
+site_author: alexu@cloudgeometry.io
