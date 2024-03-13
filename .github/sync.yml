@@ -1,6 +1,0 @@
-CloudGeometry/cgdevx-docs:
-  - LICENSE
-  - README.md
-  - mkdocs.yml
-  - source: docs/
-    deleteOrphaned: true
