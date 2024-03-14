@@ -1,9 +1,9 @@
 This project uses [MkDocs](https://www.mkdocs.org/)
 
-To install MkDocs run 
+To install MkDocs and required plugins run 
 
 ```shell
-pip install mkdocs
+pip install mkdocs mkdocs-mermaid2-plugin mkdocs-drawio-file
 ```
 
 ```shell
