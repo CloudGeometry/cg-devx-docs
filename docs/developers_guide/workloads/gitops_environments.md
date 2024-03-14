@@ -100,7 +100,7 @@ You could generate and compare effective manifest for each environment using com
 # make temp dir for file comparison
 mkdir .tmp
 
-# generage effective manifest
+# generate effective manifest
 kustomize build envs/dev/> .tmp/dev.yaml
 kustomize build envs/sta/ > .tmp/sta.yaml
 kustomize build envs/prod/ > .tmp/prod.yaml

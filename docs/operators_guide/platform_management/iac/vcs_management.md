@@ -13,3 +13,27 @@ Minimal set of parameters for the module is the following:
 - **cluster_name**: K8s cluster name;
 - **vcs_owner**: Git organization owner, provider specific;
 - **vcs_subscription_plan**: Git subscription plan type, automatically determined by CLI.
+
+Workload repositories are defined as part of workload
+using `workloads` variable passed via `terraform.tfvars.json` file.
+
+Below is an example of `terraform.tfvars.json` file containing one workload called `demo-workload`.
+Additional repositories could be added by updating `repos` object. 
+For more details,
+please see [workload management](../../workload_management/workloads.md#manually-customizing-and-managing-workloads)
+
+```json
+{
+  "workloads": {
+    "demo-workload": {
+      "description": "CG DevX Demo-Workload workload definition",
+      "repos": {
+        "demo-workload": {},
+        "demo-workload-gitops": {
+          "atlantis_enabled": true
+        }
+      }
+    }
+  }
+}
+```

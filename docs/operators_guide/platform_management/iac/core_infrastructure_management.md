@@ -30,4 +30,18 @@ You should adjust defaults based on your requirements.
     - **max_size**: max node count for K8s cluster; 
     - **desired_size**: desired node count for K8s cluster;
     - **capacity_type**: determines compute node capacity type, e.g. "on-demand" or "spot", defaults to "on-demand", cloud-provider-specific;
-  
+
+Infrastructure module uses workload definitions to manage access to shared resources.
+Definitions are provided using `workloads` variable passed via `terraform.tfvars.json` file.
+
+Below is an example of `terraform.tfvars.json` file containing one workload called `demo-workload`.
+
+```json
+{
+  "workloads": {
+    "demo-workload": {
+      "description": "CG DevX Demo-Workload workload definition"
+    }
+  }
+}
+```

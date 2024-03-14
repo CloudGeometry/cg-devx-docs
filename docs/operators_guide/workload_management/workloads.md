@@ -6,7 +6,7 @@ Workload is self-contained.
 Workloads are configured under CG DevX installation GitOps repository, and then managed by the team owning the Workload.
 
 CG DevX goal is
-to provide isolation on Workload level through all the core services provided by CG DevX platform<sup>*</sup>.
+to provide isolation on Workload level through all the core services provided by CG DevX platform.
 
 Workload is divided into the following logical blocks:
 
@@ -93,3 +93,45 @@ it will update the image version of Workload service in K8s deployment definitio
 to trigger CD process.
 At this point you could promote changes from `dev` environment to other environments
 by running promotion action under Workload GitOps repository.
+
+### Manually customizing and managing workloads
+
+On a platform level,
+workloads are defined as a set of workload objects that are passed to IaC modules via `terraform.tfvars.json` f
+ile ([more here](../platform_management/platform_repo.md#iac)).
+
+In order to create additional workloads, or workload repositories, or manage repository settings you need to
+update `terraform.tfvars.json`.
+
+Workloads variable schema is the following
+
+```terraform
+variable "workloads" {
+  description = "workloads configuration"
+  type        = map(object({
+    description = optional(string, "")
+    repos       = map(object({
+      description            = optional(string, "")
+      visibility             = optional(string, "private")
+      auto_init              = optional(bool, false)
+      archive_on_destroy     = optional(bool, false)
+      has_issues             = optional(bool, false)
+      default_branch_name    = optional(string, "main")
+      delete_branch_on_merge = optional(bool, true)
+      branch_protection      = optional(bool, true)
+      atlantis_enabled       = optional(bool, false)
+    }))
+  }))
+  default = {}
+}
+```
+
+Workloads are managed and discovered by ArgoCD automatically using the ApplicationSet.
+located at `/gitops-pipelines/delivery/clusters/cc-cluster/core-services/200-wl-argocd.yaml`
+It monitors `/gitops-pipelines/delivery/clusters/cc-cluster/workloads` path for CC cluster.
+Per-workload definitions are based on a template
+file [workload-template.yaml](https://github.com/CloudGeometry/cg-devx-core/blob/main/platform/gitops-pipelines/delivery/clusters/cc-cluster/workloads/workload-template.yaml)
+and added to that path by CLI.
+When manually adding workloads, you should either define your own workload ApplicationSet based on template
+and put it into the workloads folder, or create a new ArgoCD application.
+

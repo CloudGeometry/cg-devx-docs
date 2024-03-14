@@ -22,6 +22,10 @@ Repository root `readme.md` file will contain links to all core services:
 | SonarQube      | sonarqube  | Code Quality                       | https://sonarqube.<cluster-name>.<domain-name> |
 | Backstage      | backstage  | Portal                             | https://backstage.<cluster-name>.<domain-name> |
 
+[Cert-manager](https://cert-manager.io/) with a [Let's Encrypt](https://letsencrypt.org/) ClusterIssuer for TLS
+encryption is used to secure all public-facing services on Ingress. Certificates are requested automatically and will be
+auto-renewed.
+
 ## GitOps pipelines
 
 Contains cluster configuration for multi cluster support (to be added later)
@@ -57,7 +61,8 @@ where implementation is cloud provider specific, but will always try to:
 
 - enable versioning
 - enable delete protection
-- limit access to the user which credentials are used to install CG DevX, plus role assumed by PR Automation service (Atlantis).
+- limit access to the user which credentials are used to install CG DevX, plus role assumed by PR Automation service (
+  Atlantis).
 
 ### IaC PR Automation
 
