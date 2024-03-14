@@ -57,7 +57,7 @@ instead of using monorepo that is CG DevX default behavior.
 You could delete Workload by running `workload delete` [command](../workload_management/cli_commands.md#delete).
 This will reverse the changes done by `workload create` command, and open a PR to apply them.
 
-> **Note!**: You must create and delete workloads on by one to avoid conflicts.
+> **Note!**: You must create and delete workloads one by one to avoid conflicts.
 
 ### Bootstrap
 
@@ -73,7 +73,7 @@ This will provide the following features based on templates created by CG DevX t
 - IaC PR automation configuration
 
 > **Note!**: Reference implementation of delivery pipelines, repository structure,
-> manifest and environments definitions are given as example of platform capabilities.
+> manifest and environments definitions are given as examples of platform capabilities.
 > They should and must be adjusted for your specific use case before production use.
 
 The following templates are used by default:
