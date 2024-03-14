@@ -32,11 +32,11 @@ Core benefits of Platform Engineering and Internal Developer Platforms:
 
 Platform Engineering and Internal Developer Platform is:
 
-**Not a commodity**: It cannot be bought off the shelf, as it must satisfy the specific needs of your organisation. It’s
+- **Not a commodity**: It cannot be bought off the shelf, as it must satisfy the specific needs of your organisation. It’s
 built by weaving together open-source and bespoke commodity tools to create a technology accelerator.
-**Not a project**: It isn’t a one-off development with a fixed end date. It needs to keep changing, as the needs of your
+- **Not a project**: It isn’t a one-off development with a fixed end date. It needs to keep changing, as the needs of your
 teams will change based on their customers’ demands.
-**Not a universal infrastructure platform**: It cannot run all cloud services for all possible consumers. It needs to
+- **Not a universal infrastructure platform**: It cannot run all cloud services for all possible consumers. It needs to
 focus on a subset of cloud services to support specific workloads.
 
 It’s important to remember that an Internal Developer Platform isn’t a silver bullet. It’s a long-term commitment to
