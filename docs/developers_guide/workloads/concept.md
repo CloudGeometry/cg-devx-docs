@@ -1,7 +1,11 @@
+# Workload concept 
+
 Workload could be described as one or more applications, systems, or solutions fulfilling specific business goals. In
-some cases those terms could be used interchangeably.
+some cases, those terms could be used interchangeably.
 Application / system / solution is composed of services, where service is the smallest independently deployable and
 managed unit performing an isolated set of business functions.
+
+## Prerequisites
 
 To be successfully integrated with CG DevX workload, and all of its services should:
 

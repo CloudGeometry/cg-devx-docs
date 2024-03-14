@@ -53,7 +53,12 @@ CG DevX CLI tool will provide detailed information on setup process progress,
 and provide you with platform user credentials.
 Please store them safely.
 
+You could get credentials by re-running the [`setup`](./cli_commands.md#setup) command on the same machine
+used for installation.
+
 Your kubeconfig file will be located in CG DevX local folder (`~/.cgdevx/kubeconfig`)
+
+Platform GitOps repository readme file (`README.md`) will contain links to all the core services.
 
 ## Managing Workloads
 

@@ -1,6 +1,9 @@
 # Platform Engineering
 
-TODO: recap of PE and IDP key aspects
+[//]: # (TODO: recap of PE and IDP key aspects)
+[//]: # (https://humanitec.com/platform-engineering)
+[//]: # (https://humanitec.com/blog/what-is-an-internal-developer-platform)
+
 
 Platform engineering is a new discipline that emerged in response to the growing complexity of modern cloud-native
 architectures. It describes the practice of building and maintaining an integrated product, called an "Internal
@@ -11,12 +14,7 @@ The goal of platform engineering is to improve developer productivity through im
 DevEx).
 
 Internal developer platforms improve the velocity and happiness of teams by enabling developer self-service and reducing
-cognitive load on developers.
-
-The purpose of an IDP is to solve problems.
-
-[//]: # ( https://humanitec.com/platform-engineering)
-[//]: # (https://humanitec.com/blog/what-is-an-internal-developer-platform)
+a cognitive load on developers.
 
 Core benefits of Platform Engineering and Internal Developer Platforms:
 
@@ -40,4 +38,5 @@ teams will change based on their customers’ demands.
 focus on a subset of cloud services to support specific workloads.
 
 It’s important to remember that an Internal Developer Platform isn’t a silver bullet. It’s a long-term commitment to
-Services at scale. It’s not appropriate for all workloads, teams, or organisations.
+Services at scale.
+It’s not appropriate for all workloads, teams, or organizations.

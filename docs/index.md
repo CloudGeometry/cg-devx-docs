@@ -14,6 +14,4 @@ Join the CGDevX community to connect with other users, share knowledge, and coll
 
 CGDevX empowers developers and teams to embrace cloud-native practices, supercharge their software delivery, and enhance
 operational efficiency.
-With its intuitive interface, powerful features, and extensive documentation, CGDevX is your
-partner on the journey to building and scaling cloud-native applications.
 
