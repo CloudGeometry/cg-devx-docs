@@ -7,8 +7,9 @@ nav:
       - 'Concept': 'approach.md'
       - 'Capabilities':
           - 'Capabilities Overview': 'capabilities/capabilities.md'
-          - 'Reference Implementation': capabilities/reference_implementation.md
-          - 'Shared Responsibility': capabilities/known_limitations.md
+          - 'Reference Implementation': 'capabilities/reference_implementation.md'
+          - 'Shared Responsibility': 'capabilities/known_limitations.md'
+      - 'Acknowledgements': 'tools.md'
 
   - 'Operators Guide':
       - operators_guide/concept.md
@@ -26,12 +27,13 @@ nav:
               - operators_guide/installation/vcs/github_setup.md
               - operators_guide/installation/vcs/gitlab_setup.md
       - 'Platform Management':
-          - operators_guide/platform_management/core_infrastructure_management.md
-          - operators_guide/platform_management/vcs_management.md
-          - operators_guide/platform_management/secrets_management.md
-          - operators_guide/platform_management/users_management.md
-          - operators_guide/platform_management/core_services.md
           - operators_guide/platform_management/platform_repo.md
+          - 'Terraform':
+              - operators_guide/platform_management/iac/vcs_management.md
+              - operators_guide/platform_management/iac/core_infrastructure_management.md
+              - operators_guide/platform_management/iac/secrets_management.md
+              - operators_guide/platform_management/iac/users_management.md
+              - operators_guide/platform_management/iac/core_services.md
       - 'Workload Management':
           - operators_guide/workload_management/workloads.md
           - operators_guide/workload_management/cli_commands.md
@@ -54,21 +56,6 @@ nav:
       - 'Artifacts':
           - developers_guide/artifacts/registry.md
           - developers_guide/artifacts/registry_proxy.md
-
-  - 'Under the hood':
-      - 'Architecture':
-          - under_the_hood/architecture.md
-          - under_the_hood/cost_management/cost_management.md
-          - under_the_hood/delivery_pipelines/delivery_pipelines.md
-          - under_the_hood/devsecops/devsecops.md
-          - under_the_hood/iam/iam.md
-          - under_the_hood/network/networking.md
-          - under_the_hood/observability/observability.md
-          - under_the_hood/runtime/runtime.md
-          - under_the_hood/workloads/workload_management.md
-
-
-
 
 
 theme:
