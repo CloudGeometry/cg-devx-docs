@@ -20,3 +20,12 @@ To be successfully integrated with CG DevX workload, and all of its services sho
     - Metrics exposure
     - Liveness/readiness probes
     - Config is stored in the environment
+
+## What's included
+
+Workloads created by CG DevX come with complete CI/CD processes including automated builds,
+container build & publishing, linting templates,
+integration with different test frameworks, [GitOps definition and deployments](gitops_environments.md), 
+version & release management.
+It saves a lot of time, doing all the heavy-lifting by handling all the integrations,
+and all you need to do is to fine-tune templates to your specific needs.  
