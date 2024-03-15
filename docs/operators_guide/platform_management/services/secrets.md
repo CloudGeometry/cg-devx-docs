@@ -10,13 +10,16 @@ You could log in into Vault using platform user credentials, provided by CG DevX
 You could also log in, using the root token which has full administrative permission,
 but we strongly advise not using it.
 
+![vault_login_token.png](../../../assets/vault_login_token.png)
+![vault_login_userpass.png](../../../assets/vault_login_userpass.png)
+
 Vault is also used as OIDC provider, so all other services are using it to provide SSO experience.
 
 Initially, there will be only a singular user created that represents the CG DevX machine user account.
 You could create additional accounts by updating IaC and creating a PR, more details [here](../iac/users_management.md).
 You will be able to get additional user account passwords from Vault once PR is merged.
 
-> Note, it's only possible to access user account passwords when using root token.
+> Note, it's only possible to access user account passwords when using root token to log in.
 
 Additional auth methods could be configured for Vault as
 described [here](https://developer.hashicorp.com/vault/docs/auth)

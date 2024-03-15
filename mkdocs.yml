@@ -34,6 +34,13 @@ nav:
               - operators_guide/platform_management/iac/secrets_management.md
               - operators_guide/platform_management/iac/users_management.md
               - operators_guide/platform_management/iac/core_services.md
+          - 'Services':
+              - operators_guide/platform_management/services/delivery.md
+              - operators_guide/platform_management/services/integration.md
+              - operators_guide/platform_management/services/monitoring.md
+              - operators_guide/platform_management/services/registry.md
+              - operators_guide/platform_management/services/secrets.md
+              - operators_guide/platform_management/services/security.md
       - 'Workload Management':
           - operators_guide/workload_management/workloads.md
           - operators_guide/workload_management/cli_commands.md
@@ -48,15 +55,17 @@ nav:
           - developers_guide/workloads/concept.md
           - developers_guide/workloads/gitops_environments.md
       - 'Pipelines':
+          - developers_guide/cd/delivery.md
           - developers_guide/cd/promotion.md
+          - developers_guide/ci/integration.md
           - developers_guide/ci/code_quality.md
           - developers_guide/ci/devsecops.md
       - 'Observability':
-          - developers_guide/monitoring/dashboards.md
+          - developers_guide/observability/monitoring.md
+          - developers_guide/observability/dashboards.md
       - 'Artifacts':
           - developers_guide/artifacts/registry.md
           - developers_guide/artifacts/registry_proxy.md
-
 
 theme:
   name: readthedocs
