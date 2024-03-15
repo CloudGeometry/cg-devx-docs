@@ -1,0 +1,42 @@
+name: Publish docs via GitHub Pages
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  mkdocs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Build docs
+        run: |
+          mkdocs -v build
+
+      - name: Set up environment variables
+        if: github.ref == 'refs/heads/master'
+        run: |
+          echo "MKDOCS_VERSION=$(mkdocs --version | cut -d " " -f 3)" >> $GITHUB_ENV
+          echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-9`" >> $GITHUB_ENV
+
+      - name: Deploy docs
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          destination_dir: ./
+          keep_files: false
+          allow_empty_commit: true
+          full_commit_message: Deployed ${{ env.SHORT_SHA }} with MkDocs ${{ env.MKDOCS_VERSION }}

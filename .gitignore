@@ -146,3 +146,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Python virtual env
+env/
+
+# MkDocs statis web site output folder
+site/
