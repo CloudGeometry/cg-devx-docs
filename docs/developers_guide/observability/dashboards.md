@@ -32,7 +32,12 @@ Show information on the CoreDNS Kubernetes component
 The Utilization Saturation and Errors (USE) Method dashboard that can be used to quickly identify resource bottlenecks
 or errors.
 
+<!-- MISSING IMAGE -->
+
 ## Security
+
+<!-- MISSING DESCRIPTION -->
+<!-- MISSING IMAGE -->
 
 ### Trivy
 
@@ -41,16 +46,19 @@ Dashboard for the Aqua Security Trivy Operator
 
 ### Kyverno
 
+<!-- MISSING DESCRIPTION -->
 ![1](https://grafana.com/api/dashboards/15987/images/11905/image)
 ![2](https://grafana.com/api/dashboards/15987/images/11906/image)
 ![3](https://grafana.com/api/dashboards/15987/images/11907/image)
 
 ## Cost
+<!-- MISSING DESCRIPTION -->
+<!-- MISSING IMAGE -->
 
 ### KubeCost cluster metrics
 
-Dashboard integrated with KubeCost providing view on findings and insights.
-This dashboard gives your Kubernetes cluster costs:
+Dashboard integrated with KubeCost providing a view on findings and insights.
+This dashboard gives you Kubernetes cluster costs:
 
 - Cluster Wide (Live and Estimative)
     - Relative price of spot instances
@@ -71,7 +79,7 @@ This dashboard gives your Kubernetes cluster costs:
 
 Based on [this template](https://grafana.com/grafana/dashboards/11956-nodejs-metrics/)
 
-This dashboard works with the metrics exported by the prom-client package for node.js.
+This dashboard works with the metrics exported by the `prom-client` package for node.js.
 CG DevX Log management is pre-configured to automatically collect metrics exported by node.js application.
 
 ![1](https://grafana.com/api/dashboards/11956/images/7764/image)

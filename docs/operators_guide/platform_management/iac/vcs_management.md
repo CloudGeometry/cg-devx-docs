@@ -1,9 +1,9 @@
 # VCS management
 
 CG DevX manages all the repositories (platform and workloads) and associated user groups,
-and repository settings using Git provider-specific module defined in `/terraform/vcs/main.tf`.
+and repository settings using the Git provider-specific module defined in `/terraform/vcs/main.tf`.
 
-Minimal set of parameters for the module is the following:
+The minimal set of parameters for the module is the following:
 
 - **gitops_repo_name**: Platform GitOps repository name;
 - **atlantis_url**: IaC PR automation webhook URL;
@@ -15,10 +15,10 @@ Minimal set of parameters for the module is the following:
 - **vcs_subscription_plan**: Git subscription plan type, automatically determined by CLI.
 
 Workload repositories are defined as part of workload
-using `workloads` variable passed via `terraform.tfvars.json` file.
+using the `workloads` variable passed via the `terraform.tfvars.json` file.
 
-Below is an example of `terraform.tfvars.json` file containing one workload called `demo-workload`.
-Additional repositories could be added by updating `repos` object. 
+Below is an example of a `terraform.tfvars.json` file containing one workload called `demo-workload`.
+Additional repositories can be added by updating the `repos` object. 
 For more details,
 please see [workload management](../../workload_management/workloads.md#manually-customizing-and-managing-workloads)
 
