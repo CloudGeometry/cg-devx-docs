@@ -1,9 +1,9 @@
 # User management
 
-CG DevX manages users using module defined in `/terraform/users/main.tf`.
+CG DevX manages users using a module defined in `/terraform/users/main.tf`.
 
-By default, CG DevX installation will have one admin level machine user with a namae `cgdevx-bot`.
-You could create additional users by editing `users` variable that has the following structure:
+By default, a CG DevX installation will have one admin level machine user named `cgdevx-bot`.
+You can create additional users by editing the `users` variable that has the following structure:
 
 ```terraform
 users            = {

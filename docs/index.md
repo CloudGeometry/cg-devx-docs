@@ -2,7 +2,7 @@
 
 Welcome to CG DevX, an all-in-one platform designed to simplify and enhance the development, deployment, and management
 of cloud-native applications.
-Whether you are an experienced platform engineer or just a beginner DevOps starting your
+Whether you are an experienced platform engineer or just a beginner starting your DevOps and
 cloud-native journey, CG DevX provides the tools and capabilities to empower your team and streamline your workflows.
 
 # Getting Started

@@ -1,45 +1,44 @@
 # How to Model Your Environments
 
-This is a reference implementation of a GitOps approach to the environments management using Kustomize folders. Release
-promotion model is relying on this structure.
+This is a reference implementation of a GitOps approach to environments management using Kustomize folders. The release
+promotion model relies on this structure.
 
 For more details, please see [this great example](
 https://github.com/kostis-codefresh/gitops-environment-promotion)
 
 ## Understanding Workload configuration types:
 
-Those are the most common configuration types in the context of a Kubernetes application:
+These are the most common configuration types in the context of a Kubernetes application:
 
 * **Application version** in the form of the container tag used.
-  This is the most important setting from promotion perspective.
-  Often a change to application version triggered by source code change also requires a
+  This is the most important setting from a promotion perspective.
+  Often a change to the application version triggered by a source code change also requires a
   change to the runtime environment.
 
-* **Kubernetes specific settings** This includes the replicas count, resource limits, health checks, persistent volumes,
+* **Kubernetes-specific settings** This includes the replica count, resource limits, health checks, persistent volumes,
   affinity rules, etc.
 
 * (mostly) **Static business settings**.
-  Settings of the application that are unrelated to Kubernetes, e.g. external URLs, authentication providers, connection
-  strings, etc. So "mostly static" — settings that are defined once for each environment and then never change and you
-  don't want to promote between environments.
+  Application settings that are unrelated to Kubernetes, such as external URLs, authentication providers, connection
+  strings, etc. These are "mostly static" — settings that are defined once for each environment and then never change. You don't want to promote these settings between environments.
 
 * Non-static **business settings**.
-  The same thing as the previous one, but you **do** want to promote them between environments.
+  The same thing as static business settings, but you **do** want to promote them between environments.
 
 ## Folder structure
 
-* `base` folder holds configuration which is common to all environments.
+* The `base` folder holds configurations that are common to all environments.
   It is not expected to change often.
-  If you want to do changes to multiple environments at the same time please use `variants`.
+  If you want to make changes to multiple environments at the same time please use `variants`.
 
-* `variants` folder holds common characteristics between environments.
+* The `variants` folder holds common characteristics between environments.
   It is up to you to define those commonalities.
 
-* `envs` folder holds individual environments configuration that is built from `base` and `variants`, and also includes
+* The `envs` folder holds individual environment configurations that are built from `base` and `variants`, and also includes
   environment-specific settings that are not common.
 
-As Business settings, both static and non-static could come from envs, ConfigMap, Secret, and ExternalSecret, and are
-Workload-specific, this reference implementation should be updated accordingly.
+As for business settings, both static and non-static can come from envs, ConfigMap, Secret, and ExternalSecret, and are
+Workload-specific; this reference implementation should be updated according to the needs of your application.
 
 ```
 .
@@ -92,7 +91,7 @@ Workload-specific, this reference implementation should be updated accordingly.
 
 ```
 
-You could generate and compare effective manifest for each environment using commands below:
+You can generate and compare effective manifests for each environment using the commands below:
 
 ```bash
 # Current directory: GITROOT/gitops/environments

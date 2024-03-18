@@ -1,7 +1,7 @@
 # Registry proxy
 
 To speed up the delivery process and avoid hitting external image registry limits,
-CG DevX provides proxy registries for popular Docker Image Registries
+CG DevX provides proxy registries for popular Docker Image Registries:
 
 - dockerhub-proxy https://hub.docker.com
 - gcr-proxy https://gcr.io

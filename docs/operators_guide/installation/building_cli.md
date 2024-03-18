@@ -12,7 +12,7 @@ You should have:
 If you don't have poetry installed, please follow official installation
 instructions [here](https://python-poetry.org/docs/#installation).
 
-## Preparing environment
+## Preparing the environment
 
 ```bash
 # Assumed directory: GITROOT/tools
@@ -28,22 +28,20 @@ poetry shell
 
 To find more on poetry commands, please [see](https://python-poetry.org/docs/basic-usage/).
 
-## Building CLI tool
+## Building the CLI tool
 
-To build CLI tool, please run `PyInstaller`
-
-directly
+To build the CLI tool, please run `PyInstaller` directly:
 
 ```bash 
 # Current directory: GITROOT/tools
 python -m PyInstaller --onefile cli/__main__.py --name cgdevxcli
 ```
 
-or via python script
+or via the python script:
 
 ```bash 
 # Current directory: GITROOT/tools
 poetry run build
 ```
 
-After that you could use and distribute `cgdexvcli` located at `GITROOT/dist/cgdevxcli`
+After that you can use and distribute the `cgdexvcli` binary located at `GITROOT/dist/cgdevxcli`.
