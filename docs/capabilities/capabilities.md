@@ -7,7 +7,7 @@ AKA Core services
 In CG DevX, each module is meticulously crafted and encapsulated to function independently within its designated area of usage. This isolation ensures that modules remain self-contained and do not interfere with the functionality of other components. Consequently, any changes or updates made to one module have minimal impact on the overall system, promoting stability and reliability.
 
 **Flexibility and Customizability**:
-The modular architecture of CG DevX empowered users to tailor their platform experience to meet their unique requirements. Since modules are decoupled and autonomous, users can easily customize individual components without affecting the integrity of the entire system. This flexibility enables teams to curate a platform that aligns precisely with their specific needs and preferences.
+The modular architecture of CG DevX empowers users to tailor their platform experience to meet their unique requirements. Since modules are decoupled and autonomous, users can easily customize individual components without affecting the integrity of the entire system. This flexibility enables teams to curate a platform that aligns precisely with their specific needs and preferences.
 
 **Seamless Module Replacement**: 
 In the dynamic landscape of technology, advancements and innovations are ever-evolving. CG DevX's modular design ensures that users can readily embrace new technologies by seamlessly replacing existing modules with improved alternatives. This empowers teams to stay at the forefront of technological progress without having to undergo cumbersome and disruptive system-wide changes.
@@ -19,12 +19,12 @@ Isolated modules simplify the troubleshooting and maintenance process in CG DevX
 
 ### Source Code Management
 
-Source code repositories is a storage of your business logic services code, manifests, and Infrastructure as Code
+Source code repositories store your business logic services code, manifests, and Infrastructure as Code
 (IaC).
-They act as ledger and provide historical lineage of changes.
+They act as a ledger and provide a historical lineage of changes.
 They allow for developers and operators to work collaboratively on common codebases.
 
-CG DevX standardise workflows associated with code review and automation driven by git AKA "GitOps".
+CG DevX standardises workflows associated with code review and automation driven by git, AKA "GitOps."
 So, when managed properly, pull requests (and associated changes) can be used as a "system of record" for change control
 and approval in regulatory environments.
 
@@ -42,8 +42,8 @@ CG DevX provides unified repository management via VCS modules.
 
 ### Infrastructure as Code (IaC)
 
-Infrastructure as Code or IaC, builds upon the Infrastructure as a Service (IaaS) offerings from cloud providers.
-IaC offers the ability to build common patterns across a mix of heterogeneous resources, abstarcting away the
+Infrastructure as Code, or IaC, builds upon the Infrastructure as a Service (IaaS) offerings from cloud providers.
+IaC offers the ability to build common patterns across a mix of heterogeneous resources, abstracting away the
 inconsistency of underlying cloud provider APIs.
 It also enables platform teams to build higher order resources that meet specific business needs.
 
@@ -52,7 +52,7 @@ One with occasional reconciliation, like Terraform, AWS CloudFormation, AWS CDK;
 and continuously reconciled, like Crossplane.
 
 While there are pros and cons
-associated with both approaches to foster reuse of existing IaC CG DevX aims to support bot ot them for workload IaC.
+associated with both approaches, to foster reuse of existing IaC CG DevX aims to support both of them for workload IaC.
 Our opinionated choice for reference implementation here is Terraform and Crossplane.
 For the platform IaC management itself, CG DevX relies on Terraform.
 
@@ -69,9 +69,9 @@ For the platform IaC management itself, CG DevX relies on Terraform.
 Continuous integration often refers to the build and unit testing stages of the release process.
 With raising complexity of workflow,
 it could be also treated as an orchestrator of tasks,
-with an end goal of workflow to make application ready for delivery.
+with an end goal of a workflow that makes the application ready for delivery.
 And not limited to classic parts of CI, or running tests (unit tests, smoke tests, integration tests, acceptance tests,
-etc.), validations, verifications.
+etc.), validations, and verifications.
 
 **Added Value**:
 
@@ -83,21 +83,20 @@ etc.), validations, verifications.
 
 Continuous delivery’s ultimate goal is to bring infrastructure and workload services into a production ready state.
 [GitOps](https://opengitops.dev/) is a trending approach in continuous delivery.
-In short, automation continuously ensures that the desired state matches the perceived state, where git repository
-serves as a source of truth.
+In short, automation continuously ensures that the desired state matches the perceived state, where the git repository
+serves as a source of truth, and committing and merging changes to definitions causes those changes to be made to the system.
 ArgoCD and FluxCD are two most commonly used implementations of these practices.
 
-CG DevX reference implementation is based on ArgoCD.
-This doesn't mean that ArgoCD and FluxCD (or other implementations) are mutually exclusive.
-They could work in parallel or in tandem to provide better value.
+The CG DevX reference implementation is based on ArgoCD, but that doesn't mean that ArgoCD and FluxCD (or other implementations) are mutually exclusive.
+They can work in parallel or in tandem to provide better value.
 
 **Added Value**:
 
-- Automation to build, test and release a new version of workload upon every successful merge
-- Allows fully automated deployments AKA "Continuous Deployment"
-- Facilitates end to end (E2E) testing that goes beyond simple unit or integration tests. Could be used in conjunction
-  with ephemeral environments (AKA preview environments).
-- It could be used in conjunction with progressive deployment methods like Blue/Green or Canary
+- Automation to build, test and release a new version of a workload upon every successful merge
+- Enables fully automated deployments, AKA "Continuous Deployment"
+- Facilitates end to end (E2E) testing that goes beyond simple unit or integration tests. Can be used in conjunction
+  with ephemeral environments (AKA preview environments)
+- It can be used in conjunction with progressive deployment methods like Blue/Green or Canary
 - Can also make use of feature flags to allow for “soft launches” of features and functionality
 - Shortening feedback loops
 - Reducing time to market for new features
@@ -106,7 +105,7 @@ They could work in parallel or in tandem to provide better value.
 
 Secrets Management provides long-term secured storage and management for sensitive data
 (passwords, secrets, access keys, certificates, etc.).
-Similar to VCS, it could provide versioning and meta-data capabilities,
+Similar to VCS, it can provide versioning and meta-data capabilities,
 combined with stricter access controls and auditing.
 The storage is also encrypted, and could integrate with Hardware Security Modules or HSMs.
 Secrets Management may also offer the ability to generate, lease, rotate and revoke secrets.
@@ -120,8 +119,8 @@ Vault
 - Secure and durable storage
 - Uses simple to work with key value pairs data structure
 - Data is encrypted
-- Values could be extended with meta-data
-- Values could be versioned
+- Values can be extended with meta-data
+- Values can be versioned
 - Provides tight access control
 - May offer the ability to generate/lease/rotate/revoke secret
 
@@ -133,7 +132,7 @@ CG DevX allows other core services to offload proof of identity and access manag
 This improves the maintainability of the system and makes access policies more transparent.
 
 To be self-contained, CG DevX uses Hashicorp Vault OIDC capabilities,
-but could be integrated with other provides like Active Directory, Okta, etc.
+but can be integrated with other providers such as Active Directory, Okta, etc.
 
 **Added Value**:
 
@@ -161,7 +160,7 @@ chain (SSSC) best practices.
 
 ### Developer Portal
 
-Developer Portal is a key developer productivity tool that serves as a high-order interface or umbrella for all the
+The Portal is a key developer productivity tool that serves as a high-order interface or umbrella for all the
 underlying tooling and services presenting them in a user-friendly manner.
 CG DevX integrates with Backstage to provide single pane of glass developer productivity solution.
 
@@ -204,16 +203,16 @@ wide access policies, misplaced labels, etc.
 Platforms can make use of specifications to validate all client interactions with the system.
 The end goal is to make suspicious or unwanted interaction of the user with the platform visible to operators.
 For instance, Kubernetes offers a built-in policy-based validation engine when working with its APIs.
-However, such behavior could be detected
+However, such behavior can be detected
 and prevented at early stages by providing additional checks within many services with platform toolbox.
 Admission control can also be a common substrate for injecting policy controls or building guardrails within the
 platform to meet security or regulatory requirements.
 
 **Added Value**:
 
-- Ensures internal policies are abided
+- Ensures internal policies are obeyed
 - Kubernetes can enable a common policy plane
-- Could prevent security issues by detecting issues on early stages
+- Can prevent security issues by detecting issues in the early stages
 
 ### Workload Runtime
 
@@ -222,15 +221,11 @@ the
 platform.
 Kubernetes is the compute and also the substrate for the foundation of platform capabilities.
 
-**Added Value**:
-
--
-
 ### Incident Response and Automation
 
-Incident response goal is to ensure a quick and efficient resolution of incidents detected by observability stack.
-Usually it also serves as a dedicated communication channel to collaborate on incident.
-It could also leverage run-books to automate repetitive tasks and improve incident response times.
+The goal of incident response is to ensure a quick and efficient resolution to incidents detected by the observability stack.
+Usually it also serves as a dedicated communication channel to collaborate on resolving the incident.
+It ccan also leverage run-books to automate repetitive tasks and improve incident response times.
 
 **Added Value**:
 
@@ -243,7 +238,7 @@ This component allows transparent resource ownership and lineage tracking,
 improving overall cost visibility and enabling cost attribution.
 It provides insights on resource usage, and helps to identify cost-saving opportunities, and implement effective
 cost-optimization strategies.
-Some cost savings opportunities like resource cleanup, and on/off schedules could be automated.
+Some cost savings opportunities like resource cleanup, and on/off schedules can be automated.
 It integrates with governance and enables cloud and Kubernetes resource labeling.
 
 **Added Value**:
