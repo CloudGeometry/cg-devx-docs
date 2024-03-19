@@ -1,12 +1,12 @@
 # Bootstrap templates
 
-CG DevX provides a set pf default bootstrap templates for workloads, which a set as a default value
-for [workload bootstrap command](./cli_commands.md#bootstrap).
+CG DevX provides a set of default bootstrap templates for workloads, which are set as a default value
+for the [workload bootstrap command](./cli_commands.md#bootstrap).
 
-Those templates provide a user with pre-defined logical structure of repositories
+Those templates provide a user with a pre-defined logical structure of repositories
 and allow seamless integration with platform core services, like delivery pipelines (AKA CI/CD), IaC PR automation, etc.
 
-Templates could be cloned and customized by the user and used for bootstrapping new workloads.
+Templates can be cloned and customized by the user and used for bootstrapping new workloads.
 
 The default templates are
 
@@ -15,8 +15,8 @@ The default templates are
 
 Those templates provide you with:
 
-- Workload repository structure
-- Pre-defined Docker file
+- The Workload repository structure
+- A Pre-defined Docker file
 - CI process
 - CD process
 - Release promotion process
@@ -29,7 +29,7 @@ Additional templates will be provided later.
 
 ### Code repository
 
-Workload code repository is using the following structure:
+The Workload code repository uses the following structure:
 
 ```
 .
@@ -49,17 +49,17 @@ Workload code repository is using the following structure:
 
 ```
 
-The repository already contains pre-configured GitHub Actions (`.github` folder) and Argo Workflows (`.argo` folder)
+The repository already contains pre-configured GitHub Actions (in the `.github` folder) and Argo Workflows (in the `.argo` folder)
 to build new images and update workload manifests.
 
-The service folder will have the name used when running boostrap command.
+The service folder will be named after the workload.
 
-When using monorepo for multiple services,
-each service should go under its own folder and has its own Dockerfile.
+When using a monorepo for multiple services,
+each service should have its own folder and its own Dockerfile.
 
 ### GitOps repository
 
-Workload GitOps repository is using the following structure:
+The Workload GitOps repository is using the following structure:
 
 ```
 .
@@ -108,5 +108,5 @@ Workload GitOps repository is using the following structure:
         └── variables.tf
 ```
 
-The repository already contains pre-configured GitHub Actions (`.github` folder) and Argo Workflows (`.argo` folder)
-required for GitOps style workload version promotion.
+The repository already contains pre-configured GitHub Actions (in the `.github` folder) and Argo Workflows (in the `.argo` folder)
+required for GitOps-style workload version promotion.
