@@ -58,6 +58,7 @@ nav:
           - developers_guide/cd/delivery.md
           - developers_guide/cd/promotion.md
           - developers_guide/ci/integration.md
+          - developers_guide/ci/argo_workflows.md
           - developers_guide/ci/code_quality.md
           - developers_guide/ci/devsecops.md
       - 'Observability':
