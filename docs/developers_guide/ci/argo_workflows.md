@@ -2,13 +2,13 @@
 CGDEVX's argo workflows approach implements following execution scheme:
 ```mermaid
 flowchart TD
-    node_88dq803me["GitHub Action Job Step"] --> node_zqcs1of9v["argo workflow in .argo/"]
-    node_zqcs1of9v --> node_ku9pmf0gm["cwft"]
-    node_ku9pmf0gm --> node_hept0cpxk["DAG steps"]
+    node_A["GitHub Action Job Step"] --> node_B["argo workflow in .argo/"]
+    node_B --> node_C["cwft"]
+    node_C --> node_D["DAG steps"]
     linkStyle 1 stroke:#000000
 ```
 &nbsp;
-## There are 4 basic workflows:
+## Basic workflows
 
 - **build**, which includes *build*, *lint* and *check* steps
 - **registry_put** places successfully builded image into the Harbor image repository
@@ -19,7 +19,7 @@ flowchart TD
 
 For every action workflows use cluster workflow templates consist of one or several steps to perform.
 In case of a list of parameters to process templates from clusterworkflow templates  can be called iteratively.
-Cluster workflow templates are used to implement atomic phases  of services images build process, except  build_chain_p_cwft, which have a DAG inside and called in a special way: inside so-called workflow-of-workflows structure.
+Cluster workflow templates are used to implement atomic phases  of services images build process, except  `build_chain_p_cwft`, which have a DAG inside and called in a special way: inside so-called workflow-of-workflows structure in `.argo/build-wow-wf.yaml`.
 
 - build_chain_p_cwft
     - megalinter-cwft — lints service code using Megalinter 

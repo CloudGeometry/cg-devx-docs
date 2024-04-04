@@ -59,6 +59,8 @@ nav:
           - developers_guide/cd/promotion.md
           - developers_guide/ci/integration.md
           - developers_guide/ci/argo_workflows.md
+          - developers_guide/ci/GitHub_Action_Workflow.md
+          - developers_guide/ci/kaniko_build.md
           - developers_guide/ci/code_quality.md
           - developers_guide/ci/devsecops.md
       - 'Observability':
