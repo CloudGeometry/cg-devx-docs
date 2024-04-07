@@ -62,6 +62,8 @@ nav:
           - developers_guide/ci/GitHub_Action_Workflow.md
           - developers_guide/ci/build_routine.md
           - developers_guide/ci/kaniko_build.md
+          - developers_guide/ci/megalinter.md
+          - developers_guide/ci/trivy.md
           - developers_guide/ci/code_quality.md
           - developers_guide/ci/devsecops.md
       - 'Observability':
