@@ -5,7 +5,7 @@ GHA workflow's step build is used to submit the argo workflow build-loop-xxxx (-
 - megalinter-cwft
 - trivy-fs-s3-cwft
 
-for [kaniko](kaniko_build.md), [megalinter](megalinter.md) and [trivy](trivy.md) rescpectively. All the workflow parameters, once calculated in [Github Action workflow](GitHub_Action_Workflow.md), are translated inside argo workflows templates structures sequentially.
+for [kaniko](kaniko_build.md), [megalinter](megalinter.md) and [trivy](trivy.md) rescpectively. All the workflow parameters, once calculated in [Github Action workflow](gitHub_action_workflow.md), are translated inside argo workflows templates structures sequentially.
 ```mermaid
 ---
 title: "Build routine invocation"
