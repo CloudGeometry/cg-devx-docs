@@ -13,7 +13,7 @@
 
 ## Delivery Pipelines
 
-[Delivery Pipelines](delivery_pipelines)
+[Delivery Pipelines](delivery_pipelines/delivery_pipelines.md)
 
 ## DevSecOps
 
