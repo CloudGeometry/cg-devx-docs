@@ -17,7 +17,7 @@ Internal developer platforms improve the velocity and happiness of teams by enab
 Core benefits of Platform Engineering and Internal Developer Platforms:
 
 - **Faster innovation**: Faster time to launch, frequent updates, focus on business problems
-- **Higher quality**: Fewer environmental issues, more deterministic test results, faster rollback
+- **Higher quality**: Fewer environment issues, more deterministic test results, faster rollback
 - **Increased reliability**: Observable services, graceful degradation, improved business continuity, optimisation for a fluctuating load
 - **Improved security**: Reduced security engineering overhead, Improved security
   operations and governance

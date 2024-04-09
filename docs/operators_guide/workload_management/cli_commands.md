@@ -117,7 +117,8 @@ The `workload delete` command can be executed using arguments or environment var
 
 | Name (short, full)                        | Type                                    | Description                                       |
 |-------------------------------------------|-----------------------------------------|---------------------------------------------------|
-| -wl, --workload-name                      | TEXT                                    | Workload name                                     |
+| -wl, --workload-names                     | TEXT                                    | Workload name(s), could be multiple args          |
+| --all                                     | Flag                                    | Destroy all existing workloads                    |
 | -wldr, --destroy-resources                | Flag                                    | Destroy workload resources                        |
 | -wlgrn, --workload-gitops-repository-name | TEXT                                    | Name for Workload GitOps repository               |
 | --verbosity                               | [DEBUG, INFO, WARNING, ERROR, CRITICAL] | Set the logging verbosity level, default CRITICAL |
@@ -131,3 +132,4 @@ Using command arguments
 ```bash
 cgdevxcli workload delete --workload-name your-workload-name
 ```
+
