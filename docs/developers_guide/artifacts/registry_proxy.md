@@ -21,3 +21,5 @@ To pull official images or from single level repositories, make sure to include 
 ```shell
 docker pull <harbor_server_name>/<proxy_project_name>/library/awesome-image:latest
 ```
+
+All pipelines supplied with CG DevX use proxy.
