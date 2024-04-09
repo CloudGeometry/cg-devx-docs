@@ -59,7 +59,7 @@ nav:
           - developers_guide/cd/promotion.md
           - developers_guide/ci/integration.md
           - developers_guide/ci/argo_workflows.md
-          - developers_guide/ci/gitHub_action_workflow.md
+          - developers_guide/ci/github_action_workflow.md
           - developers_guide/ci/build_routine.md
           - developers_guide/ci/kaniko_build.md
           - developers_guide/ci/megalinter.md
