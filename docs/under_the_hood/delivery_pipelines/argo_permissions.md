@@ -23,5 +23,6 @@ Each workload provides following system accounts and roles in `wl-<workload name
   Workflows UI and is used before the RBAC rules are applied.
 
   To dive deep inside Argo Workflows RBAC, see:
+
   - [https://argo-workflows.readthedocs.io/en/stable/workflow-rbac/](https://argo-workflows.readthedocs.io/en/stable/workflow-rbac/)
   - [https://argo-workflows.readthedocs.io/en/stable/argo-server-sso/#sso-rbac](https://argo-workflows.readthedocs.io/en/stable/argo-server-sso/#sso-rbac)
