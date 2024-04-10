@@ -8,6 +8,7 @@ namespace, executing through kustomize scenario.
 Helm chart _values_ defined in
 [application.yaml](https://github.com/CloudGeometry/cg-devx-core/blob/main/platform/gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/argo-workflows/application.yaml)
 consists of several sections, one for each component of Argo Workflows: 
+
 - _controller_ for Workflow Controller
 - _executor_ for Executor
 - _server_ for Argo Workflow Server
