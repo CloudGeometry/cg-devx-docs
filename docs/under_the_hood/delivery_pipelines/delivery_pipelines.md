@@ -7,7 +7,9 @@
 ### ArgoWorkflow template
 
 [Argo Workflows configuration](argo_config.md)
+
 [Cleanup of Argo Workflows entities](argo_cleanup.md)
+
 [Argo Workflows permission scopes](argo_permissions.md)
 ## K8s delivery	
 
