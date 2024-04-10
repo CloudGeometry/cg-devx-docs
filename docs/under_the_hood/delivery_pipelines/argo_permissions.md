@@ -7,6 +7,7 @@ Server and Workflow controller.
 
 ## System accounts and roles
 Each workload provides following system accounts and roles in `wl-<workload name>-dev`:
+
 - `argo-admin` — RBAC map target to view, change and delete workflows 
 - `argo-developer` — RBAC map target to view workflows
 - `argo-workflow` — used to execute all the [CI chain](developers_guide/ci/build_routine.md) workflows 
