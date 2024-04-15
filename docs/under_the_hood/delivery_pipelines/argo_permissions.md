@@ -10,7 +10,7 @@ Each workload provides following system accounts and roles in `wl-<workload name
 
 - `argo-admin` — RBAC map target to view, change and delete workflows 
 - `argo-developer` — RBAC map target to view workflows
-- `argo-workflow` — used to execute all the [CI chain](/developers_guide/ci/build_routine/) workflows 
+- `argo-workflow` — used to execute all the [CI chain](../../developers_guide/ci/build_routine.md) workflows 
 
 <!-- link to wl-template-gitops here -->
 
@@ -19,7 +19,7 @@ Each workload provides following system accounts and roles in `wl-<workload name
 
 - `argo-server` for Argo Workflows Server
 - `argo-workflow-controller` for Argo Workflow controller
-- `argo-default-sa` — default account with lowest permissions to login into Argo
+- `argo-default-sa` — default account with the lowest permissions to login into Argo
   Workflows UI and is used before the RBAC rules are applied.
 
   To dive deep inside Argo Workflows RBAC, see:

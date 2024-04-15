@@ -69,9 +69,26 @@ nav:
       - 'Observability':
           - developers_guide/observability/monitoring.md
           - developers_guide/observability/dashboards.md
+          - developers_guide/observability/log_management.md
       - 'Artifacts':
           - developers_guide/artifacts/registry.md
           - developers_guide/artifacts/registry_proxy.md
+
+  - 'Under the hood':
+      - 'Architecture':
+          - under_the_hood/architecture.md
+          - under_the_hood/cost_management/cost_management.md
+          - under_the_hood/delivery_pipelines/delivery_pipelines.md
+          - under_the_hood/devsecops/devsecops.md
+          - under_the_hood/iam/iam.md
+          - under_the_hood/network/networking.md
+          - under_the_hood/observability/observability.md
+          - under_the_hood/runtime/runtime.md
+          - under_the_hood/workloads/workload_management.md
+          - under_the_hood/delivery_pipelines/argo_cleanup.md
+          - under_the_hood/delivery_pipelines/argo_config.md
+          - under_the_hood/delivery_pipelines/argo_permissions.md
+
 
 theme:
   name: readthedocs
