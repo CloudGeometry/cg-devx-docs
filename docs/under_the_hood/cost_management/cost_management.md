@@ -1,4 +1,4 @@
-# Under the hood: Cost Management
+# Cost Management
 
 Our goal is to improve cost visibility and provide cost savings recommendations for the platform, and it's core
 services. To do so CG DevX reference architecture incorporates cloud and in cluster resource labeling / tagging, and
