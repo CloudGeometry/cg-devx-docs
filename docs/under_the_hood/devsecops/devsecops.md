@@ -1,4 +1,4 @@
-# Under the hood: DevSecOps
+# DevSecOps
 
 The goal is to brings together all the key elements of a security and compliance framework by embedding best practices,
 policies, and tools at every stage of the delivery lifecycle, so that:

@@ -3,7 +3,8 @@
 A **Workload** is a high-level abstraction describing application(s) and/or service(s) that provide business value.
 A Workload is self-contained.
 
-Workloads are configured under the CG DevX installation GitOps repository, and then managed by the team owning the Workload.
+Workloads are configured under the CG DevX installation GitOps repository, and then managed by the team owning the
+Workload.
 
 CG DevX's goal is
 to provide isolation on the Workload level through all the core services provided by the CG DevX platform.
@@ -21,7 +22,8 @@ To provide better isolation of concerns, it was decided to provide two repositor
 one contains the source code for the Workload, and the other contains manifests and IaC.
 When a user wants to use a different schema, workloads should be created manually,
 or the repository structure should be adjusted after the workload bootstrap.
-Bootstrap templates are designed in a way that enables a user to simply blend them or split the GitOps repository in two.
+Bootstrap templates are designed in a way that enables a user to simply blend them or split the GitOps repository in
+two.
 
 ## Prerequisites
 
@@ -57,7 +59,8 @@ instead of using a monorepo, which is CG DevX default behavior.
 You can delete a Workload by running `workload delete` [command](../workload_management/cli_commands.md#delete).
 This will reverse the changes done by the `workload create` command and open a PR to apply them.
 
-> **Note!**: You must create and delete workloads one by one to avoid conflicts. <!-- I assume this means that you need to wait until one is finished being created before starting a new one? -->
+> **Note!**: You must create and delete workloads one by one to avoid
+> conflicts. <!-- I assume this means that you need to wait until one is finished being created before starting a new one? -->
 
 ### Bootstrap
 
@@ -81,7 +84,8 @@ The following templates are used by default:
 - Workload template [repository](https://github.com/CloudGeometry/cg-devx-wl-template)
 - Workload GitOps template [repository](https://github.com/CloudGeometry/cg-devx-wl-gitops-template)
 
-After uploading parametrized repo templates, the `workload bootstrap` process will create a PR under your Workload GitOps
+After uploading parametrized repo templates, the `workload bootstrap` process will create a PR under your Workload
+GitOps
 repository to initialize secrets and create the IAM role for the Workload service.
 
 Your new workload will have a pre-built CI process triggered by a tag applied to workload source code repository.
@@ -97,7 +101,8 @@ by running the promotion action under the Workload GitOps repository.
 ### Manually customizing and managing workloads
 
 On a platform level,
-workloads are defined as a set of Workload objects that are passed to IaC modules via the `terraform.tfvars.json` file ([more here](../platform_management/platform_repo.md#iac)).
+workloads are defined as a set of Workload objects that are passed to IaC modules via the `terraform.tfvars.json`
+file ([more here](../platform_management/platform_repo.md#iac)).
 
 In order to create additional workloads or workload repositories, or to manage repository settings you need to
 update `terraform.tfvars.json`.
@@ -125,12 +130,5 @@ variable "workloads" {
 }
 ```
 
-Workloads are managed and discovered by ArgoCD automatically using the `ApplicationSet`
-located at `/gitops-pipelines/delivery/clusters/cc-cluster/core-services/200-wl-argocd.yaml`
-ArgoCD monitors the `/gitops-pipelines/delivery/clusters/cc-cluster/workloads` path for the CC cluster. <!-- Again, what is the CC cluster? -->
-Per-workload definitions are based on a template
-file, [workload-template.yaml](https://github.com/CloudGeometry/cg-devx-core/blob/main/platform/gitops-pipelines/delivery/clusters/cc-cluster/workloads/workload-template.yaml)
-and added to that path by the CLI.
-When manually adding workloads, you should either define your own workload `ApplicationSet` based on the template
-and put it into the workloads folder, or create a new ArgoCD application.
-
+Workloads are managed and discovered by ArgoCD automatically. For more details please
+see [under the hood section](../../under_the_hood/workloads/workload_management.md)

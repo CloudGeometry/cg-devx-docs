@@ -1,4 +1,4 @@
-# Under the hood: Networking
+# Networking
 
 ## Network topology
 

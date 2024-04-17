@@ -1,4 +1,4 @@
-# Under the hood: Delivery Pipelines
+# Delivery Pipelines
 
 ## Workflows
 	

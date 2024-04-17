@@ -1,19 +1,17 @@
-
-
 Main benefits to operators:
 
 - Have better visibility and validate changes faster
-    - identify and fix security issues before they reach production
-    - health checks and rollback system allow fixing deployment failures quickly
+  - identify and fix security issues before they reach production
+  - health checks and rollback system allow fixing deployment failures quickly
 - Provider higher quality by:
-    - standardising cloud building blocks
-    - automating configuration and infrastructure lower the potential for environment-specific problems
-    - logging, monitoring, and alerting available out of the box increases the operability of services
-    - full automation of a provisioning process enables business continuity
+  - standardising cloud building blocks
+  - automating configuration and infrastructure lower the potential for environment-specific problems
+  - logging, monitoring, and alerting available out of the box increases the operability of services
+  - full automation of a provisioning process enables business continuity
 - Have guardrails and compliance checks built in the platform:
-    - policies to be defined in code and validated against infrastructure and applications both prior to deployment and
-      continuously at runtime
-    - enables developer teams to be accountable for the security of their services
+  - policies to be defined in code and validated against infrastructure and applications both prior to deployment and
+    continuously at runtime
+  - enables developer teams to be accountable for the security of their services
 
 ## GitOps
 
@@ -35,8 +33,8 @@ services responsible for workload delivery and configuration management.
 
 CG DevX supports different runtime deployment options based on workload needs. The most common options are:
 
-- **Using one cluster**: same cluster for control plane and runtime. Default option provided with Reference
-  implementation.
+- **Using one cluster**: same cluster for control plane and runtime. This cluster should be considered Control Center
+  Cluster (CC Cluster). Default option provided with Reference implementation.
 - **Multiple K8S cluster**: CC Cluster (AKA management cluster) + runtime cluster(s) within one region
 - **Multi-region installation**: usually with one control plane cluster per region
 - **Multi-cloud installation**: could combine all the options above

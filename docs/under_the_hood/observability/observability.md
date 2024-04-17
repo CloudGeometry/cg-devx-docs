@@ -1,4 +1,4 @@
-# Under the hood: Observability
+# Observability
 
 CG DevX reference implementation provides unified experience while working with observability stack.
 
@@ -104,7 +104,46 @@ used as default user interface to query logs.
 
 ### Collection
 
-Log collection is done automatically for all workloads.
+Log collection is done automatically for all workloads
+using [promtail agent](https://grafana.com/docs/loki/latest/send-data/promtail/).
 
+Logs containing sensitive data could be filtered and data obfuscated using promtail built in functionality.
+
+Snippet below enables IPv4 address and emails obfuscation in log stream:
+
+```yaml
+pipelineStages:
+  - cri: { }
+  - match:
+      # use sensitive data obfuscating only for specific app
+      selector: '{app="specific-app"}'
+      stages:
+        - replace:
+            # IP4
+            expression: '(\d{1,3}[.]\d{1,3}[.]\d{1,3}[.]\d{1,3})'
+            replace: >-
+              {{ printf "*IP4*{{ .Value | Hash \"salt\" }}*" }}
+        - replace:
+            # email
+            expression: '([\w\.=-]+@[\w\.-]+\.[\w]{2,64})'
+            replace: >-
+              {{ printf "*email*{{ .Value | Hash \"salt\" }}*" }}
+```
+
+This snippet allows completely dropping logs by specific source label:
+
+```yaml
+extraRelabelConfigs:
+  # drop logs for sources with the label drop-logs
+  - source_labels: [ __meta_kubernetes_pod_label_drop_logs ]
+    action: drop
+    regex: true
+```
+
+Both snippets are included with reference implementation. To enable or add new configurations you should edit promtail
+manifest `gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/promtail/promtail.yaml`
 
 ### Log-based alerts
+
+You could use log data provided by Loki to create log based alerts in Grafana. For detailed instruction please
+see [official guide](https://grafana.com/tutorials/create-alerts-with-logs/). 

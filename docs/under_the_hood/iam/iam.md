@@ -1,4 +1,4 @@
-# Under the hood: IAM
+# IAM
 
 CG DevX reference implementation attempts to standardize and simplify user identity and access management.
 
