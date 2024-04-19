@@ -4,10 +4,10 @@ You can download the CG DevX CLI pre-built binaries from the following sources:
 
 ## PyPI
 
-Use pip to download it from [PyPI](https://pypi.org/project/cg-devx-core/):
+Use pip to download it from [PyPI](https://pypi.org/project/cgdevxcli/):
 
 ```shell
-pip install cg-devx-core
+pip install cgdevxcli
 ```
 
 ## GitHub
