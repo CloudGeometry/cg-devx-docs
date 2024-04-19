@@ -109,7 +109,7 @@ update `terraform.tfvars.json`.
 
 The workloads variable schema consists of:
 
-```terraform
+```hcl
 variable "workloads" {
   description = "workloads configuration"
   type        = map(object({
