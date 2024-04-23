@@ -7,7 +7,7 @@ using a [cascade](build_routine.md) of Argo workflows and their templates.
 
 ## Kaniko cwft
 
-[kaniko clusterworkflow template](https://github.com/CloudGeometry/cg-devx-core/blob/main/platform/gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/argo-workflows/cluster-workflow-templates/kaniko-s3-p-cwft.yaml)
+[kaniko clusterworkflow template](gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/argo-workflows/cluster-workflow-templates/kaniko-s3-p-cwft.yaml)
 performs the checkout of workload's repo as a hardwired artifact, builds a tar-image of service and put it as an output
 artifact to the pre-configured artifact registry (S3-bucket in AWS usage case).
 
@@ -24,7 +24,7 @@ Kaniko bug with registry URLs dockerfiles are edited right in place during workf
 names with a combination of Harbor proxy project name and the name of the image.
 
 A snippet
-from  [kaniko clusterworkflow template](https://github.com/CloudGeometry/cg-devx-core/blob/main/platform/gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/argo-workflows/cluster-workflow-templates/kaniko-s3-p-cwft.yaml)
+from  [kaniko clusterworkflow template](gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/argo-workflows/cluster-workflow-templates/kaniko-s3-p-cwft.yaml)
 (Note the values transferred through workflow parameters):
 
 ```yaml
