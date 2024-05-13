@@ -80,7 +80,7 @@ Considerations
   tag.
 - Labels / tags should be (semi-) static.
 - Namespaces are used to help organize data specific to domain or organization. Namespace should be either dash `-` or
-  dot-separated `:`. Azure doesn't support colon-separator `:`
+  dot-separated `.`. Azure doesn't support colon-separator `:`
 - kebab-case or camelCase is used for keys. Note: some AWS resources may have issues with kebab-case.
 - The format for Multi-value is the following:
   - Single-Value: `name=value`
@@ -126,23 +126,25 @@ Business criticality values
 
 ## CG DevX default labels
 
+CG DevX applies the following labels by default
+
 ### Cloud Resources Labels / Tags
 
-| Tag / Label                                  | Value                | Rationale                                           |
-|----------------------------------------------|----------------------|-----------------------------------------------------|
-| cg-devx.cost-allocation.workload-name        | <workload name>      | Workload name. Applied to workload resources        |
-| cg-devx.cost-allocation.workload-environment | dev/sta/prod         | Workload environment. Applied to workload resources |
-| cg-devx.cost-allocation.cost-center          | platform,development | Indicates cost center                               |
-| cg-devx.metadata.owner                       | platform-admin       | Indicates team owning the resource                  |
-| cg-devx.metadata.service                     | <service_name>       | Indicates service                                   |
+| Tag / Label                         | Value          | Rationale                                |
+|-------------------------------------|----------------|------------------------------------------|
+| cg-devx.cost-allocation.cost-center | platform       | Indicates cost center                    |
+| cg-devx.metadata.owner              | platform-admin | Indicates team owning the resource       |
+| cg-devx.metadata.cluster-name       | <cluster_name> | Cluster name provided as input parameter |
 
 ### K8s Cluster Resources Labels
 
-| Label                                        | Value                | Rationale                                           |
-|----------------------------------------------|----------------------|-----------------------------------------------------|
-| cg-devx.cost-allocation.workload-name        | <workload name>      | Workload name. Applied to workload resources        |
-| cg-devx.cost-allocation.workload-environment | dev/sta/prod         | Workload environment. Applied to workload resources |
-| cg-devx.cost-allocation.cost-center          | platform,development | Indicates cost center                               |
-| cg-devx.metadata.owner                       | platform-admin       | Indicates team owning the resource                  |
-| cg-devx.metadata.service                     | <service_name>       | Indicates service                                   |
+| Label                               | Value                         | Rationale                                                                  |
+|-------------------------------------|-------------------------------|----------------------------------------------------------------------------|
+| cg-devx.cost-allocation.workload    | <workload_name>               | Workload name. Applied to workload resources                               |
+| cg-devx.cost-allocation.environment | dev,sta,prod                  | Workload environment. Applied to workload resources only                   |
+| cg-devx.cost-allocation.cost-center | platform,development          | Indicates cost center                                                      |
+| cg-devx.metadata.owner              | platform-admin/workload-admin | Indicates team owning the resource                                         |
+| cg-devx.metadata.service            | <service_name>                | Indicates service, workload only                                           |
+| cg-devx.metadata.chart-version      | <helm_chart_version>          | Indicates version of Helm chart used to deploy service, core-services only |
+| cg-devx.metadata.version            | <application_version>         | Indicates version of application deployed, core-services only              |
 
