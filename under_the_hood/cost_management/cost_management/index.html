@@ -371,7 +371,7 @@ week) that allows you to understand load patterns.</p>
   tag.</li>
 <li>Labels / tags should be (semi-) static.</li>
 <li>Namespaces are used to help organize data specific to domain or organization. Namespace should be either dash <code>-</code> or
-  dot-separated <code>:</code>. Azure doesn't support colon-separator <code>:</code></li>
+  dot-separated <code>.</code>. Azure doesn't support colon-separator <code>:</code></li>
 <li>kebab-case or camelCase is used for keys. Note: some AWS resources may have issues with kebab-case.</li>
 <li>The format for Multi-value is the following:</li>
 <li>Single-Value: <code>name=value</code></li>
@@ -521,6 +521,7 @@ week) that allows you to understand load patterns.</p>
 </tbody>
 </table>
 <h2 id="cg-devx-default-labels">CG DevX default labels</h2>
+<p>CG DevX applies the following labels by default</p>
 <h3 id="cloud-resources-labels-tags_1">Cloud Resources Labels / Tags</h3>
 <table>
 <thead>
@@ -532,18 +533,8 @@ week) that allows you to understand load patterns.</p>
 </thead>
 <tbody>
 <tr>
-<td>cg-devx.cost-allocation.workload-name</td>
-<td><workload name></td>
-<td>Workload name. Applied to workload resources</td>
-</tr>
-<tr>
-<td>cg-devx.cost-allocation.workload-environment</td>
-<td>dev/sta/prod</td>
-<td>Workload environment. Applied to workload resources</td>
-</tr>
-<tr>
 <td>cg-devx.cost-allocation.cost-center</td>
-<td>platform,development</td>
+<td>platform</td>
 <td>Indicates cost center</td>
 </tr>
 <tr>
@@ -552,9 +543,9 @@ week) that allows you to understand load patterns.</p>
 <td>Indicates team owning the resource</td>
 </tr>
 <tr>
-<td>cg-devx.metadata.service</td>
-<td><service_name></td>
-<td>Indicates service</td>
+<td>cg-devx.metadata.cluster-name</td>
+<td><cluster_name></td>
+<td>Cluster name provided as input parameter</td>
 </tr>
 </tbody>
 </table>
@@ -569,14 +560,14 @@ week) that allows you to understand load patterns.</p>
 </thead>
 <tbody>
 <tr>
-<td>cg-devx.cost-allocation.workload-name</td>
-<td><workload name></td>
+<td>cg-devx.cost-allocation.workload</td>
+<td><workload_name></td>
 <td>Workload name. Applied to workload resources</td>
 </tr>
 <tr>
-<td>cg-devx.cost-allocation.workload-environment</td>
-<td>dev/sta/prod</td>
-<td>Workload environment. Applied to workload resources</td>
+<td>cg-devx.cost-allocation.environment</td>
+<td>dev,sta,prod</td>
+<td>Workload environment. Applied to workload resources only</td>
 </tr>
 <tr>
 <td>cg-devx.cost-allocation.cost-center</td>
@@ -585,13 +576,23 @@ week) that allows you to understand load patterns.</p>
 </tr>
 <tr>
 <td>cg-devx.metadata.owner</td>
-<td>platform-admin</td>
+<td>platform-admin/workload-admin</td>
 <td>Indicates team owning the resource</td>
 </tr>
 <tr>
 <td>cg-devx.metadata.service</td>
 <td><service_name></td>
-<td>Indicates service</td>
+<td>Indicates service, workload only</td>
+</tr>
+<tr>
+<td>cg-devx.metadata.chart-version</td>
+<td><helm_chart_version></td>
+<td>Indicates version of Helm chart used to deploy service, core-services only</td>
+</tr>
+<tr>
+<td>cg-devx.metadata.version</td>
+<td><application_version></td>
+<td>Indicates version of application deployed, core-services only</td>
 </tr>
 </tbody>
 </table>
