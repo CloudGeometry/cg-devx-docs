@@ -1,34 +1,26 @@
 # Observability
 
-CG DevX reference implementation provides unified experience while working with observability stack.
+The CG DevX reference implementation provides a unified experience while working with the observability stack.
 
 ## Monitoring
 
-Default option for monitoring is based
-on [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
+The default option for monitoring is based on the [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack).
 
-This chart also installs following charts:
+This chart also installs the following charts:
 
 - [prometheus-community/kube-state-metrics](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics)
 - [prometheus-community/prometheus-node-exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter)
 - [grafana/grafana](https://github.com/grafana/helm-charts/tree/main/charts/grafana)
 
-For more details please
-see [official documentation](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
+For more details, please see the [official documentation](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack).
 
-### Metrics collection
+### Metrics Collection
 
-K8s state and K8s Node metrics are exported and collected by default.
-All services that expose standard metrics endpoint (`/metrics`) and marked with labels `expose-metrics: "true"` are
-discovered automatically and metrics are collected. To change this behavior or rename labels you should update
-ServiceMonitor configuration for
-workloads `gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/monitoring/service-monitor-workloads.yaml`
+K8s state and K8s node metrics are exported and collected by default. All services that expose a standard metrics endpoint (`/metrics`) and are marked with the label `expose-metrics: "true"` are discovered automatically and metrics are collected. To change this behavior or rename labels, update the ServiceMonitor configuration for workloads in `gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/monitoring/service-monitor-workloads.yaml`.
 
 ### Dashboards
 
-You could install additional dashboards or remove pre-installed ones by updating `dashboards` configuration section
-of `kube-prometheus-stack` manifest in your platform GitOps
-repository `gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/monitoring/kube-prometheus-stack.yaml`
+You can install additional dashboards or remove pre-installed ones by updating the `dashboards` configuration section of the `kube-prometheus-stack` manifest in your platform GitOps repository `gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/monitoring/kube-prometheus-stack.yaml`.
 
 ```yaml
 dashboardProviders:
@@ -48,14 +40,12 @@ dashboards:
     grafana-dashboards-name:
       url: 'path to dashboard json file'
       token: ''
+
  ```
 
 ### Alerts
+To enable Slack alerts, uncomment and update the following configuration in your platform GitOps repository gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/monitoring/kube-prometheus-stack.yaml.
 
-To enable Slack alerts uncomment and update following configuration in your platform GitOps
-repository `gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/monitoring/kube-prometheus-stack.yaml`
-
-```yaml
 alertmanager:
   config:
     global:
@@ -90,32 +80,28 @@ alertmanager:
                 {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
                 {{ end }}
               {{ end }}
+
 ```
 
 ## Log management
 
-Default log management implementation is based on Grafana [Loki](https://github.com/grafana/loki).
-Loki is by design optimized to work with K8s pod logs. It allows you to seamlessly switch between metrics and logs using
-the same labels greatly improving user experience. Loki is integrated with Grafana used for monitoring, and Grafana is
-used as default user interface to query logs.
+The default log management implementation is based on Grafana Loki. Loki is optimized to work with K8s pod logs by design. It allows you to seamlessly switch between metrics and logs using the same labels, greatly improving the user experience. Loki is integrated with Grafana for monitoring, and Grafana is used as the default user interface to query logs.
 
-> Default configuration of Loki is based on PersistentVolumes and uses in-memory stores. It's not suitable for storing
-> large amount of data with short retention period.
+    The default configuration of Loki is based on PersistentVolumes and uses in-memory stores. It's not suitable for storing a large amount of data with a short retention period.
 
-### Collection
+###Collection
 
-Log collection is done automatically for all workloads
-using [promtail agent](https://grafana.com/docs/loki/latest/send-data/promtail/).
+Log collection is done automatically for all workloads using the promtail agent.
 
-Logs containing sensitive data could be filtered and data obfuscated using promtail built in functionality.
+Logs containing sensitive data can be filtered and data obfuscated using promtail's built-in functionality.
 
-Snippet below enables IPv4 address and emails obfuscation in log stream:
+The snippet below enables IPv4 address and email obfuscation in log streams:
 
 ```yaml
 pipelineStages:
   - cri: { }
   - match:
-      # use sensitive data obfuscating only for specific app
+      # use sensitive data obfuscation only for a specific app
       selector: '{app="specific-app"}'
       stages:
         - replace:
@@ -128,7 +114,6 @@ pipelineStages:
             expression: '([\w\.=-]+@[\w\.-]+\.[\w]{2,64})'
             replace: >-
               {{ printf "*email*{{ .Value | Hash \"salt\" }}*" }}
-```
 
 This snippet allows completely dropping logs by specific source label:
 
