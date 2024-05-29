@@ -44,15 +44,17 @@ dashboards:
  ```
 
 ### Alerts
-To enable Slack alerts, uncomment and update the following configuration in your platform GitOps repository gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/monitoring/kube-prometheus-stack.yaml.
 
+To enable Slack alerts, uncomment and update the following configuration in your platform GitOps repository `gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/monitoring/kube-prometheus-stack.yaml`.
+
+```yaml
 alertmanager:
   config:
     global:
       resolve_timeout: 10m
       slack_api_url: "https://hooks.slack.com/services/PLACE/HERE/YOURTOKEN"
     route:
-      group_by: [ 'namespace' ]
+      group_by: ['namespace']
       group_wait: 30s
       group_interval: 5m
       repeat_interval: 12h
@@ -81,7 +83,6 @@ alertmanager:
                 {{ end }}
               {{ end }}
 
-```
 
 ## Log management
 
