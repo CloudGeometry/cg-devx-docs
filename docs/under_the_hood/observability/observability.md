@@ -134,6 +134,6 @@ extraRelabelConfigs:
 
 Both snippets are included with the reference implementation. To enable or add new configurations, edit the promtail manifest gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/promtail/promtail.yaml.
 
-#Log-Based Alerts
+##Log-Based Alerts
 
 You can use log data provided by Loki to create log-based alerts in Grafana. For detailed instructions, please see the official guide.
