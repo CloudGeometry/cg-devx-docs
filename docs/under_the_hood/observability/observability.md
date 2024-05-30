@@ -47,7 +47,6 @@ dashboards:
 
 To enable Slack alerts, uncomment and update the following configuration in your platform GitOps repository `gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/monitoring/kube-prometheus-stack.yaml`.
 
-```yaml
 alertmanager:
   config:
     global:
@@ -84,13 +83,13 @@ alertmanager:
               {{ end }}
 
 
-## Log management
+###Log Management
 
 The default log management implementation is based on Grafana Loki. Loki is optimized to work with K8s pod logs by design. It allows you to seamlessly switch between metrics and logs using the same labels, greatly improving the user experience. Loki is integrated with Grafana for monitoring, and Grafana is used as the default user interface to query logs.
 
     The default configuration of Loki is based on PersistentVolumes and uses in-memory stores. It's not suitable for storing a large amount of data with a short retention period.
 
-###Collection
+##Collection
 
 Log collection is done automatically for all workloads using the promtail agent.
 
@@ -126,10 +125,8 @@ extraRelabelConfigs:
     regex: true
 ```
 
-Both snippets are included with reference implementation. To enable or add new configurations you should edit promtail
-manifest `gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/promtail/promtail.yaml`
+Both snippets are included with the reference implementation. To enable or add new configurations, edit the promtail manifest gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/promtail/promtail.yaml.
 
-### Log-based alerts
+#Log-Based Alerts
 
-You could use log data provided by Loki to create log based alerts in Grafana. For detailed instruction please
-see [official guide](https://grafana.com/tutorials/create-alerts-with-logs/). 
+You can use log data provided by Loki to create log-based alerts in Grafana. For detailed instructions, please see the official guide.
