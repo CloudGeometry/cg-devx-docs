@@ -39,7 +39,6 @@ allow SSL termination in a specific service.
 Configuration is done using manifest located in platform GitOps
 repository `gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/kube-system/ingress-nginx/application.yaml`
 
-
 ```mermaid
 graph LR;
  client([client])-. Ingress-managed <br> load balancer .->ingress[Ingress];

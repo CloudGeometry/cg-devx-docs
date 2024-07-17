@@ -1,4 +1,3 @@
-
 The CG DevX reference implementation provides image and helm chart repository capabilities using Harbor.
 
 To access Harbor, follow the link in the platform GitOps repository readme file (`README.md`),
@@ -17,6 +16,7 @@ Control (RBAC) is applied to projects, so that only users who belong to a specif
 
 Delivery pipelines provided by CG DevX are pre-configured to work with the registry.
 
-Also, the registry provides static analysis of vulnerabilities in images through the integration with Aqua Security Trivy.
+Also, the registry provides static analysis of vulnerabilities in images through the integration with Aqua Security
+Trivy.
 
 ![harbor_workload_repo.png](../../assets/harbor_workload_repo.png)

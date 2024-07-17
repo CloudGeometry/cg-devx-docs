@@ -49,7 +49,8 @@ The Workload code repository uses the following structure:
 
 ```
 
-The repository already contains pre-configured GitHub Actions (in the `.github` folder) and Argo Workflows (in the `.argo` folder)
+The repository already contains pre-configured GitHub Actions (in the `.github` folder) and Argo Workflows (in
+the `.argo` folder)
 to build new images and update workload manifests.
 
 The service folder will be named after the workload.
@@ -108,5 +109,6 @@ The Workload GitOps repository is using the following structure:
         └── variables.tf
 ```
 
-The repository already contains pre-configured GitHub Actions (in the `.github` folder) and Argo Workflows (in the `.argo` folder)
+The repository already contains pre-configured GitHub Actions (in the `.github` folder) and Argo Workflows (in
+the `.argo` folder)
 required for GitOps-style workload version promotion.

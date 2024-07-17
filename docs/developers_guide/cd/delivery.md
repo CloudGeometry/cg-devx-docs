@@ -1,4 +1,3 @@
-
 The CG DevX reference implementation provides continuous delivery using a tool called ArgoCD.
 
 ArgoCD is K8s and GitOps centric, and provides detailed visualization.

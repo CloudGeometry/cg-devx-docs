@@ -9,7 +9,7 @@ CG DevX provides proxy registries for popular Docker Image Registries:
 - quay-proxy https://quay.io
 
 To start using the proxy cache, configure your docker pull commands or pod manifests to reference the proxy cache
-project by adding <harbor_servername>/<proxy_project_name>/ as a prefix to the image tag. 
+project by adding <harbor_servername>/<proxy_project_name>/ as a prefix to the image tag.
 For example:
 
 ```shell

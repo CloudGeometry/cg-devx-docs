@@ -33,7 +33,8 @@ and ArgoCD manifests for all the core services.
 The core services configuration is located at `/gitops-pipelines/delivery/clusters/cc-cluster/core-services/`.
 An ArgoCD App of Apps pattern is used here.
 
-Workloads are managed via an ApplicationSet that monitors the `/gitops-pipelines/delivery/clusters/cc-cluster/workloads/` directory.
+Workloads are managed via an ApplicationSet that monitors
+the `/gitops-pipelines/delivery/clusters/cc-cluster/workloads/` directory.
 The default workload template is located
 at `/gitops-pipelines/delivery/clusters/cc-cluster/workloads/workload-template.yaml`, and is used
 by the [workload bootstrap command](../workload_management/cli_commands.md#bootstrap)
@@ -52,7 +53,7 @@ The configuration consists of five logical blocks providing resource and configu
 
 Logical blocks rely on high-order terraform modules defined under `/terraform/modules/`.
 Those modules abstract away specifics of block implementation by providing a simple-to-use interface.
-When the default behavior of a module cannot be changed through configuration, you can edit 
+When the default behavior of a module cannot be changed through configuration, you can edit
 modules achieve the expected behavior.
 
 Terraform state files will be stored in a cloud provider specific storage backend.
@@ -61,7 +62,8 @@ where implementation is cloud provider specific, but will always try to:
 
 - enable versioning
 - enable delete protection
-- limit access to the user whose credentials are used to install CG DevX, plus the role assumed by the PR Automation service (Atlantis).
+- limit access to the user whose credentials are used to install CG DevX, plus the role assumed by the PR Automation
+  service (Atlantis).
 
 ### IaC PR Automation
 
@@ -69,10 +71,11 @@ All of our terraform management is automated with a tool called Atlantis, which 
 
 When you make a change to a `*.tf` file, even a whitespace change, Atlantis will pick up that change.
 Atlantis automatically runs `terraform plan` and `comment` back to PR with the details.
-The pull request goes through the review proces, and when approved, changes can be applied by commenting `atlantis apply`.
+The pull request goes through the review proces, and when approved, changes can be applied by
+commenting `atlantis apply`.
 Atlantis will run `terraform apply`, merge the PR, and delete the branch.
 
-Atlantis:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+Atlantis:
 
 - enables code review for infrastructure changes
 - allows doing infrastructure changes without credentials

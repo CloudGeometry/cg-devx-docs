@@ -1,4 +1,3 @@
-
 The CG DevX reference implementation provides static code analysis capabilities using SonarQube.
 
 To access SonarQube, follow the link in the platform GitOps repository readme file (`README.md`),

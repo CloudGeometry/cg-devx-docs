@@ -7,7 +7,6 @@ policies, and tools at every stage of the delivery lifecycle, so that:
 - Security controls and visualisation is a part of delivery process
 - Audit and compliance checks are in place
 
-
 ## Delivery pipelines
 
 CG DevX reference implementation of delivery pipelines integrate vulnerability & misconfiguration analysis as part of
@@ -50,7 +49,9 @@ see [official documentation](https://goharbor.io/docs/2.0.0/install-config/harbo
 
 ## Runtime
 
-CG DevX platform reference architecture provides runtime checks - real-time analysis of workloads and core services runtime for vulnerabilities also known as dynamic security
+CG DevX platform reference architecture provides runtime checks - real-time analysis of workloads and core services
+runtime for vulnerabilities also known as dynamic security
+
 - Continuous scanning of application, runtime, configuration (secrets, passwords, etc.)
 - Focuses on live (production) workloads, runtime, and infrastructure
 

@@ -25,11 +25,13 @@ You should adjust defaults based on your requirements.
 - **cluster_version**: K8s cluster version
 - **node_groups**: Array of objects representing K8s node groups
     - **name**: Node group name, defaults to `default`
-    - **instance_types**: A compute node type (size), will fall back to the next value when the first specified instance type is not available. Can be used in combination with capacity_type = "spot"; cloud-provider-specific 
+    - **instance_types**: A compute node type (size), will fall back to the next value when the first specified instance
+      type is not available. Can be used in combination with capacity_type = "spot"; cloud-provider-specific
     - **min_size**: Minimum node count for K8s cluster
-    - **max_size**: Maximum node count for K8s cluster 
+    - **max_size**: Maximum node count for K8s cluster
     - **desired_size**: Desired node count for K8s cluster;
-    - **capacity_type**: Determines compute node capacity type, e.g. "on-demand" or "spot", defaults to "on-demand"; cloud-provider-specific
+    - **capacity_type**: Determines compute node capacity type, e.g. "on-demand" or "spot", defaults to "on-demand";
+      cloud-provider-specific
 
 The infrastructure module uses workload definitions to manage access to shared resources.
 Definitions are provided using the `workloads` variable passed via the `terraform.tfvars.json` file.

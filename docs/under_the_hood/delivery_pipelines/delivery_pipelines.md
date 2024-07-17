@@ -1,7 +1,7 @@
 # Delivery Pipelines
 
 ## Workflows
-	
+
 ### VCS -> ArgoWorkflow integration configuration
 
 ### ArgoWorkflow template
@@ -11,7 +11,8 @@
 [Cleanup of Argo Workflows entities](argo_cleanup.md)
 
 [Argo Workflows permission scopes](argo_permissions.md)
-## K8s delivery	
+
+## K8s delivery
 
 ### ArgoCD template
 

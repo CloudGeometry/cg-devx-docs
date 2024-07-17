@@ -15,7 +15,8 @@ You can also log in using the root token, which has full administrative permissi
 Vault is also used as an OIDC provider, so all other services are using it to provide an SSO experience.
 
 Initially, there will be only a single user created, representing the CG DevX machine user account.
-You can create additional accounts by updating IaC and creating a PR, and you can find more details [here](../iac/users_management.md).
+You can create additional accounts by updating IaC and creating a PR, and you can find more
+details [here](../iac/users_management.md).
 You will be able to get additional user account passwords from Vault once the PR is merged.
 
 > Note, it's only possible to access user account passwords when using the root token to log in.

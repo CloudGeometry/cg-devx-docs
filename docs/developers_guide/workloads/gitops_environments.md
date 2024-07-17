@@ -20,7 +20,8 @@ These are the most common configuration types in the context of a Kubernetes app
 
 * (mostly) **Static business settings**.
   Application settings that are unrelated to Kubernetes, such as external URLs, authentication providers, connection
-  strings, etc. These are "mostly static" — settings that are defined once for each environment and then never change. You don't want to promote these settings between environments.
+  strings, etc. These are "mostly static" — settings that are defined once for each environment and then never change.
+  You don't want to promote these settings between environments.
 
 * Non-static **business settings**.
   The same thing as static business settings, but you **do** want to promote them between environments.
@@ -34,7 +35,8 @@ These are the most common configuration types in the context of a Kubernetes app
 * The `variants` folder holds common characteristics between environments.
   It is up to you to define those commonalities.
 
-* The `envs` folder holds individual environment configurations that are built from `base` and `variants`, and also includes
+* The `envs` folder holds individual environment configurations that are built from `base` and `variants`, and also
+  includes
   environment-specific settings that are not common.
 
 As for business settings, both static and non-static can come from envs, ConfigMap, Secret, and ExternalSecret, and are

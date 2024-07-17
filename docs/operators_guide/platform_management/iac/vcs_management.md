@@ -18,7 +18,7 @@ Workload repositories are defined as part of workload
 using the `workloads` variable passed via the `terraform.tfvars.json` file.
 
 Below is an example of a `terraform.tfvars.json` file containing one workload called `demo-workload`.
-Additional repositories can be added by updating the `repos` object. 
+Additional repositories can be added by updating the `repos` object.
 For more details,
 please see [workload management](../../workload_management/workloads.md#manually-customizing-and-managing-workloads)
 

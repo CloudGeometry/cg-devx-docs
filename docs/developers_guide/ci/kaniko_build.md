@@ -17,10 +17,12 @@ registry, this approach was intentionally avoided for the following reasons:
 - reduce dependence from Kaniko;
 - logically separate build and push processes.
 
-By default, cache for RUN layers and mirrors of popular repositories for base images are used, but this behavior could be
+By default, cache for RUN layers and mirrors of popular repositories for base images are used, but this behavior could
+be
 switched using corresponding env variables in [GitHub Action workflow](github_action_workflow.md). Cache stores on
 per-service basis in Harbor, as well as proxy-repositories are also special projects in Harbor. To bypass the long-term
-Kaniko bug with registry URLs dockerfiles are edited right in place during workflow execution to replace the basic images
+Kaniko bug with registry URLs dockerfiles are edited right in place during workflow execution to replace the basic
+images
 names with a combination of Harbor proxy project name and the name of the image.
 
 A snippet

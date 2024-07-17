@@ -1,7 +1,8 @@
 The CG DevX provides workload promotion as a part of workload GitOps repository. Promotion is done using a combination
-of Git provider native workflow and Argo Workflow. 
+of Git provider native workflow and Argo Workflow.
 
-Argo Workflow provides platform wide workflow templates, detailed visualization of the process, integrated with secret management, and scoped down to a workload.
+Argo Workflow provides platform wide workflow templates, detailed visualization of the process, integrated with secret
+management, and scoped down to a workload.
 To access Argo Workflow, follow the link in the platform GitOps repository readme file (`README.md`),
 or provided by operators (AKA a platform team).
 

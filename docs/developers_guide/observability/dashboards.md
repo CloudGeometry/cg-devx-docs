@@ -52,6 +52,7 @@ Dashboard for the Aqua Security Trivy Operator
 ![3](https://grafana.com/api/dashboards/15987/images/11907/image)
 
 ## Cost
+
 <!-- MISSING DESCRIPTION -->
 <!-- MISSING IMAGE -->
 

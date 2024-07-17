@@ -137,9 +137,11 @@ process.
 > **NOTE!**: This operation will delete all workload repositories if you have them.
 > If workloads have any out of the cluster (cloud provider) resources, they will become orphaned,
 > and should be deleted manually.
-> It is highly recommended that prior to destroying your installation, you delete all active workloads first, also deleting all
+> It is highly recommended that prior to destroying your installation, you delete all active workloads first, also
+> deleting all
 > their resources.
-> Please see more on `workload delete` command with `--destroy-resources` flag [here](../workload_management/cli_commands.md#delete).
+> Please see more on `workload delete` command with `--destroy-resources`
+> flag [here](../workload_management/cli_commands.md#delete).
 
 
 **Arguments**:

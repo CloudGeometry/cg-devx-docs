@@ -1,6 +1,7 @@
 # Installation process
 
-Installation should be done from a dedicated machine (local machine or host) that will be running the CG DevX CLI (`cgdevxcli`) interactive tool.
+Installation should be done from a dedicated machine (local machine or host) that will be running the CG DevX
+CLI (`cgdevxcli`) interactive tool.
 
 With this installation approach, infrastructure is handled in terraform, and core services are handled in a GitOps way,
 with ArgoCD.

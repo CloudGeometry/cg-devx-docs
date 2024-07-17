@@ -1,14 +1,22 @@
 # Cost Management
 
-Our goal is to improve cost visibility and provide cost savings recommendations for the platform and its core services. To achieve this, CG DevX reference architecture incorporates cloud and in-cluster resource labeling/tagging, and integrates with real-time cost visibility and insights tools. By default, the free version of [KubeCost](https://www.kubecost.com/) is installed with the platform and can be replaced with [OpenCost](https://www.opencost.io/) or other tools from our integration catalog.
+Our goal is to improve cost visibility and provide cost savings recommendations for the platform and its core services.
+To achieve this, CG DevX reference architecture incorporates cloud and in-cluster resource labeling/tagging, and
+integrates with real-time cost visibility and insights tools. By default, the free version
+of [KubeCost](https://www.kubecost.com/) is installed with the platform and can be replaced
+with [OpenCost](https://www.opencost.io/) or other tools from our integration catalog.
 
-To properly manage costs, users of CG DevX should have a full-scale cost management (visibility, analysis, optimization, governance) FinOps solution.
+To properly manage costs, users of CG DevX should have a full-scale cost management (visibility, analysis, optimization,
+governance) FinOps solution.
 
 > CG DevX reference architecture cannot and should not replace your primary cost management solution.
 
 ## Cost Visibility & Attribution
 
-As with many practices in operations, implementing a labeling/tagging strategy is a process of iteration and improvement. CG DevX comes with a minimalistic set of labels/tags as part of an integrated labeling strategy. The main goal is to address immediate needs like lineage tracking and cost attribution, and allow users to grow and evolve the strategy.
+As with many practices in operations, implementing a labeling/tagging strategy is a process of iteration and
+improvement. CG DevX comes with a minimalistic set of labels/tags as part of an integrated labeling strategy. The main
+goal is to address immediate needs like lineage tracking and cost attribution, and allow users to grow and evolve the
+strategy.
 
 ### Cost Attribution
 
@@ -21,7 +29,9 @@ Map spending data to the business to enable setback/chargeback by:
 
 ### Secure Operations
 
-By using shared ownership and consumer information associated with resources, you can quickly track all affected parties in case of a security incident. It helps to isolate, identify, and notify the right person quicker, reducing potential impact.
+By using shared ownership and consumer information associated with resources, you can quickly track all affected parties
+in case of a security incident. It helps to isolate, identify, and notify the right person quicker, reducing potential
+impact.
 
 Such data could include:
 
@@ -33,17 +43,31 @@ Such data could include:
 
 ## Rightsizing and Cost Recommendations
 
-Containerization helps solve the rightsizing problem by making workloads smaller and easier to properly distribute across multiple nodes. However, it is still challenging to rightsize and attribute workloads correctly. In the K8s world, rightsizing should be done on multiple levels.
+Containerization helps solve the rightsizing problem by making workloads smaller and easier to properly distribute
+across multiple nodes. However, it is still challenging to rightsize and attribute workloads correctly. In the K8s
+world, rightsizing should be done on multiple levels.
 
 ### Pod/Container Rightsizing
 
-Ensure that your containers request an appropriate amount of resources. Asking for too little means your application cannot perform, while too much means inefficiency. Often, there is a buffer between the requests or limits configured for a container and what it really needs. When this buffer is larger than necessary, there is an opportunity for cost savings. KubeCost identifies and highlights such opportunities. It works with Vertical Pod Autoscaler (VPA) and Horizontal Pod Autoscaler (HPA), where VPA helps adjust the requests and limits configuration based on actual usage, and HPA scales out and in.
+Ensure that your containers request an appropriate amount of resources. Asking for too little means your application
+cannot perform, while too much means inefficiency. Often, there is a buffer between the requests or limits configured
+for a container and what it really needs. When this buffer is larger than necessary, there is an opportunity for cost
+savings. KubeCost identifies and highlights such opportunities. It works with Vertical Pod Autoscaler (VPA) and
+Horizontal Pod Autoscaler (HPA), where VPA helps adjust the requests and limits configuration based on actual usage, and
+HPA scales out and in.
 
 ### Node Rightsizing
 
-Node rightsizing involves choosing the right worker node type for the cluster and bin packing. KubeCost provides instance type recommendations, but in practice, this can be challenging. CG DevX allows you to use multiple node types per node group and multiple node groups to improve resource utilization. To enable additional node groups, update your hosting module IaC configuration. Please check [this section](../../operators_guide/platform_management/iac/core_infrastructure_management.md) for more details.
+Node rightsizing involves choosing the right worker node type for the cluster and bin packing. KubeCost provides
+instance type recommendations, but in practice, this can be challenging. CG DevX allows you to use multiple node types
+per node group and multiple node groups to improve resource utilization. To enable additional node groups, update your
+hosting module IaC configuration. Please
+check [this section](../../operators_guide/platform_management/iac/core_infrastructure_management.md) for more details.
 
-CG DevX comes with limits set based on a "demo scenario," prioritizing cost minimization and running core services with a low number of active workloads. On the K8s cluster level, Cluster Autoscaler is turned on by default. These limits should be adjusted for heavy use. For user workloads, we recommend starting with reasonable limits and adjusting them after some time (usually ≤ 1 week) to understand load patterns.
+CG DevX comes with limits set based on a "demo scenario," prioritizing cost minimization and running core services with
+a low number of active workloads. On the K8s cluster level, Cluster Autoscaler is turned on by default. These limits
+should be adjusted for heavy use. For user workloads, we recommend starting with reasonable limits and adjusting them
+after some time (usually ≤ 1 week) to understand load patterns.
 
 ## Labels/Tags Recommendations
 
@@ -52,13 +76,14 @@ CG DevX comes with limits set based on a "demo scenario," prioritizing cost mini
 - Labels/tags should not be used as a configuration management database.
 - Values that are not easily human-readable can have a human-readable name/description added to another label/tag.
 - Labels/tags should be (semi-) static.
-- Namespaces are used to help organize data specific to a domain or organization. Namespace should be either dash `-` or dot-separated `.`. Azure doesn't support colon-separator `:`.
+- Namespaces are used to help organize data specific to a domain or organization. Namespace should be either dash `-` or
+  dot-separated `.`. Azure doesn't support colon-separator `:`.
 - Kebab-case or camelCase is used for keys. Note: some AWS resources may have issues with kebab-case.
 - The format for multi-value is the following:
-  - Single-Value: `name=value`
-  - Multi-Value: `name=value1:value2`
-  - Multi-Attribute: `name=attribute1=value1/attribute2=value2`
-  - Combination: `name=attribute1=value1:value2/attribute2=value1:value3`
+    - Single-Value: `name=value`
+    - Multi-Value: `name=value1:value2`
+    - Multi-Attribute: `name=attribute1=value1/attribute2=value2`
+    - Combination: `name=attribute1=value1:value2/attribute2=value1:value3`
 - When date-time data is stored in labels/tags, the UTC ISO 8061 standard is used.
 
 ### Cloud Resources Labels / Tags

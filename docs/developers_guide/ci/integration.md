@@ -1,4 +1,3 @@
-
 The CG DevX reference implementation provides continuous integration capabilities
 using Git native pipelines (GitHub Actions, GitLab Pipelines), and ArgoWorkflow.
 

@@ -23,7 +23,8 @@ The secrets management module securely stores a set of parameters required to "e
 The secrets management module uses workload definitions to manage per-workload secret spaces and access.
 Definitions are provided using the `workloads` variable passed via the `terraform.tfvars.json` file.
 
-Below is an example of a `terraform.tfvars.json` file containing one workload called `demo-workload`. <!-- There's no secret shown here. -->
+Below is an example of a `terraform.tfvars.json` file containing one workload
+called `demo-workload`. <!-- There's no secret shown here. -->
 
 ```json
 {
