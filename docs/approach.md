@@ -6,7 +6,7 @@ We structure our platform around distinct phases of service delivery, each with 
 
 CGDevX predominantly relies on Kubernetes due to its widespread adoption as a scalable solution for cloud-native services. It forms the backbone of our architecture, ensuring compatibility and enhancing performance with numerous CNCF-endorsed tools. Note that while Kubernetes acts as a substrate for our core services, those services can manage workloads outside the cluster, on various platforms. This gives developers greater flexibility to choose different cloud ecosystems.
 
-CGDevX provides an implementation blueprint that addresses common platform engineering challenges. This blueprint includes detailed specifications and templates that serve as demonstrations of the best possible configurations and technological capabilities. By promoting the exchange of configurations and best practices, we want is to set a high standard for operational excellence. We recognize the need for ongoing enhancements and adaptations, and we look to our community to help us extend and refine our platform to suit a diverse array of use cases.
+CGDevX provides an implementation blueprint that addresses common platform engineering challenges. This blueprint includes detailed specifications and templates that serve as demonstrations of the best possible configurations and technological capabilities. By promoting the exchange of configurations and best practices, we aim to set a high standard for operational excellence. We recognize the need for ongoing enhancements and adaptations, and we look to our community to help us extend and refine our platform to suit a diverse array of use cases.
 
 ## Stakeholder Personas
 
