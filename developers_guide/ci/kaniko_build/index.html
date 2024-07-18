@@ -295,10 +295,12 @@ registry, this approach was intentionally avoided for the following reasons:</p>
 <li>reduce dependence from Kaniko;</li>
 <li>logically separate build and push processes.</li>
 </ul>
-<p>By default, cache for RUN layers and mirrors of popular repositories for base images are used, but this behavior could be
+<p>By default, cache for RUN layers and mirrors of popular repositories for base images are used, but this behavior could
+be
 switched using corresponding env variables in <a href="../github_action_workflow/">GitHub Action workflow</a>. Cache stores on
 per-service basis in Harbor, as well as proxy-repositories are also special projects in Harbor. To bypass the long-term
-Kaniko bug with registry URLs dockerfiles are edited right in place during workflow execution to replace the basic images
+Kaniko bug with registry URLs dockerfiles are edited right in place during workflow execution to replace the basic
+images
 names with a combination of Harbor proxy project name and the name of the image.</p>
 <p>A snippet
 from  <a href="gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/argo-workflows/cluster-workflow-templates/kaniko-s3-p-cwft.yaml">kaniko clusterworkflow template</a>

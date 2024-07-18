@@ -281,17 +281,17 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="argo-workflows-permission-scopes">Argo workflows permission scopes</h1>
-<p>As noticed in <a href="../argo_config/">Argo workflows configuration</a> chapter, 
-two Argo workflows permission scopes: <code>argo</code> namespace  and <code>wl-&lt;workload name&gt;-dev</code>
+<p>As noticed in <a href="../argo_config/">Argo workflows configuration</a> chapter,
+two Argo workflows permission scopes: <code>argo</code> namespace and <code>wl-&lt;workload name&gt;-dev</code>
 namespace. Also there are some clusterroles defined by helm chart.<br />
 <code>argo</code> namespace system accounts and roles are used to execute Argo Workflows
 Server and Workflow controller.</p>
 <h2 id="system-accounts-and-roles">System accounts and roles</h2>
 <p>Each workload provides following system accounts and roles in <code>wl-&lt;workload name&gt;-dev</code>:</p>
 <ul>
-<li><code>argo-admin</code> — RBAC map target to view, change and delete workflows </li>
+<li><code>argo-admin</code> — RBAC map target to view, change and delete workflows</li>
 <li><code>argo-developer</code> — RBAC map target to view workflows</li>
-<li><code>argo-workflow</code> — used to execute all the <a href="../../../developers_guide/ci/build_routine/">CI chain</a> workflows </li>
+<li><code>argo-workflow</code> — used to execute all the <a href="../../../developers_guide/ci/build_routine/">CI chain</a> workflows</li>
 </ul>
 <!-- link to wl-template-gitops here -->
 
@@ -303,10 +303,9 @@ Server and Workflow controller.</p>
   Workflows UI and is used before the RBAC rules are applied.</li>
 </ul>
 <p>To dive deep inside Argo Workflows RBAC, see:</p>
-<ul>
-<li><a href="https://argo-workflows.readthedocs.io/en/stable/workflow-rbac/">https://argo-workflows.readthedocs.io/en/stable/workflow-rbac/</a></li>
-<li><a href="https://argo-workflows.readthedocs.io/en/stable/argo-server-sso/#sso-rbac">https://argo-workflows.readthedocs.io/en/stable/argo-server-sso/#sso-rbac</a></li>
-</ul>
+<pre><code>- [https://argo-workflows.readthedocs.io/en/stable/workflow-rbac/](https://argo-workflows.readthedocs.io/en/stable/workflow-rbac/)
+- [https://argo-workflows.readthedocs.io/en/stable/argo-server-sso/#sso-rbac](https://argo-workflows.readthedocs.io/en/stable/argo-server-sso/#sso-rbac)
+</code></pre>
               
             </div>
           </div><footer>

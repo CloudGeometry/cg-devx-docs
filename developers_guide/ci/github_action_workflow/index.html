@@ -272,8 +272,11 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="github-action-workflow-structure">Github Action Workflow Structure</h1>
-<p>CI Github Action start is triggered by push new tag to the workload repo. 
-All the CI chain elements run from the steps of job <code>multi_service_parallel_build</code> described in <code>multi_service_parallel_build.yml</code>. If one of the steps fails, the Github action fails completely. Some steps are simple bash executed on the runner, another are submissions of relatively complex argo workflows. The workflow structure is linear:  steps are executed one after another. </p>
+<p>CI Github Action start is triggered by push new tag to the workload repo.
+All the CI chain elements run from the steps of job <code>multi_service_parallel_build</code> described
+in <code>multi_service_parallel_build.yml</code>. If one of the steps fails, the Github action fails completely. Some steps are
+simple bash executed on the runner, another are submissions of relatively complex argo workflows. The workflow structure
+is linear:  steps are executed one after another.</p>
 <div class="mermaid">---
 title: multi_service_parallel_build  workflow chart
 ---

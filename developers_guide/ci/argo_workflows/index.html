@@ -276,7 +276,7 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="argo-workflows-basic-flows-and-templates">Argo workflows: basic flows and templates</h1>
-<p>CGDEVX's argo workflows approach implements following execution scheme:</p>
+<p>CG DEVX's argo workflows approach implements following execution scheme:</p>
 <div class="mermaid">flowchart TD
     node_A["GitHub Action Job Step"] --&gt; node_B["argo workflow in .argo/"]
     node_B --&gt; node_C["cwft"]
@@ -293,16 +293,18 @@
 </ul>
 <h2 id="cluster-workflow-templates">Cluster workflow templates</h2>
 <p>For every action workflows use cluster workflow templates consist of one or several steps to perform.
-In case of a list of parameters to process templates from clusterworkflow templates  can be called iteratively.
-Cluster workflow templates are used to implement atomic phases  of services images build process, except  <code>build_chain_p_cwft</code>, which have a DAG inside and called in a special way: inside so-called workflow-of-workflows structure in <code>.argo/build-wow-wf.yaml</code>.</p>
+In case of a list of parameters to process templates from clusterworkflow templates can be called iteratively.
+Cluster workflow templates are used to implement atomic phases of services images build process,
+except  <code>build_chain_p_cwft</code>, which have a DAG inside and called in a special way: inside so-called
+workflow-of-workflows structure in <code>.argo/build-wow-wf.yaml</code>.</p>
 <ul>
 <li>build_chain_p_cwft<ul>
-<li>megalinter-cwft — lints service code using Megalinter </li>
+<li>megalinter-cwft — lints service code using Megalinter</li>
 <li>trivy-fs-s3-cwft — checks service fs with Trivy</li>
 <li>kaniko-s3-p-cwft — builds tar-image with Kaniko</li>
 </ul>
 </li>
-<li>crane-s3-p-cwft — tags and puts image into the Harbor image repo </li>
+<li>crane-s3-p-cwft — tags and puts image into the Harbor image repo</li>
 <li>crane-img-tag-cwft — tags unchanged (if any) services latest images and tag it with the same tag as changed</li>
 <li>version-changer-cwft — change version in version.yaml in gitops-repo</li>
 </ul>

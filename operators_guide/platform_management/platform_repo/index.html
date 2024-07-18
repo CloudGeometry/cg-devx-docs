@@ -364,7 +364,8 @@ auto-renewed.</p>
 and ArgoCD manifests for all the core services.
 The core services configuration is located at <code>/gitops-pipelines/delivery/clusters/cc-cluster/core-services/</code>.
 An ArgoCD App of Apps pattern is used here.</p>
-<p>Workloads are managed via an ApplicationSet that monitors the <code>/gitops-pipelines/delivery/clusters/cc-cluster/workloads/</code> directory.
+<p>Workloads are managed via an ApplicationSet that monitors
+the <code>/gitops-pipelines/delivery/clusters/cc-cluster/workloads/</code> directory.
 The default workload template is located
 at <code>/gitops-pipelines/delivery/clusters/cc-cluster/workloads/workload-template.yaml</code>, and is used
 by the <a href="../../workload_management/cli_commands/#bootstrap">workload bootstrap command</a></p>
@@ -381,7 +382,7 @@ The configuration consists of five logical blocks providing resource and configu
 </ol>
 <p>Logical blocks rely on high-order terraform modules defined under <code>/terraform/modules/</code>.
 Those modules abstract away specifics of block implementation by providing a simple-to-use interface.
-When the default behavior of a module cannot be changed through configuration, you can edit 
+When the default behavior of a module cannot be changed through configuration, you can edit
 modules achieve the expected behavior.</p>
 <p>Terraform state files will be stored in a cloud provider specific storage backend.
 The CLI tool creates storage using the cloud API, and is hardened,
@@ -389,15 +390,17 @@ where implementation is cloud provider specific, but will always try to:</p>
 <ul>
 <li>enable versioning</li>
 <li>enable delete protection</li>
-<li>limit access to the user whose credentials are used to install CG DevX, plus the role assumed by the PR Automation service (Atlantis).</li>
+<li>limit access to the user whose credentials are used to install CG DevX, plus the role assumed by the PR Automation
+  service (Atlantis).</li>
 </ul>
 <h3 id="iac-pr-automation">IaC PR Automation</h3>
 <p>All of our terraform management is automated with a tool called Atlantis, which integrates with your git pull requests.</p>
 <p>When you make a change to a <code>*.tf</code> file, even a whitespace change, Atlantis will pick up that change.
 Atlantis automatically runs <code>terraform plan</code> and <code>comment</code> back to PR with the details.
-The pull request goes through the review proces, and when approved, changes can be applied by commenting <code>atlantis apply</code>.
+The pull request goes through the review proces, and when approved, changes can be applied by
+commenting <code>atlantis apply</code>.
 Atlantis will run <code>terraform apply</code>, merge the PR, and delete the branch.</p>
-<p>Atlantis:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   </p>
+<p>Atlantis:</p>
 <ul>
 <li>enables code review for infrastructure changes</li>
 <li>allows doing infrastructure changes without credentials</li>

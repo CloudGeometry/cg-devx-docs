@@ -302,7 +302,8 @@ promotion model relies on this structure.</p>
 <li>
 <p>(mostly) <strong>Static business settings</strong>.
   Application settings that are unrelated to Kubernetes, such as external URLs, authentication providers, connection
-  strings, etc. These are "mostly static" — settings that are defined once for each environment and then never change. You don't want to promote these settings between environments.</p>
+  strings, etc. These are "mostly static" — settings that are defined once for each environment and then never change.
+  You don't want to promote these settings between environments.</p>
 </li>
 <li>
 <p>Non-static <strong>business settings</strong>.
@@ -321,7 +322,8 @@ promotion model relies on this structure.</p>
   It is up to you to define those commonalities.</p>
 </li>
 <li>
-<p>The <code>envs</code> folder holds individual environment configurations that are built from <code>base</code> and <code>variants</code>, and also includes
+<p>The <code>envs</code> folder holds individual environment configurations that are built from <code>base</code> and <code>variants</code>, and also
+  includes
   environment-specific settings that are not common.</p>
 </li>
 </ul>

@@ -282,13 +282,14 @@
               
                 <h1 id="argo-workflows-configuration">Argo workflows configuration</h1>
 <p>Argo workflows configuration is divided by 2 parts: one is a helm chart <em>values</em> in
-<a href="https://github.com/CloudGeometry/cg-devx-core/blob/main/platform/gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/argo-workflows/application.yaml">application.yaml</a> and
-basic entities declaration in cluster repo  common for all the cluster installation, another one is a
+<a href="https://github.com/CloudGeometry/cg-devx-core/blob/main/platform/gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/argo-workflows/application.yaml">application.yaml</a>
+and
+basic entities declaration in cluster repo common for all the cluster installation, another one is a
 workload-specific kubernetes entities declaration in the <code>wl-&lt;workload name&gt;-dev</code>
-namespace, executing through kustomize scenario. </p>
+namespace, executing through kustomize scenario.</p>
 <p>Helm chart <em>values</em> defined in
 <a href="https://github.com/CloudGeometry/cg-devx-core/blob/main/platform/gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/argo-workflows/application.yaml">application.yaml</a>
-consists of several sections, one for each component of Argo Workflows: </p>
+consists of several sections, one for each component of Argo Workflows:</p>
 <ul>
 <li><em>controller</em> for Workflow Controller</li>
 <li><em>executor</em> for Executor</li>
@@ -296,12 +297,13 @@ consists of several sections, one for each component of Argo Workflows: </p>
 <li><em>artifactRepository</em> for default artifact repository</li>
 </ul>
 <p>SSO declaration is a part of <em>server</em> section; also every section has it's own
-<em>rbac</em> parameters. </p>
+<em>rbac</em> parameters.</p>
 <p>All the Argo Workflow components images are pulling through Harbor registry
 proxy. To dive deep into the helm chart values see
 <a href="https://github.com/argoproj/argo-helm/blob/main/charts/argo-workflows/values.yaml">https://github.com/argoproj/argo-helm/blob/main/charts/argo-workflows/values.yaml</a>.</p>
 <h3 id="namespaces">Namespaces</h3>
-<p>Namespaces names based on the name of workloads are not known before the workload created, so only <code>argo</code> namesapace noticed for provisioning by helm; all the others are provisioned by kustomize scenario in <em>-gitops</em> repo of workload.</p>
+<p>Namespaces names based on the name of workloads are not known before the workload created, so only <code>argo</code> namesapace
+noticed for provisioning by helm; all the others are provisioned by kustomize scenario in <em>-gitops</em> repo of workload.</p>
               
             </div>
           </div><footer>

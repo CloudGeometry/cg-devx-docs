@@ -283,7 +283,10 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="trivy">Trivy</h1>
-<p><a href="https://aquasecurity.github.io/trivy">Trivy</a> is used to scan workload fs for vulnerabilities.  Trivy cluster workflowtemplate <code>trivy-fs-s3-cwft</code> takes the workload's repo checkout as an input hardwired artifact, scans the service directory and put report in appropriate location in S3 artifactory storage as an output artifacts in SARIF format for further observation. </p>
+<p><a href="https://aquasecurity.github.io/trivy">Trivy</a> is used to scan workload fs for vulnerabilities. Trivy cluster
+workflowtemplate <code>trivy-fs-s3-cwft</code> takes the workload's repo checkout as an input hardwired artifact, scans the service
+directory and put report in appropriate location in S3 artifactory storage as an output artifacts in SARIF format for
+further observation.</p>
 <h2 id="inputs">Inputs:</h2>
 <ul>
 <li><code>{{workflow.parameters.repo}}</code></li>

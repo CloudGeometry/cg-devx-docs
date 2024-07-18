@@ -334,9 +334,12 @@ clair:
 <p>Other scanners could be enabled through Harbor’s embedded interrogation service. For more details please
 see <a href="https://goharbor.io/docs/2.0.0/install-config/harbor-compatibility-list/#scanner-adapters">official documentation</a></p>
 <h2 id="runtime">Runtime</h2>
-<p>CG DevX platform reference architecture provides runtime checks - real-time analysis of workloads and core services runtime for vulnerabilities also known as dynamic security
-- Continuous scanning of application, runtime, configuration (secrets, passwords, etc.)
-- Focuses on live (production) workloads, runtime, and infrastructure</p>
+<p>CG DevX platform reference architecture provides runtime checks - real-time analysis of workloads and core services
+runtime for vulnerabilities also known as dynamic security</p>
+<ul>
+<li>Continuous scanning of application, runtime, configuration (secrets, passwords, etc.)</li>
+<li>Focuses on live (production) workloads, runtime, and infrastructure</li>
+</ul>
 <h3 id="vulnerability-misconfiguration-checks-in-runtime">Vulnerability &amp; misconfiguration checks in runtime</h3>
 <p>Implemented using Aqua Security <a href="https://github.com/aquasecurity/trivy-operator">Trivy operator</a></p>
 <p>Trivy operator reports are available as CRDs. For more details on CRDs please

@@ -291,13 +291,15 @@ managed unit performing an isolated set of business functions.</p>
 <p>To be successfully integrated with CG DevX workload, all of an application's services should:</p>
 <ul>
 <li>Be single process, or managed by a single process</li>
-<li>Be stateless (we do not recommend putting workloads working with or storing business-critical data that require strong consistency), meaning<ul>
+<li>Be stateless (we do not recommend putting workloads working with or storing business-critical data that require strong
+  consistency), meaning<ul>
 <li>No in memory state that cannot be recovered/restored/recalculated</li>
 <li>No local file system/storage that cannot be recovered/restored/recreated</li>
 </ul>
 </li>
 <li>Support graceful shutdown</li>
-<li>Be packed in a container according to guidelines regarding: <!-- "provided by our architects" should eventually be replaced by the content added to these docs. --><ul>
+<li>Be packed in a container according to guidelines
+  regarding: <!-- "provided by our architects" should eventually be replaced by the content added to these docs. --><ul>
 <li>Base image</li>
 <li>Log streams</li>
 <li>Metrics exposure</li>
@@ -309,7 +311,7 @@ managed unit performing an isolated set of business functions.</p>
 <h2 id="whats-included">What's included</h2>
 <p>Workloads created by CG DevX come with complete CI/CD processes including automated builds,
 container build &amp; publishing, linting templates,
-integration with different test frameworks, <a href="../gitops_environments/">GitOps definition and deployments</a>, 
+integration with different test frameworks, <a href="../gitops_environments/">GitOps definition and deployments</a>,
 and version and release management.
 CG DevX saves time, doing all the heavy-lifting by handling all the integrations,
 and all you need to do is to fine-tune templates to your specific needs.  </p>

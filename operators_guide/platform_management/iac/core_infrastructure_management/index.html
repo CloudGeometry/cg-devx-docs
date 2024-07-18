@@ -304,11 +304,13 @@ You should adjust defaults based on your requirements.</p>
 <li><strong>cluster_version</strong>: K8s cluster version</li>
 <li><strong>node_groups</strong>: Array of objects representing K8s node groups<ul>
 <li><strong>name</strong>: Node group name, defaults to <code>default</code></li>
-<li><strong>instance_types</strong>: A compute node type (size), will fall back to the next value when the first specified instance type is not available. Can be used in combination with capacity_type = "spot"; cloud-provider-specific </li>
+<li><strong>instance_types</strong>: A compute node type (size), will fall back to the next value when the first specified instance
+  type is not available. Can be used in combination with capacity_type = "spot"; cloud-provider-specific</li>
 <li><strong>min_size</strong>: Minimum node count for K8s cluster</li>
-<li><strong>max_size</strong>: Maximum node count for K8s cluster </li>
+<li><strong>max_size</strong>: Maximum node count for K8s cluster</li>
 <li><strong>desired_size</strong>: Desired node count for K8s cluster;</li>
-<li><strong>capacity_type</strong>: Determines compute node capacity type, e.g. "on-demand" or "spot", defaults to "on-demand"; cloud-provider-specific</li>
+<li><strong>capacity_type</strong>: Determines compute node capacity type, e.g. "on-demand" or "spot", defaults to "on-demand";
+  cloud-provider-specific</li>
 </ul>
 </li>
 </ul>

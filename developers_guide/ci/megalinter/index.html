@@ -284,9 +284,12 @@
               
                 <h1 id="megalinter">Megalinter</h1>
 <p>To lint all the source code <a href="https://megalinter.io/">Megalinter by OX Security</a> is used.
-Linters  configuration could be changed in supplied <code>.mega-linter.yml</code> using the configuration notes at <a href="https://megalinter.io/latest/config-file">https://megalinter.io/latest/config-file</a>.
-To avoid trying miriades of supported linters it's good idead to disable some of them in <code>.mega-linter.yml</code> or use 'flavor' image as <a href="https://megalinter.io/latest/flavors/">described</a>.
-ENV variables and image could be changed in <a href="https://github.com/CloudGeometry/cg-devx-core/blob/main/platform/gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/argo-workflows/cluster-workflow-templates/megalinter-cwft.yaml">megalinter cluster workflow template</a>
+Linters configuration could be changed in supplied <code>.mega-linter.yml</code> using the configuration notes
+at <a href="https://megalinter.io/latest/config-file">https://megalinter.io/latest/config-file</a>.
+To avoid trying miriades of supported linters it's good idead to disable some of them in <code>.mega-linter.yml</code> or use '
+flavor' image as <a href="https://megalinter.io/latest/flavors/">described</a>.
+ENV variables and image could be changed
+in <a href="https://github.com/CloudGeometry/cg-devx-core/blob/main/platform/gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/argo-workflows/cluster-workflow-templates/megalinter-cwft.yaml">megalinter cluster workflow template</a>
 JSON report as well as SARIF are saved as S3 output artifacts for further observation.</p>
 <h2 id="inputs">Inputs:</h2>
 <ul>

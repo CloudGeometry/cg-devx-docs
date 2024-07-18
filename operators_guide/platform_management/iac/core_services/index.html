@@ -283,10 +283,14 @@
 <p>Configuration management of core platform services is done using the <code>core_services</code> module.
 This module acts as an umbrella, managing the following services:</p>
 <ul>
-<li><strong>Registry</strong>: </li>
+<li><strong>Registry</strong>:<ul>
 <li><strong>Harbor</strong> - Image registry</li>
-<li><strong>Code Quality</strong>: </li>
+</ul>
+</li>
+<li><strong>Code Quality</strong>:<ul>
 <li><strong>SonarQube</strong> - Code quality inspection tool</li>
+</ul>
+</li>
 </ul>
 <p>Configuration is described in <code>/terraform/core_services/main.tf</code>.</p>
 <p>The set of parameters for the module includes:</p>
@@ -300,9 +304,11 @@ This module acts as an umbrella, managing the following services:</p>
 <li><strong>workloads</strong>: workloads definitions loaded from the <code>workloads.tfvars.json</code> file</li>
 </ul>
 <p>The core services module uses workload definitions to enable a personalized experience for each workload team,
-isolating workloads using abstraction, for example, a project in each of the services, and limiting access to those abstractions.
+isolating workloads using abstraction, for example, a project in each of the services, and limiting access to those
+abstractions.
 Definitions are provided using the <code>workloads</code> variable passed via the <code>terraform.tfvars.json</code> file.</p>
-<p>Below is an example of a <code>terraform.tfvars.json</code> file containing one workload called <code>demo-workload</code>. <!-- There's no core module described here. --></p>
+<p>Below is an example of a <code>terraform.tfvars.json</code> file containing one workload
+called <code>demo-workload</code>. <!-- There's no core module described here. --></p>
 <pre><code class="language-json">{
   &quot;workloads&quot;: {
     &quot;demo-workload&quot;: {

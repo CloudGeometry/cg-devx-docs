@@ -272,13 +272,18 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="build-routine-execution">Build routine execution</h1>
-<p>GHA workflow's step build is used to submit the argo workflow build-loop-xxxx (-xxxx and similar parts of workload names here and further are auto-generated), which in it's turn generate series of workflows (one for each service) based on build-chain-p-cwft clusterworkflow template. build-chain-p-cwft has DAG workflow structure and run templates from these <a href="https://argo-workflows.readthedocs.io/en/latest/cluster-workflow-templates/">clusterworkflow templates</a>:</p>
+<p>GHA workflow's step build is used to submit the argo workflow build-loop-xxxx (-xxxx and similar parts of workload names
+here and further are auto-generated), which in it's turn generate series of workflows (one for each service) based on
+build-chain-p-cwft clusterworkflow template. build-chain-p-cwft has DAG workflow structure and run templates from
+these <a href="https://argo-workflows.readthedocs.io/en/latest/cluster-workflow-templates/">clusterworkflow templates</a>:</p>
 <ul>
 <li>kaniko-s3-p-cwft</li>
 <li>megalinter-cwft</li>
 <li>trivy-fs-s3-cwft</li>
 </ul>
-<p>for <a href="../kaniko_build/">kaniko</a>, <a href="../megalinter/">megalinter</a> and <a href="../trivy/">trivy</a> rescpectively. All the workflow parameters, once calculated in <a href="../github_action_workflow/">Github Action workflow</a>, are translated inside argo workflows templates structures sequentially.</p>
+<p>for <a href="../kaniko_build/">kaniko</a>, <a href="../megalinter/">megalinter</a> and <a href="../trivy/">trivy</a> rescpectively. All the workflow
+parameters, once calculated in <a href="../github_action_workflow/">Github Action workflow</a>, are translated inside argo workflows
+templates structures sequentially.</p>
 <div class="mermaid">---
 title: "Build routine invocation"
 ---
