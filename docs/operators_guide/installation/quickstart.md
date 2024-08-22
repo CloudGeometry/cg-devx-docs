@@ -25,7 +25,7 @@ flowchart LR
 
 ## Configure Cloud provider
 
-Prepare your cloud account ([AWS](./cloud/aws_setup.md), [Azure](./cloud/azure_setup.md)).
+Prepare your cloud account ([AWS](./cloud/aws_setup.md), [Azure](./cloud/azure_setup.md), [GCP](./cloud/gcp_setup.md)).
 
 ## Configure Git Provider
 
