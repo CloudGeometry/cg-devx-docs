@@ -6,7 +6,12 @@ on:
 
 jobs:
   mkdocs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -33,10 +38,8 @@ jobs:
 
       - name: Deploy docs
         uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
-          destination_dir: ./
-          keep_files: false
-          allow_empty_commit: true
           full_commit_message: Deployed ${{ env.SHORT_SHA }} with MkDocs ${{ env.MKDOCS_VERSION }}
