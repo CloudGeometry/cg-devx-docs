@@ -42,4 +42,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
+          destination_dir: ./
+          keep_files: false
+          allow_empty_commit: true
           full_commit_message: Deployed ${{ env.SHORT_SHA }} with MkDocs ${{ env.MKDOCS_VERSION }}
