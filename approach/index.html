@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="alexu@cloudgeometry.io" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Concept - CG DevX Guide</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Concept";
+        var mkdocs_page_input_path = "approach.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/hcl.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> CG DevX Guide
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CG DevX</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../platform_engineering/">Platform Engineering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cgdevx/">Why CG DevX</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Concept</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#stakeholder-personas">Stakeholder Personas</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#development-teams">Development Teams</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#solution-architects">Solution Architects</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Capabilities</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../capabilities/capabilities/">Capabilities Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../capabilities/reference_implementation/">Reference Implementation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../capabilities/known_limitations/">Shared Responsibility</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/">Acknowledgements</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Operators Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../operators_guide/concept/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../operators_guide/supported_platforms/">Platforms and providers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Installation</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../operators_guide/installation/quickstart/">Installation process</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">CLI</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/installation/installing_cli/">Installing CG DevX CLI</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/installation/building_cli/">Building CG DevX CLI</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/installation/cli_commands/">CG DevX CLI commands</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Cloud</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/installation/cloud/aws_setup/">Deploying on AWS</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/installation/cloud/azure_setup/">Deploying on Azure</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Git</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/installation/vcs/github_setup/">Using GitHub</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/installation/vcs/gitlab_setup/">Using GitLab</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Platform Management</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../operators_guide/platform_management/platform_repo/">CG DevX platform GitOps repository</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Terraform</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/platform_management/iac/vcs_management/">VCS management</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/platform_management/iac/core_infrastructure_management/">Platform infrastructure</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/platform_management/iac/secrets_management/">Secrets management</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/platform_management/iac/users_management/">User management</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/platform_management/iac/core_services/">Core platform services</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Services</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/platform_management/services/delivery/">Delivery</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/platform_management/services/integration/">Integration</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/platform_management/services/monitoring/">Monitoring</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/platform_management/services/registry/">Registry</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/platform_management/services/secrets/">Secrets Management</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../operators_guide/platform_management/services/security/">Security</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Workload Management</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../operators_guide/workload_management/workloads/">Workloads Quickstart Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../operators_guide/workload_management/cli_commands/">CG DevX CLI Workload Management commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../operators_guide/workload_management/bootstrap_templates/">Bootstrap templates</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../operators_guide/workload_management/environments/">Workload Environments</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Delivery Pipelines</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../operators_guide/delivery_pipelines/core_services_delivery/">Delivery Pipelines</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../developers_guide/concept/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Workloads</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/workloads/concept/">Workload concept</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/workloads/gitops_environments/">How to Model Your Environments</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Pipelines</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/cd/delivery/">Delivery</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/cd/promotion/">Promotion</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/ci/integration/">Integration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/ci/argo_workflows/">Argo workflows: basic flows and templates</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/ci/github_action_workflow/">Github Action Workflow Structure</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/ci/build_routine/">Build routine execution</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/ci/kaniko_build/">Image build: Kaniko</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/ci/megalinter/">Megalinter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/ci/trivy/">Trivy</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/ci/code_quality/">Code quality</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/ci/devsecops/">Devsecops</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Observability</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/observability/monitoring/">Monitoring</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/observability/dashboards/">List of Dashboards</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/observability/log_management/">Log management</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Artifacts</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/artifacts/registry/">Registry</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../developers_guide/artifacts/registry_proxy/">Registry proxy</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Under the hood</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Architecture</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../under_the_hood/architecture/">Under the hood</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../under_the_hood/iam/iam/">IAM</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../under_the_hood/network/networking/">Networking</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../under_the_hood/devsecops/devsecops/">DevSecOps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../under_the_hood/observability/observability/">Observability</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../under_the_hood/runtime/runtime/">Runtime</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../under_the_hood/delivery_pipelines/delivery_pipelines/">Delivery Pipelines</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../under_the_hood/delivery_pipelines/argo_cleanup/">Argo workflows cleanup options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../under_the_hood/delivery_pipelines/argo_config/">Argo workflows configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../under_the_hood/delivery_pipelines/argo_permissions/">Argo workflows permission scopes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../under_the_hood/delivery_pipelines/atlantis/">Atlantis</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../under_the_hood/cost_management/cost_management/">Cost Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../under_the_hood/workloads/workload_management/">Workload Management</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">CG DevX Guide</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">CG DevX</li>
+      <li class="breadcrumb-item active">Concept</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="core-initiative">Core Initiative</h1>
+<p>CG DEVX leverages a selection of the best open-source tools, reflecting industry best practices and community feedback,
+aiming to elevate the overall user experience and streamline the collaborative environment for cloud-native operations
+by deploying a standard yet adaptable framework.</p>
+<p>We structure our platform around distinct phases of service delivery, each with defined interfaces that support easy
+customization and scalability. This enables users to easily tailor their environment by integrating, modifying, or
+replacing components without compromising the platform's integrity. For example, users can select from various CI tools,
+such as GitHub Actions, Argo Workflow, or GitLab Pipelines, according to their specific requirements. This design
+principle helps simplify initial setups and optimize user interaction by pre-selecting the most effective tools for
+specific tasks.</p>
+<p>CG DEVX predominantly relies on Kubernetes due to its widespread adoption as a scalable solution for cloud-native
+services. It forms the backbone of our architecture, ensuring compatibility and enhancing performance with numerous
+CNCF-endorsed tools. Note that while Kubernetes acts as a substrate for our core services, those services can manage
+workloads outside the cluster, on various platforms. This gives developers greater flexibility to choose different cloud
+ecosystems.</p>
+<p>CG DEVX provides an implementation blueprint that addresses common platform engineering challenges. This blueprint
+includes detailed specifications and templates that serve as demonstrations of the best possible configurations and
+technological capabilities. By promoting the exchange of configurations and best practices, we aim to set a high
+standard for operational excellence. We recognize the need for ongoing enhancements and adaptations, and we look to our
+community to help us extend and refine our platform to suit a diverse array of use cases.</p>
+<h2 id="stakeholder-personas">Stakeholder Personas</h2>
+<h3 id="development-teams">Development Teams</h3>
+<ul>
+<li><strong>Developers:</strong> Specialize in developing application-specific services intended for end users, focusing predominantly
+  on software development rather than infrastructure complexities.</li>
+<li><strong>Operators:</strong> Handle the operational management of platform and infrastructure services. They are responsible for
+  cloud-based technologies, Infrastructure as Code (IaC), GitOps, and automated systems.</li>
+<li><strong>Security Engineers:</strong> Focus on integrating and upholding security protocols within the platform, collaborating
+  closely with operators to ensure robust and compliant infrastructure.</li>
+</ul>
+<h3 id="solution-architects">Solution Architects</h3>
+<ul>
+<li><strong>Integrators:</strong> Skilled in combining various components into integrated solutions. These professionals improve the
+  platform's value by constructing additional services that capitalize on the pre-established infrastructure.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cgdevx/" class="btn btn-neutral float-left" title="Why CG DevX"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../capabilities/capabilities/" class="btn btn-neutral float-right" title="Capabilities Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cgdevx/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../capabilities/capabilities/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

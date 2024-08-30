@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="alexu@cloudgeometry.io" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Cost Management - CG DevX Guide</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Cost Management";
+        var mkdocs_page_input_path = "under_the_hood/cost_management/cost_management.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/hcl.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> CG DevX Guide
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CG DevX</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../platform_engineering/">Platform Engineering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cgdevx/">Why CG DevX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../approach/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Capabilities</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../capabilities/capabilities/">Capabilities Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../capabilities/reference_implementation/">Reference Implementation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../capabilities/known_limitations/">Shared Responsibility</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../tools/">Acknowledgements</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Operators Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../operators_guide/concept/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../operators_guide/supported_platforms/">Platforms and providers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Installation</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/installation/quickstart/">Installation process</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">CLI</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/installing_cli/">Installing CG DevX CLI</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/building_cli/">Building CG DevX CLI</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/cli_commands/">CG DevX CLI commands</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Cloud</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/cloud/aws_setup/">Deploying on AWS</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/cloud/azure_setup/">Deploying on Azure</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Git</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/vcs/github_setup/">Using GitHub</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/vcs/gitlab_setup/">Using GitLab</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Platform Management</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/platform_management/platform_repo/">CG DevX platform GitOps repository</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Terraform</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/iac/vcs_management/">VCS management</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/iac/core_infrastructure_management/">Platform infrastructure</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/iac/secrets_management/">Secrets management</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/iac/users_management/">User management</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/iac/core_services/">Core platform services</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Services</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/delivery/">Delivery</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/integration/">Integration</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/monitoring/">Monitoring</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/registry/">Registry</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/secrets/">Secrets Management</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/security/">Security</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Workload Management</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/workload_management/workloads/">Workloads Quickstart Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/workload_management/cli_commands/">CG DevX CLI Workload Management commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/workload_management/bootstrap_templates/">Bootstrap templates</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/workload_management/environments/">Workload Environments</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Delivery Pipelines</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/delivery_pipelines/core_services_delivery/">Delivery Pipelines</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/concept/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Workloads</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/workloads/concept/">Workload concept</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/workloads/gitops_environments/">How to Model Your Environments</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Pipelines</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/cd/delivery/">Delivery</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/cd/promotion/">Promotion</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/integration/">Integration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/argo_workflows/">Argo workflows: basic flows and templates</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/github_action_workflow/">Github Action Workflow Structure</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/build_routine/">Build routine execution</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/kaniko_build/">Image build: Kaniko</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/megalinter/">Megalinter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/trivy/">Trivy</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/code_quality/">Code quality</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/devsecops/">Devsecops</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Observability</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/observability/monitoring/">Monitoring</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/observability/dashboards/">List of Dashboards</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/observability/log_management/">Log management</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Artifacts</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/artifacts/registry/">Registry</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/artifacts/registry_proxy/">Registry proxy</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Under the hood</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Architecture</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../architecture/">Under the hood</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../iam/iam/">IAM</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../network/networking/">Networking</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../devsecops/devsecops/">DevSecOps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../observability/observability/">Observability</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../runtime/runtime/">Runtime</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../delivery_pipelines/delivery_pipelines/">Delivery Pipelines</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../delivery_pipelines/argo_cleanup/">Argo workflows cleanup options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../delivery_pipelines/argo_config/">Argo workflows configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../delivery_pipelines/argo_permissions/">Argo workflows permission scopes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../delivery_pipelines/atlantis/">Atlantis</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Cost Management</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#cost-visibility-attribution">Cost Visibility &amp; Attribution</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#cost-attribution">Cost Attribution</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#secure-operations">Secure Operations</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rightsizing-and-cost-recommendations">Rightsizing and Cost Recommendations</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#podcontainer-rightsizing">Pod/Container Rightsizing</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#node-rightsizing">Node Rightsizing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#labelstags-recommendations">Labels/Tags Recommendations</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#considerations">Considerations</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#cloud-resources-labels-tags">Cloud Resources Labels / Tags</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#k8s-cluster-resources-labels">K8s Cluster Resources Labels</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cg-devx-default-labels">CG DevX default labels</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#cloud-resources-labels-tags_1">Cloud Resources Labels / Tags</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#k8s-cluster-resources-labels_1">K8s Cluster Resources Labels</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../workloads/workload_management/">Workload Management</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">CG DevX Guide</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Under the hood</li>
+          <li class="breadcrumb-item">Architecture</li>
+      <li class="breadcrumb-item active">Cost Management</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="cost-management">Cost Management</h1>
+<p>Our goal is to improve cost visibility and provide cost savings recommendations for the platform and its core services.
+To achieve this, CG DevX reference architecture incorporates cloud and in-cluster resource labeling/tagging, and
+integrates with real-time cost visibility and insights tools. By default, the free version
+of <a href="https://www.kubecost.com/">KubeCost</a> is installed with the platform and can be replaced
+with <a href="https://www.opencost.io/">OpenCost</a> or other tools from our integration catalog.</p>
+<p>To properly manage costs, users of CG DevX should have a full-scale cost management (visibility, analysis, optimization,
+governance) FinOps solution.</p>
+<blockquote>
+<p>CG DevX reference architecture cannot and should not replace your primary cost management solution.</p>
+</blockquote>
+<h2 id="cost-visibility-attribution">Cost Visibility &amp; Attribution</h2>
+<p>As with many practices in operations, implementing a labeling/tagging strategy is a process of iteration and
+improvement. CG DevX comes with a minimalistic set of labels/tags as part of an integrated labeling strategy. The main
+goal is to address immediate needs like lineage tracking and cost attribution, and allow users to grow and evolve the
+strategy.</p>
+<h3 id="cost-attribution">Cost Attribution</h3>
+<p>Map spending data to the business to enable setback/chargeback by:</p>
+<ul>
+<li>Creating a meaningful taxonomy of costs</li>
+<li>Providing an organizational breakdown (by division, business unit, management hierarchy)</li>
+<li>Offering a functional breakdown (by workload)</li>
+<li>Classifying by cost center, service, or other unit (map to available taxonomy)</li>
+</ul>
+<h3 id="secure-operations">Secure Operations</h3>
+<p>By using shared ownership and consumer information associated with resources, you can quickly track all affected parties
+in case of a security incident. It helps to isolate, identify, and notify the right person quicker, reducing potential
+impact.</p>
+<p>Such data could include:</p>
+<ul>
+<li>Workload owner name</li>
+<li>Operations team / Team accountable for day-to-day operations</li>
+<li>Business criticality / Business impact of the resource or supported workload</li>
+<li>Disaster recovery / Business criticality of the workload or service</li>
+<li>End date of the project / Date when the workload is scheduled for retirement</li>
+</ul>
+<h2 id="rightsizing-and-cost-recommendations">Rightsizing and Cost Recommendations</h2>
+<p>Containerization helps solve the rightsizing problem by making workloads smaller and easier to properly distribute
+across multiple nodes. However, it is still challenging to rightsize and attribute workloads correctly. In the K8s
+world, rightsizing should be done on multiple levels.</p>
+<h3 id="podcontainer-rightsizing">Pod/Container Rightsizing</h3>
+<p>Ensure that your containers request an appropriate amount of resources. Asking for too little means your application
+cannot perform, while too much means inefficiency. Often, there is a buffer between the requests or limits configured
+for a container and what it really needs. When this buffer is larger than necessary, there is an opportunity for cost
+savings. KubeCost identifies and highlights such opportunities. It works with Vertical Pod Autoscaler (VPA) and
+Horizontal Pod Autoscaler (HPA), where VPA helps adjust the requests and limits configuration based on actual usage, and
+HPA scales out and in.</p>
+<h3 id="node-rightsizing">Node Rightsizing</h3>
+<p>Node rightsizing involves choosing the right worker node type for the cluster and bin packing. KubeCost provides
+instance type recommendations, but in practice, this can be challenging. CG DevX allows you to use multiple node types
+per node group and multiple node groups to improve resource utilization. To enable additional node groups, update your
+hosting module IaC configuration. Please
+check <a href="../../../operators_guide/platform_management/iac/core_infrastructure_management/">this section</a> for more details.</p>
+<p>CG DevX comes with limits set based on a "demo scenario," prioritizing cost minimization and running core services with
+a low number of active workloads. On the K8s cluster level, Cluster Autoscaler is turned on by default. These limits
+should be adjusted for heavy use. For user workloads, we recommend starting with reasonable limits and adjusting them
+after some time (usually ≤ 1 week) to understand load patterns.</p>
+<h2 id="labelstags-recommendations">Labels/Tags Recommendations</h2>
+<h3 id="considerations">Considerations</h3>
+<ul>
+<li>Labels/tags should not be used as a configuration management database.</li>
+<li>Values that are not easily human-readable can have a human-readable name/description added to another label/tag.</li>
+<li>Labels/tags should be (semi-) static.</li>
+<li>Namespaces are used to help organize data specific to a domain or organization. Namespace should be either dash <code>-</code> or
+  dot-separated <code>.</code>. Azure doesn't support colon-separator <code>:</code>.</li>
+<li>Kebab-case or camelCase is used for keys. Note: some AWS resources may have issues with kebab-case.</li>
+<li>The format for multi-value is the following:<ul>
+<li>Single-Value: <code>name=value</code></li>
+<li>Multi-Value: <code>name=value1:value2</code></li>
+<li>Multi-Attribute: <code>name=attribute1=value1/attribute2=value2</code></li>
+<li>Combination: <code>name=attribute1=value1:value2/attribute2=value1:value3</code></li>
+</ul>
+</li>
+<li>When date-time data is stored in labels/tags, the UTC ISO 8061 standard is used.</li>
+</ul>
+<h3 id="cloud-resources-labels-tags">Cloud Resources Labels / Tags</h3>
+<p>Below are suggested labels with examples:</p>
+<table>
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Tag</th>
+<th>Rationale</th>
+<th>Allowed Values (Listed or value prefix/suﬃx)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cost Allocation</td>
+<td>cg-devx.cost-allocation.workload-id</td>
+<td>Track cost vs value generated by each line of business</td>
+<td>analytics/landing-page</td>
+</tr>
+<tr>
+<td>Cost Allocation</td>
+<td>cg-devx.cost-allocation.business-unit-id</td>
+<td>Monitor costs by business unit</td>
+<td>architecture/devops/finance</td>
+</tr>
+<tr>
+<td>Cost Allocation</td>
+<td>cg-devx.cost-allocation.cost-center</td>
+<td>Monitor costs by cost center</td>
+<td>123-*</td>
+</tr>
+<tr>
+<td>Cost Allocation</td>
+<td>cg-devx.cost-allocation.owner</td>
+<td>Which budget holder is responsible for this workload</td>
+<td>marketing/retail-support</td>
+</tr>
+<tr>
+<td>Data Classification</td>
+<td>cg-devx.data.classification</td>
+<td>Classify data for compliance and governance</td>
+<td>public/private/confidential, restricted</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>cg-devx.security.application-owner</td>
+<td>IT Application Owner</td>
+<td>NameA/NameB</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>cg-devx.security.operations-team</td>
+<td>Team that is accountable for day-to-day operations</td>
+<td>TeamA/TeamB</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>cg-devx.security.business-criticality</td>
+<td>Business criticality of the application, workload, or service</td>
+<td>High/Medium/Low</td>
+</tr>
+</tbody>
+</table>
+<p>Business criticality values</p>
+<table>
+<thead>
+<tr>
+<th>Business criticality</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>high</td>
+<td>Exploitation causes serious public image damage and financial loss with long-term business impact</td>
+</tr>
+<tr>
+<td>medium</td>
+<td>Applications connected to the internet that process financial or other private information</td>
+</tr>
+<tr>
+<td>low</td>
+<td>Typically internal applications with non-critical business impact</td>
+</tr>
+</tbody>
+</table>
+<h3 id="k8s-cluster-resources-labels">K8s Cluster Resources Labels</h3>
+<table>
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Label</th>
+<th>Rationale</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cost Allocation</td>
+<td>cg-devx.cost-allocation.environment</td>
+<td>Defines SDLC stage</td>
+<td>dev/test/stg/prod</td>
+</tr>
+<tr>
+<td>Cost Allocation</td>
+<td>cg-devx.cost-allocation.wl-name</td>
+<td>The name of the workload</td>
+<td>workload1/workload2/workload3</td>
+</tr>
+<tr>
+<td>Cost Allocation</td>
+<td>cg-devx.cost-allocation.service</td>
+<td>The name of the service in the workload</td>
+<td>service1/service2/service3</td>
+</tr>
+<tr>
+<td>Cost Allocation</td>
+<td>cg-devx.cost-allocation.version</td>
+<td>The current version of the application (e.g., a SemVer 1.0, revision hash, etc.)</td>
+<td>5.7.21</td>
+</tr>
+<tr>
+<td>Cost Allocation</td>
+<td>cg-devx.cost-allocation.component</td>
+<td>The component within the architecture</td>
+<td>frontend, backend, database</td>
+</tr>
+<tr>
+<td>OperationalExcellence</td>
+<td>cg-devx.operations.deployed-by</td>
+<td>The controller/user who created this resource</td>
+<td>hpotter, ggranger, rweasley</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>cg-devx.security.business-criticality</td>
+<td>Business criticality of the application, workload, or service</td>
+<td>High, Medium, Low</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cg-devx-default-labels">CG DevX default labels</h2>
+<p>CG DevX applies the following labels by default</p>
+<h3 id="cloud-resources-labels-tags_1">Cloud Resources Labels / Tags</h3>
+<table>
+<thead>
+<tr>
+<th>Tag / Label</th>
+<th>Value</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cg-devx.cost-allocation.cost-center</td>
+<td>platform</td>
+<td>Indicates cost center</td>
+</tr>
+<tr>
+<td>cg-devx.metadata.owner</td>
+<td>platform-admin</td>
+<td>Indicates team owning the resource</td>
+</tr>
+<tr>
+<td>cg-devx.metadata.cluster-name</td>
+<td><cluster_name></td>
+<td>Cluster name provided as input parameter</td>
+</tr>
+</tbody>
+</table>
+<h3 id="k8s-cluster-resources-labels_1">K8s Cluster Resources Labels</h3>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Value</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cg-devx.cost-allocation.workload</td>
+<td><workload_name></td>
+<td>Workload name. Applied to workload resources</td>
+</tr>
+<tr>
+<td>cg-devx.cost-allocation.environment</td>
+<td>dev,sta,prod</td>
+<td>Workload environment. Applied to workload resources only</td>
+</tr>
+<tr>
+<td>cg-devx.cost-allocation.cost-center</td>
+<td>platform,development</td>
+<td>Indicates cost center</td>
+</tr>
+<tr>
+<td>cg-devx.metadata.owner</td>
+<td>platform-admin/workload-admin</td>
+<td>Indicates team owning the resource</td>
+</tr>
+<tr>
+<td>cg-devx.metadata.service</td>
+<td><service_name></td>
+<td>Indicates service, workload only</td>
+</tr>
+<tr>
+<td>cg-devx.metadata.chart-version</td>
+<td><helm_chart_version></td>
+<td>Indicates version of Helm chart used to deploy service, core-services only</td>
+</tr>
+<tr>
+<td>cg-devx.metadata.version</td>
+<td><application_version></td>
+<td>Indicates version of application deployed, core-services only</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../delivery_pipelines/atlantis/" class="btn btn-neutral float-left" title="Atlantis"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../workloads/workload_management/" class="btn btn-neutral float-right" title="Workload Management">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../delivery_pipelines/atlantis/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../workloads/workload_management/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

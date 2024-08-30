@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="alexu@cloudgeometry.io" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Workloads Quickstart Guide - CG DevX Guide</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Workloads Quickstart Guide";
+        var mkdocs_page_input_path = "operators_guide/workload_management/workloads.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/hcl.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> CG DevX Guide
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CG DevX</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../platform_engineering/">Platform Engineering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cgdevx/">Why CG DevX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../approach/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Capabilities</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../capabilities/capabilities/">Capabilities Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../capabilities/reference_implementation/">Reference Implementation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../capabilities/known_limitations/">Shared Responsibility</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../tools/">Acknowledgements</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Operators Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../concept/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../supported_platforms/">Platforms and providers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Installation</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../installation/quickstart/">Installation process</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">CLI</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../installation/installing_cli/">Installing CG DevX CLI</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../installation/building_cli/">Building CG DevX CLI</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../installation/cli_commands/">CG DevX CLI commands</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Cloud</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../installation/cloud/aws_setup/">Deploying on AWS</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../installation/cloud/azure_setup/">Deploying on Azure</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Git</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../installation/vcs/github_setup/">Using GitHub</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../installation/vcs/gitlab_setup/">Using GitLab</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Platform Management</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../platform_management/platform_repo/">CG DevX platform GitOps repository</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Terraform</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../platform_management/iac/vcs_management/">VCS management</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../platform_management/iac/core_infrastructure_management/">Platform infrastructure</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../platform_management/iac/secrets_management/">Secrets management</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../platform_management/iac/users_management/">User management</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../platform_management/iac/core_services/">Core platform services</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Services</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../platform_management/services/delivery/">Delivery</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../platform_management/services/integration/">Integration</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../platform_management/services/monitoring/">Monitoring</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../platform_management/services/registry/">Registry</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../platform_management/services/secrets/">Secrets Management</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../platform_management/services/security/">Security</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Workload Management</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Workloads Quickstart Guide</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#workloads-management">Workloads Management</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#create">Create</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#bootstrap">Bootstrap</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#manually-customizing-and-managing-workloads">Manually Customizing and Managing Workloads</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cli_commands/">CG DevX CLI Workload Management commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../bootstrap_templates/">Bootstrap templates</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../environments/">Workload Environments</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Delivery Pipelines</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../delivery_pipelines/core_services_delivery/">Delivery Pipelines</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/concept/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Workloads</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/workloads/concept/">Workload concept</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/workloads/gitops_environments/">How to Model Your Environments</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Pipelines</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/cd/delivery/">Delivery</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/cd/promotion/">Promotion</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/integration/">Integration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/argo_workflows/">Argo workflows: basic flows and templates</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/github_action_workflow/">Github Action Workflow Structure</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/build_routine/">Build routine execution</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/kaniko_build/">Image build: Kaniko</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/megalinter/">Megalinter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/trivy/">Trivy</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/code_quality/">Code quality</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/devsecops/">Devsecops</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Observability</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/observability/monitoring/">Monitoring</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/observability/dashboards/">List of Dashboards</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/observability/log_management/">Log management</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Artifacts</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/artifacts/registry/">Registry</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/artifacts/registry_proxy/">Registry proxy</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Under the hood</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Architecture</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/architecture/">Under the hood</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/iam/iam/">IAM</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/network/networking/">Networking</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/devsecops/devsecops/">DevSecOps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/observability/observability/">Observability</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/runtime/runtime/">Runtime</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/delivery_pipelines/delivery_pipelines/">Delivery Pipelines</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/delivery_pipelines/argo_cleanup/">Argo workflows cleanup options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/delivery_pipelines/argo_config/">Argo workflows configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/delivery_pipelines/argo_permissions/">Argo workflows permission scopes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/delivery_pipelines/atlantis/">Atlantis</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/cost_management/cost_management/">Cost Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/workloads/workload_management/">Workload Management</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">CG DevX Guide</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Operators Guide</li>
+          <li class="breadcrumb-item">Workload Management</li>
+      <li class="breadcrumb-item active">Workloads Quickstart Guide</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="workloads-quickstart-guide">Workloads Quickstart Guide</h1>
+<p>A <strong>Workload</strong> is a high-level abstraction describing application(s) and/or service(s) that provide business value. A
+Workload is self-contained.</p>
+<p>Workloads are configured under the CG DevX installation GitOps repository and then managed by the team owning the
+Workload.</p>
+<p>CG DevX's goal is to provide isolation at the Workload level through all the core services provided by the CG DevX
+platform.</p>
+<p>A Workload is divided into the following logical blocks:</p>
+<ul>
+<li><strong>Source code</strong>: Code of the service(s) the workload consists of</li>
+<li><strong>K8s manifests</strong>: All the manifests required to run a workload on K8s</li>
+<li><strong>IaC</strong>: Additional out-of-cluster resources required by the Workload. When using Crossplane, CRDs should be merged
+  with K8s manifests.</li>
+</ul>
+<p>These blocks can all be part of one repository or belong to different repositories, depending on user requirements.</p>
+<p>To provide better isolation of concerns, two repositories are provided by default; one contains the source code for the
+Workload, and the other contains manifests and IaC. When a user wants to use a different schema, workloads should be
+created manually, or the repository structure should be adjusted after the workload bootstrap. Bootstrap templates are
+designed to enable users to blend them or split the GitOps repository into two.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>An up and running CG DevX cluster. Workloads are defined in the CG DevX platform GitOps repository. All operations
+  with workloads should be done from the same machine used for CG DevX cluster provisioning, as there is a hard
+  dependency on the output of the CG DevX setup flow.</li>
+<li>There should be no other ongoing changes (active PRs) in the CG DevX platform GitOps repository. This is required to
+  avoid inconsistency in the infrastructure state.</li>
+</ul>
+<h2 id="workloads-management">Workloads Management</h2>
+<h3 id="create">Create</h3>
+<p>Workload configuration is generated by the <code>workload create</code> <a href="../cli_commands/#create">command</a>.
+This command creates a new feature branch in the CG DevX platform GitOps repository, pushes all the required
+configurations, and opens a pull request (PR).</p>
+<p>As a user, you should review the PR and apply the changes via the PR automation
+solution (<a href="https://www.runatlantis.io/">Atlantis</a>). You can get more details on Atlantis
+commands <a href="https://www.runatlantis.io/docs/using-atlantis.html">here</a>.</p>
+<p>This creates new repositories for your Workload under your Git organizations. By default, CG DevX will create two
+repositories, one for Workload application(s)/service(s) source code, and another for manifests, environment
+definitions, and Infrastructure as Code (IaC). This is done to provide better isolation and access control, and can be
+changed by updating the Workload configuration for the VCS module. For example, you may want to use one repository per
+application/service instead of using a monorepo, which is CG DevX's default behavior.</p>
+<p>You can delete a Workload by running the <code>workload delete</code> <a href="../cli_commands/#delete">command</a>.
+This will reverse the changes done by the <code>workload create</code> command and open a PR to apply them.</p>
+<blockquote>
+<p><strong>Note</strong>: You must create and delete workloads one by one to avoid conflicts.</p>
+</blockquote>
+<h3 id="bootstrap">Bootstrap</h3>
+<p>When a PR opened by the <code>workload create</code> command is merged and closed, you can bootstrap Workload repositories with
+the <code>workload bootstrap</code> <a href="../cli_commands/#bootstrap">command</a>. This command provides the
+following features based on templates created by the CG DevX team:</p>
+<ul>
+<li>A pre-defined folder structure</li>
+<li>Environment definitions (dev, sta, prod environments)</li>
+<li>IaC templates</li>
+<li>CI/CD process for Workload application(s)/service(s)</li>
+<li>IaC PR automation configuration</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>: Reference implementations of delivery pipelines, repository structure, manifest, and environment definitions
+are given as examples of platform capabilities. They should be adjusted for your specific use case before production
+use.</p>
+</blockquote>
+<p>The following templates are used by default:</p>
+<ul>
+<li>Workload template <a href="https://github.com/CloudGeometry/cg-devx-wl-template">repository</a></li>
+<li>Workload GitOps template <a href="https://github.com/CloudGeometry/cg-devx-wl-gitops-template">repository</a></li>
+</ul>
+<p>After uploading parameterized repo templates, the <code>workload bootstrap</code> process will create a PR under your Workload
+GitOps repository to initialize secrets and create the IAM role for the Workload service.</p>
+<p>Your new workload will have a pre-built CI process triggered by a tag applied to the workload source code
+repository. <a href="https://semver.org/">Semantic versioning</a> is used. CI builds an image (or images when you have more than
+one service in your monorepo) and uploads them to the CG DevX image registry (<a href="https://goharbor.io/">Harbor</a>). After
+that, it updates the image version of the Workload service in K8s deployment definitions in the Workload GitOps
+repository to trigger the CD process. At this point, you can promote changes from the <code>dev</code> environment to other
+environments by running the promotion action under the Workload GitOps repository.</p>
+<h3 id="manually-customizing-and-managing-workloads">Manually Customizing and Managing Workloads</h3>
+<p>On a platform level, workloads are defined as a set of Workload objects that are passed to IaC modules via
+the <code>terraform.tfvars.json</code> file (<a href="../../platform_management/platform_repo/#iac">more here</a>).</p>
+<p>To create additional workloads or workload repositories, or to manage repository settings, you need to
+update <code>terraform.tfvars.json</code>.</p>
+<p>The workloads variable schema consists of:</p>
+<pre><code class="language-hcl">variable &quot;workloads&quot; {
+  description = &quot;workloads configuration&quot;
+  type = map(object({
+    description = optional(string, &quot;&quot;)
+    repos = map(object({
+      description = optional(string, &quot;&quot;)
+      visibility = optional(string, &quot;private&quot;)
+      auto_init = optional(bool, false)
+      archive_on_destroy = optional(bool, false)
+      has_issues = optional(bool, false)
+      default_branch_name = optional(string, &quot;main&quot;)
+      delete_branch_on_merge = optional(bool, true)
+      branch_protection = optional(bool, true)
+      atlantis_enabled = optional(bool, false)
+    }))
+  }))
+  default = {}
+}
+
+</code></pre>
+<p>Workloads are managed and discovered by ArgoCD automatically. For more details please
+see <a href="../../../under_the_hood/workloads/workload_management/">under the hood section</a></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../platform_management/services/security/" class="btn btn-neutral float-left" title="Security"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cli_commands/" class="btn btn-neutral float-right" title="CG DevX CLI Workload Management commands">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../platform_management/services/security/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cli_commands/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="alexu@cloudgeometry.io" name="author"/>
+<link href="../../../img/favicon.ico" rel="shortcut icon"/>
+<title>Runtime - CG DevX Guide</title>
+<link href="../../../css/theme.css" rel="stylesheet"/>
+<link href="../../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Runtime";
+        var mkdocs_page_input_path = "under_the_hood/runtime/runtime.md";
+        var mkdocs_page_url = null;
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/hcl.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../.."> CG DevX Guide
+        </a><div role="search">
+<form action="../../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">CG DevX</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../platform_engineering/">Platform Engineering</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cgdevx/">Why CG DevX</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../approach/">Concept</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Capabilities</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../capabilities/capabilities/">Capabilities Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../capabilities/reference_implementation/">Reference Implementation</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../capabilities/known_limitations/">Shared Responsibility</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/">Acknowledgements</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Operators Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../operators_guide/concept/">Concept</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../operators_guide/supported_platforms/">Platforms and providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Installation</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/installation/quickstart/">Installation process</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">CLI</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/installing_cli/">Installing CG DevX CLI</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/building_cli/">Building CG DevX CLI</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/cli_commands/">CG DevX CLI commands</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">Cloud</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/cloud/aws_setup/">Deploying on AWS</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/cloud/azure_setup/">Deploying on Azure</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">Git</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/vcs/github_setup/">Using GitHub</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/vcs/gitlab_setup/">Using GitLab</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Platform Management</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/platform_management/platform_repo/">CG DevX platform GitOps repository</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">Terraform</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/iac/vcs_management/">VCS management</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/iac/core_infrastructure_management/">Platform infrastructure</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/iac/secrets_management/">Secrets management</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/iac/users_management/">User management</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/iac/core_services/">Core platform services</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">Services</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/delivery/">Delivery</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/integration/">Integration</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/monitoring/">Monitoring</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/registry/">Registry</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/secrets/">Secrets Management</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/security/">Security</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Workload Management</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/workload_management/workloads/">Workloads Quickstart Guide</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/workload_management/cli_commands/">CG DevX CLI Workload Management commands</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/workload_management/bootstrap_templates/">Bootstrap templates</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/workload_management/environments/">Workload Environments</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Delivery Pipelines</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/delivery_pipelines/core_services_delivery/">Delivery Pipelines</a>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Developers Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/concept/">Concept</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Workloads</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/workloads/concept/">Workload concept</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/workloads/gitops_environments/">How to Model Your Environments</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Pipelines</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/cd/delivery/">Delivery</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/cd/promotion/">Promotion</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/integration/">Integration</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/argo_workflows/">Argo workflows: basic flows and templates</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/github_action_workflow/">Github Action Workflow Structure</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/build_routine/">Build routine execution</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/kaniko_build/">Image build: Kaniko</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/megalinter/">Megalinter</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/trivy/">Trivy</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/code_quality/">Code quality</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/devsecops/">Devsecops</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Observability</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/observability/monitoring/">Monitoring</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/observability/dashboards/">List of Dashboards</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/observability/log_management/">Log management</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Artifacts</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/artifacts/registry/">Registry</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/artifacts/registry_proxy/">Registry proxy</a>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Under the hood</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Architecture</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../architecture/">Under the hood</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../iam/iam/">IAM</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../network/networking/">Networking</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../devsecops/devsecops/">DevSecOps</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../observability/observability/">Observability</a>
+</li>
+<li class="toctree-l2 current"><a class="reference internal current" href="./">Runtime</a>
+<ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#isolation">Isolation</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autoscaling">Autoscaling</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../delivery_pipelines/delivery_pipelines/">Delivery Pipelines</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../delivery_pipelines/argo_cleanup/">Argo workflows cleanup options</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../delivery_pipelines/argo_config/">Argo workflows configuration</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../delivery_pipelines/argo_permissions/">Argo workflows permission scopes</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../delivery_pipelines/atlantis/">Atlantis</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../cost_management/cost_management/">Cost Management</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../workloads/workload_management/">Workload Management</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../..">CG DevX Guide</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
+<li class="breadcrumb-item">Under the hood</li>
+<li class="breadcrumb-item">Architecture</li>
+<li class="breadcrumb-item active">Runtime</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="runtime">Runtime</h1>
+<p>CG DevX extends K8s runtime by providing default monitoring, log management, and secrets management to all services.</p>
+<h2 id="isolation">Isolation</h2>
+<p>CG DevX provides namespace based isolation for workloads. It is also possible to use cluster level isolation using
+virtual clusters or physical clusters.
+Workload namespaces are prefixed with <code>wl-</code> and following pattern <code>wl-&lt;WL_NAME&gt;-&lt;ENV_NAME&gt;</code></p>
+<p><div class="mxgraph" data-mxgraph='{"highlight":"#0000ff","nav":true,"resize":true,"toolbar":"zoom layers tags lightbox","edit":"_blank","xml":"&lt;mxfile host=\"drawio-plugin\" modified=\"2024-08-09T20:33:50.569Z\" agent=\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36\" etag=\"SklfI_b_0prkJaNRCnj_\" version=\"22.1.22\" type=\"embed\" pages=\"17\"&gt;&lt;diagram name=\"runtime\" id=\"0gaLvUy5ssP0ZlVLYHZE\"&gt;    &lt;mxGraphModel dx=\"1590\" dy=\"1161\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"827\" pageHeight=\"1169\" math=\"0\" shadow=\"0\"&gt;      &lt;root&gt;        &lt;mxCell id=\"0\"/&gt;        &lt;mxCell id=\"1\" parent=\"0\"/&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-104\" value=\"\" style=\"fillColor=none;strokeColor=#DD3522;verticalAlign=top;fontStyle=0;fontColor=#DD3522;fillStyle=auto;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"40\" y=\"40\" width=\"700\" height=\"520\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-176\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=none;startFill=0;endArrow=none;endFill=0;\" parent=\"1\" source=\"8SeK_6ZzfDuPTJj65zzK-64\" target=\"8SeK_6ZzfDuPTJj65zzK-171\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-64\" value=\"CGDevX - Internal\" style=\"fillColor=none;strokeColor=#5A6C86;dashed=1;verticalAlign=top;fontStyle=0;fontColor=#5A6C86;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"80\" y=\"80\" width=\"160\" height=\"290\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-65\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=ns;aspect=fixed;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"80\" y=\"80\" width=\"25\" height=\"24\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-72\" value=\"\" style=\"group\" parent=\"1\" vertex=\"1\" connectable=\"0\"&gt;          &lt;mxGeometry x=\"90\" y=\"120\" width=\"89\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-66\" value=\"\" style=\"sketch=0;outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.gear;fillStyle=auto;\" parent=\"8SeK_6ZzfDuPTJj65zzK-72\" vertex=\"1\"&gt;          &lt;mxGeometry y=\"2.5\" width=\"25\" height=\"25\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-67\" value=\"Scaler\" style=\"text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"8SeK_6ZzfDuPTJj65zzK-72\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"29\" width=\"60\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-73\" value=\"\" style=\"group\" parent=\"1\" vertex=\"1\" connectable=\"0\"&gt;          &lt;mxGeometry x=\"90\" y=\"150\" width=\"79\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-68\" value=\"\" style=\"sketch=0;outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.gear;\" parent=\"8SeK_6ZzfDuPTJj65zzK-73\" vertex=\"1\"&gt;          &lt;mxGeometry y=\"2.5\" width=\"25\" height=\"25\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-69\" value=\"Vault\" style=\"text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"8SeK_6ZzfDuPTJj65zzK-73\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"29\" width=\"50\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-74\" value=\"\" style=\"group\" parent=\"1\" vertex=\"1\" connectable=\"0\"&gt;          &lt;mxGeometry x=\"90\" y=\"180\" width=\"109\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-75\" value=\"\" style=\"sketch=0;outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.gear;\" parent=\"8SeK_6ZzfDuPTJj65zzK-74\" vertex=\"1\"&gt;          &lt;mxGeometry y=\"2.5\" width=\"25\" height=\"25\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-76\" value=\"Monitoring\" style=\"text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"8SeK_6ZzfDuPTJj65zzK-74\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"29\" width=\"80\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-77\" value=\"\" style=\"group\" parent=\"1\" vertex=\"1\" connectable=\"0\"&gt;          &lt;mxGeometry x=\"90\" y=\"210\" width=\"139\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-78\" value=\"\" style=\"sketch=0;outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.gear;\" parent=\"8SeK_6ZzfDuPTJj65zzK-77\" vertex=\"1\"&gt;          &lt;mxGeometry y=\"2.5\" width=\"25\" height=\"25\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-79\" value=\"Log Aggregation\" style=\"text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"8SeK_6ZzfDuPTJj65zzK-77\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"29\" width=\"110\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-80\" value=\"\" style=\"group\" parent=\"1\" vertex=\"1\" connectable=\"0\"&gt;          &lt;mxGeometry x=\"90\" y=\"240\" width=\"139\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-81\" value=\"\" style=\"sketch=0;outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.gear;\" parent=\"8SeK_6ZzfDuPTJj65zzK-80\" vertex=\"1\"&gt;          &lt;mxGeometry y=\"2.5\" width=\"25\" height=\"25\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-82\" value=\"CI\" style=\"text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"8SeK_6ZzfDuPTJj65zzK-80\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"29\" width=\"40\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-84\" value=\"\" style=\"group\" parent=\"1\" vertex=\"1\" connectable=\"0\"&gt;          &lt;mxGeometry x=\"90\" y=\"270\" width=\"139\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-85\" value=\"\" style=\"sketch=0;outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.gear;\" parent=\"8SeK_6ZzfDuPTJj65zzK-84\" vertex=\"1\"&gt;          &lt;mxGeometry y=\"2.5\" width=\"25\" height=\"25\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-86\" value=\"CD\" style=\"text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"8SeK_6ZzfDuPTJj65zzK-84\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"29\" width=\"40\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-87\" value=\"\" style=\"group\" parent=\"1\" vertex=\"1\" connectable=\"0\"&gt;          &lt;mxGeometry x=\"90\" y=\"300\" width=\"139\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-88\" value=\"\" style=\"sketch=0;outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.gear;\" parent=\"8SeK_6ZzfDuPTJj65zzK-87\" vertex=\"1\"&gt;          &lt;mxGeometry y=\"2.5\" width=\"25\" height=\"25\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-89\" value=\"VCS\" style=\"text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"8SeK_6ZzfDuPTJj65zzK-87\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"29\" width=\"50\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-167\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;startArrow=none;startFill=0;endArrow=none;endFill=0;exitPerimeter=0;\" parent=\"1\" source=\"8SeK_6ZzfDuPTJj65zzK-106\" target=\"8SeK_6ZzfDuPTJj65zzK-146\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-53\" value=\"Workload X - Env\" style=\"fillColor=none;strokeColor=#5A6C86;dashed=1;verticalAlign=top;fontStyle=0;fontColor=#5A6C86;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"270\" y=\"80\" width=\"210\" height=\"140\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-106\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=sa;fillStyle=auto;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"415\" y=\"165\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-46\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=pod;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"295\" y=\"115\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-49\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=ns;aspect=fixed;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"270\" y=\"80\" width=\"25\" height=\"24\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-51\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=pod;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"355\" y=\"115\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-52\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=pv;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"355\" y=\"165\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-54\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=pod;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"295\" y=\"165\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-105\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=c_role;fillStyle=auto;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"415\" y=\"115\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-166\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=none;startFill=0;endArrow=none;endFill=0;exitPerimeter=0;\" parent=\"1\" source=\"8SeK_6ZzfDuPTJj65zzK-110\" target=\"8SeK_6ZzfDuPTJj65zzK-149\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"&gt;            &lt;Array as=\"points\"&gt;              &lt;mxPoint x=\"665\" y=\"230\"/&gt;              &lt;mxPoint x=\"490\" y=\"230\"/&gt;              &lt;mxPoint x=\"490\" y=\"360\"/&gt;              &lt;mxPoint x=\"445\" y=\"360\"/&gt;            &lt;/Array&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-109\" value=\"Workload Y - Env\" style=\"fillColor=none;strokeColor=#5A6C86;dashed=1;verticalAlign=top;fontStyle=0;fontColor=#5A6C86;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"500\" y=\"80\" width=\"210\" height=\"140\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-110\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=sa;fillStyle=auto;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"645\" y=\"165\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-111\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=pod;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"525\" y=\"115\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-112\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=ns;aspect=fixed;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"500\" y=\"80\" width=\"25\" height=\"24\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-113\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=pod;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"585\" y=\"115\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-114\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=pv;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"585\" y=\"165\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-116\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=c_role;fillStyle=auto;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"645\" y=\"115\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-143\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=pv;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"525\" y=\"165\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-175\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=none;startFill=0;endArrow=none;endFill=0;exitPerimeter=0;\" parent=\"1\" source=\"8SeK_6ZzfDuPTJj65zzK-119\" target=\"8SeK_6ZzfDuPTJj65zzK-151\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-118\" value=\"Workload Z - Env\" style=\"fillColor=none;strokeColor=#5A6C86;dashed=1;verticalAlign=top;fontStyle=0;fontColor=#5A6C86;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"500\" y=\"240\" width=\"210\" height=\"140\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-119\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=sa;fillStyle=auto;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"645\" y=\"325\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-120\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=pod;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"525\" y=\"275\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-121\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=ns;aspect=fixed;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"500\" y=\"240\" width=\"25\" height=\"24\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-122\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=pod;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"585\" y=\"275\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-124\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=pod;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"525\" y=\"325\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-125\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=c_role;fillStyle=auto;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"645\" y=\"275\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-144\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=pod;container=0;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"585\" y=\"325\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-155\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.995;entryY=0.63;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=none;startFill=0;endArrow=none;endFill=0;\" parent=\"1\" source=\"8SeK_6ZzfDuPTJj65zzK-146\" target=\"8SeK_6ZzfDuPTJj65zzK-147\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-147\" value=\"\" style=\"sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=bottom;align=center;verticalAlign=top;shape=mxgraph.kubernetes.icon;prIcon=cm;fillStyle=auto;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"240\" y=\"376\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-156\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.995;entryY=0.63;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=none;startFill=0;endArrow=none;endFill=0;\" parent=\"1\" source=\"8SeK_6ZzfDuPTJj65zzK-149\" target=\"8SeK_6ZzfDuPTJj65zzK-147\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-157\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.995;entryY=0.63;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=none;startFill=0;endArrow=none;endFill=0;\" parent=\"1\" source=\"8SeK_6ZzfDuPTJj65zzK-151\" target=\"8SeK_6ZzfDuPTJj65zzK-147\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-158\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=none;startFill=0;endArrow=none;endFill=0;\" parent=\"1\" source=\"8SeK_6ZzfDuPTJj65zzK-154\" target=\"8SeK_6ZzfDuPTJj65zzK-147\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-161\" value=\"\" style=\"group\" parent=\"1\" vertex=\"1\" connectable=\"0\"&gt;          &lt;mxGeometry x=\"340\" y=\"300\" width=\"140\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-146\" value=\"\" style=\"sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F54749;gradientDirection=north;fillColor=#C7131F;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.identity_and_access_management;fillStyle=auto;\" parent=\"8SeK_6ZzfDuPTJj65zzK-161\" vertex=\"1\"&gt;          &lt;mxGeometry width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-148\" value=\"Workload X\" style=\"text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"8SeK_6ZzfDuPTJj65zzK-161\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"50\" y=\"5\" width=\"90\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-162\" value=\"\" style=\"group\" parent=\"1\" vertex=\"1\" connectable=\"0\"&gt;          &lt;mxGeometry x=\"425\" y=\"381\" width=\"140\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-149\" value=\"\" style=\"sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F54749;gradientDirection=north;fillColor=#C7131F;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.identity_and_access_management;fillStyle=auto;\" parent=\"8SeK_6ZzfDuPTJj65zzK-162\" vertex=\"1\"&gt;          &lt;mxGeometry width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-150\" value=\"Workload Y\" style=\"text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"8SeK_6ZzfDuPTJj65zzK-162\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"50\" y=\"5\" width=\"90\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-163\" value=\"\" style=\"group\" parent=\"1\" vertex=\"1\" connectable=\"0\"&gt;          &lt;mxGeometry x=\"540\" y=\"431\" width=\"130\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-151\" value=\"\" style=\"sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F54749;gradientDirection=north;fillColor=#C7131F;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.identity_and_access_management;fillStyle=auto;\" parent=\"8SeK_6ZzfDuPTJj65zzK-163\" vertex=\"1\"&gt;          &lt;mxGeometry width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-152\" value=\"Workload Z\" style=\"text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"8SeK_6ZzfDuPTJj65zzK-163\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"50\" y=\"5\" width=\"80\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-164\" value=\"\" style=\"group\" parent=\"1\" vertex=\"1\" connectable=\"0\"&gt;          &lt;mxGeometry x=\"240\" y=\"481\" width=\"140\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-153\" value=\"CG DevOps\" style=\"text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"8SeK_6ZzfDuPTJj65zzK-164\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"50\" y=\"5\" width=\"90\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-154\" value=\"\" style=\"sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F54749;gradientDirection=north;fillColor=#C7131F;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.identity_and_access_management;fillStyle=auto;\" parent=\"8SeK_6ZzfDuPTJj65zzK-164\" vertex=\"1\"&gt;          &lt;mxGeometry width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-172\" value=\"\" style=\"group\" parent=\"1\" vertex=\"1\" connectable=\"0\"&gt;          &lt;mxGeometry x=\"60\" y=\"431\" width=\"120\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-170\" value=\"CGDevX\" style=\"text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"8SeK_6ZzfDuPTJj65zzK-172\" vertex=\"1\"&gt;          &lt;mxGeometry y=\"5\" width=\"70\" height=\"30\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-171\" value=\"\" style=\"sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F54749;gradientDirection=north;fillColor=#C7131F;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.identity_and_access_management;fillStyle=auto;\" parent=\"8SeK_6ZzfDuPTJj65zzK-172\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"80\" width=\"40\" height=\"40\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"8SeK_6ZzfDuPTJj65zzK-173\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.005;entryY=0.63;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=none;startFill=0;endArrow=none;endFill=0;\" parent=\"1\" source=\"8SeK_6ZzfDuPTJj65zzK-171\" target=\"8SeK_6ZzfDuPTJj65zzK-147\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;      &lt;/root&gt;    &lt;/mxGraphModel&gt;  &lt;/diagram&gt;  &lt;/mxfile&gt;"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+<h2 id="autoscaling">Autoscaling</h2>
+<p><a href="https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler">Cluster autoscaler</a> is enabled by default with
+CG DevX reference architecture. Cluster autoscaler configuration is cloud provider specific and may rely on additional
+labels. Initial cluster node pool capacity is based on values specified in hosting provider terraform module. If you
+change those values later, autoscaler configuration should be also
+updates <code>gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/kube-system/cluster-autoscaler/application.yaml</code></p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../../observability/observability/" title="Observability"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../../delivery_pipelines/delivery_pipelines/" title="Delivery Pipelines">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../../observability/observability/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../../delivery_pipelines/delivery_pipelines/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../../..";</script>
+<script src="../../../js/theme_extra.js"></script>
+<script src="../../../js/theme.js"></script>
+<script src="../../../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script src="https://viewer.diagrams.net/js/viewer-static.min.js"></script></body>
+</html>

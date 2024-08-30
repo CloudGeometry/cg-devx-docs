@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="alexu@cloudgeometry.io" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>IAM - CG DevX Guide</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "IAM";
+        var mkdocs_page_input_path = "under_the_hood/iam/iam.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/hcl.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> CG DevX Guide
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CG DevX</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../platform_engineering/">Platform Engineering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cgdevx/">Why CG DevX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../approach/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Capabilities</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../capabilities/capabilities/">Capabilities Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../capabilities/reference_implementation/">Reference Implementation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../capabilities/known_limitations/">Shared Responsibility</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../tools/">Acknowledgements</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Operators Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../operators_guide/concept/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../operators_guide/supported_platforms/">Platforms and providers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Installation</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/installation/quickstart/">Installation process</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">CLI</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/installing_cli/">Installing CG DevX CLI</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/building_cli/">Building CG DevX CLI</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/cli_commands/">CG DevX CLI commands</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Cloud</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/cloud/aws_setup/">Deploying on AWS</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/cloud/azure_setup/">Deploying on Azure</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Git</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/vcs/github_setup/">Using GitHub</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/installation/vcs/gitlab_setup/">Using GitLab</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Platform Management</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/platform_management/platform_repo/">CG DevX platform GitOps repository</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Terraform</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/iac/vcs_management/">VCS management</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/iac/core_infrastructure_management/">Platform infrastructure</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/iac/secrets_management/">Secrets management</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/iac/users_management/">User management</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/iac/core_services/">Core platform services</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Services</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/delivery/">Delivery</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/integration/">Integration</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/monitoring/">Monitoring</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/registry/">Registry</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/secrets/">Secrets Management</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../operators_guide/platform_management/services/security/">Security</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Workload Management</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/workload_management/workloads/">Workloads Quickstart Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/workload_management/cli_commands/">CG DevX CLI Workload Management commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/workload_management/bootstrap_templates/">Bootstrap templates</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/workload_management/environments/">Workload Environments</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Delivery Pipelines</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../operators_guide/delivery_pipelines/core_services_delivery/">Delivery Pipelines</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/concept/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Workloads</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/workloads/concept/">Workload concept</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/workloads/gitops_environments/">How to Model Your Environments</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Pipelines</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/cd/delivery/">Delivery</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/cd/promotion/">Promotion</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/integration/">Integration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/argo_workflows/">Argo workflows: basic flows and templates</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/github_action_workflow/">Github Action Workflow Structure</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/build_routine/">Build routine execution</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/kaniko_build/">Image build: Kaniko</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/megalinter/">Megalinter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/trivy/">Trivy</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/code_quality/">Code quality</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/devsecops/">Devsecops</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Observability</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/observability/monitoring/">Monitoring</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/observability/dashboards/">List of Dashboards</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/observability/log_management/">Log management</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Artifacts</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/artifacts/registry/">Registry</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/artifacts/registry_proxy/">Registry proxy</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Under the hood</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Architecture</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../architecture/">Under the hood</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">IAM</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#cloud-services-access">Cloud services access</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#user-management">User management</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#oidc-and-sso">OIDC and SSO</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#vault">Vault</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#argo-workflows">Argo Workflows</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#argo-cd">Argo CD</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#harbor">Harbor</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sonarqube">SonarQube</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../network/networking/">Networking</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../devsecops/devsecops/">DevSecOps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../observability/observability/">Observability</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../runtime/runtime/">Runtime</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../delivery_pipelines/delivery_pipelines/">Delivery Pipelines</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../delivery_pipelines/argo_cleanup/">Argo workflows cleanup options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../delivery_pipelines/argo_config/">Argo workflows configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../delivery_pipelines/argo_permissions/">Argo workflows permission scopes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../delivery_pipelines/atlantis/">Atlantis</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../cost_management/cost_management/">Cost Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../workloads/workload_management/">Workload Management</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">CG DevX Guide</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Under the hood</li>
+          <li class="breadcrumb-item">Architecture</li>
+      <li class="breadcrumb-item active">IAM</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="iam">IAM</h1>
+<p>CG DevX reference implementation attempts to standardize and simplify user identity and access management.</p>
+<h2 id="cloud-services-access">Cloud services access</h2>
+<p>Roles and policies used on Cloud Provider IAM level are defined as part of cloud provider module. All the modules
+implement roles for the following platform services:</p>
+<ul>
+<li>PR automation for IaC</li>
+<li>CI</li>
+<li>Cert manager</li>
+<li>External DNS</li>
+<li>Secret Manager</li>
+<li>Cluster Autoscaler</li>
+</ul>
+<p>In addition, there could be cloud provider specific roles required by K8s plugins, or other actors.</p>
+<p>Roles are mapped to K8s service accounts using cloud provider specific annotations using IAM roles for service
+accounts (IRSA), Workload Identity, or similar mechanism, eg
+<code>eks.amazonaws.com/role-arn</code>
+<code>azure.workload.identity/client-id</code></p>
+<p>Permission scope set by default could be too wide, or narrow for your specific case. In order to adjust them you should
+edit cloud provider specific implementation located in your platform GitOps repository:</p>
+<ul>
+<li>AWS <code>terraform/modules/cloud_aws/iam.tf</code></li>
+<li>Azure <code>terraform/modules/cloud_azure/service_accounts.tf</code></li>
+</ul>
+<h2 id="user-management">User management</h2>
+<p>User management is controlled by CG DevX. This includes Git access, Vault access, and access to all core services via
+OIDC, and access to workloads.<br />
+By default, during platform setup process CG DevX CLI creates one user with admin permissions. Additional users could be
+defined via IaC.</p>
+<p>Git user management is done using Git provider specific implementation:</p>
+<ul>
+<li><strong>GitHub</strong>: <code>terraform/modules/users_github</code></li>
+</ul>
+<p>Users should be defined as dictionary in platform GitOps repository <code>terraform/users/main.tf</code> as shown below.</p>
+<pre><code class="language-yaml">users            = {
+  ### Primary bot user
+  &quot;cgdevx-bot&quot; = {
+  vcs_username         = local.vcs_bot_username
+  email                = local.bot_email
+  first_name           = &quot;CG DevX&quot;
+  last_name            = &quot;Bot&quot;
+  vcs_team_slugs       = [&quot;${local.gitops_repo_name}-admins&quot;]
+  acl_policies         = [&quot;admin&quot;, &quot;default&quot;]
+  oidc_groups_for_user = [&quot;admins&quot;]
+  },
+  ### Additional users defined bellow. Use this as an example
+  &quot;my-awesome-user&quot; = {
+  vcs_username   = &quot;git user slug&quot;
+  email             = &quot;user email&quot;
+  first_name        = &quot;First&quot;
+  last_name         = &quot;Last&quot;
+  vcs_team_slugs = [&quot;git team slugs&quot;, &quot;demo-workload-developers&quot;]
+  acl_policies      = [&quot;developers&quot;, &quot;default&quot;, &quot;workload-name-role&quot;, &quot;demo-workload-admins&quot;]
+  oidc_groups_for_user = [&quot;developers&quot;, &quot;demo-workload-admins&quot;]
+  },
+}
+</code></pre>
+<p>When PR introducing new users is applied via Atlantis, user password for accessing Vault and other platform core
+services through Vault, will be stored to Vault. You should use root token to access password, and distribute them to
+the end users.</p>
+<p><img alt="vault_user_password.png" src="../../../assets/vault_user_password.png" /></p>
+<h2 id="oidc-and-sso">OIDC and SSO</h2>
+<p>Vault is used as OIDC provider enabling SSO experience for platform users. Configuration is done using
+IaC <code>terraform/modules/secrets_vault/oidc-clients.tf</code> and done during platform provisioning.</p>
+<ul>
+<li>Argo Workflow</li>
+<li>Argo CD</li>
+<li>Grafana</li>
+<li>Harbor</li>
+<li>SonarQube</li>
+<li>Backstage</li>
+</ul>
+<p><img alt="vault_oidc_providers.png" src="../../../assets/vault_oidc_providers.png" /></p>
+<p>Following scopes are provided via OIDC and could be changed via IaC <code>terraform/modules/secrets_vault/oidc-scopes.tf</code></p>
+<ul>
+<li>email</li>
+<li>groups</li>
+<li>profile</li>
+<li>user</li>
+</ul>
+<p>Permissions across all core services are mapped using <code>groups</code> scope.</p>
+<h3 id="vault">Vault</h3>
+<p>Access control is done using groups. CG DevX reference implementation has two default groups:</p>
+<ul>
+<li>admins</li>
+<li>developers</li>
+</ul>
+<p>Those two groups have platform wide access. For each workload CG DevX creates the same two groups scoped to a workload
+using <code>&lt;workload-name&gt;-&lt;group-name&gt;</code> pattern.</p>
+<p>Admins group policy:</p>
+<pre><code class="language-hcl"># Create and manage entities and groups
+path &quot;identity/*&quot; {
+  capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;, &quot;list&quot;]
+}
+
+# Configure the OIDC auth method
+path &quot;auth/*&quot; {
+  capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;, &quot;list&quot;]
+}
+
+# Write ACL policies
+path &quot;sys/policies/acl/*&quot; {
+  capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;, &quot;list&quot;]
+}
+
+# Allow default access to secret
+path &quot;secret/*&quot; {
+  capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;, &quot;list&quot;]
+}
+
+# Allow full access to workloads secrets
+path &quot;workloads/*&quot; {
+  capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;, &quot;list&quot;]
+}
+
+# allow admins to manage mounts
+path &quot;sys/mounts/*&quot; {
+  capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;, &quot;list&quot;]
+}
+
+# List enabled secrets engine
+path &quot;sys/mounts&quot; {
+  capabilities = [&quot;read&quot;, &quot;list&quot;]
+}
+
+# allow admins to manage auth methods
+path &quot;/sys/auth*&quot; {
+  capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;, &quot;list&quot;, &quot;sudo&quot;]
+}
+
+# allow admins to manage auth methods
+path &quot;sys/auth/*&quot; {
+  capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;, &quot;list&quot;]
+}
+</code></pre>
+<p>Developers group policy:</p>
+<pre><code class="language-hcl"># Allow full write access to platform developers, without delete
+path &quot;secret/*&quot; {
+  capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;list&quot;]
+}
+
+# Allow write access to workloads secrets
+path &quot;workloads/*&quot; {
+  capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;list&quot;]
+}
+
+# List available secrets engines to retrieve accessor ID
+path &quot;sys/mounts&quot; {
+  capabilities = [&quot;read&quot;]
+}
+</code></pre>
+<p>Policies could be edited via <code>terraform/modules/secrets_vault/policies.tf</code></p>
+<h3 id="argo-workflows">Argo Workflows</h3>
+<p>CG DevX reference implementation has the following Argo Workflow group mapping:</p>
+<table>
+<thead>
+<tr>
+<th>CG DevX role</th>
+<th>Argo Workflows role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform admins</td>
+<td>All project admins</td>
+</tr>
+<tr>
+<td>Platform developers</td>
+<td>All project developers</td>
+</tr>
+<tr>
+<td>Workload admins</td>
+<td>Workload Namespace admins</td>
+</tr>
+<tr>
+<td>Workload developers</td>
+<td>Workload Namespace developers</td>
+</tr>
+</tbody>
+</table>
+<p>Mapping is configured via Argo Workflow ServiceAccounts
+<code>gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/argo-workflows/sa-argo.yaml</code></p>
+<h3 id="argo-cd">Argo CD</h3>
+<p>CG DevX reference implementation has the following Argo CD group mapping:</p>
+<table>
+<thead>
+<tr>
+<th>CG DevX role</th>
+<th>Argo CD role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform admins</td>
+<td>All project admins</td>
+</tr>
+<tr>
+<td>Platform developers</td>
+<td>All project read-only</td>
+</tr>
+<tr>
+<td>Workload admins</td>
+<td>Project full-access</td>
+</tr>
+<tr>
+<td>Workload developers</td>
+<td>Project read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Mapping is configured via Argo CD
+ConfigMap <code>gitops-pipelines/delivery/clusters/cc-cluster/core-services/components/argocd/argocd-rbac-cm.yaml</code></p>
+<h3 id="harbor">Harbor</h3>
+<p>CG DevX reference implementation has the following Harbor group mapping:</p>
+<table>
+<thead>
+<tr>
+<th>CG DevX role</th>
+<th>Harbor role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform admins</td>
+<td>Harbor admins</td>
+</tr>
+<tr>
+<td>Platform developers</td>
+<td>Harbor guest</td>
+</tr>
+<tr>
+<td>Workload admins</td>
+<td>Project maintainer</td>
+</tr>
+<tr>
+<td>Workload developers</td>
+<td>Project developer</td>
+</tr>
+</tbody>
+</table>
+<p>Mapping is configured via IaC <code>terraform/modules/registry_harbor/project/main.tf</code></p>
+<pre><code class="language-hcl">resource &quot;harbor_project_member_group&quot; &quot;platform_developers&quot; {
+  project_id = harbor_project.this.id
+  group_name = &quot;developers&quot;
+  role       = &quot;guest&quot;
+  type       = &quot;oidc&quot;
+}
+
+resource &quot;harbor_project_member_group&quot; &quot;workload_developers&quot; {
+  project_id = harbor_project.this.id
+  group_name = &quot;${var.project_name}-developers&quot;
+  ##choose correct role for workload developers from projectadmin, maintainer(master), developer, guest, limited guest
+  ## https://goharbor.io/docs/2.0.0/administration/managing-users/user-permissions-by-role/
+  role       = &quot;developer&quot;
+  type       = &quot;oidc&quot;
+}
+
+resource &quot;harbor_project_member_group&quot; &quot;workload_admins&quot; {
+  project_id = harbor_project.this.id
+  group_name = &quot;${var.project_name}-admins&quot;
+  role       = &quot;maintainer&quot;
+  type       = &quot;oidc&quot;
+}
+</code></pre>
+<h3 id="sonarqube">SonarQube</h3>
+<p>CG DevX reference implementation has the following SonarQube group mapping:</p>
+<table>
+<thead>
+<tr>
+<th>CG DevX role</th>
+<th>Harbor role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform admins</td>
+<td>SonarQube admins</td>
+</tr>
+<tr>
+<td>Platform developers</td>
+<td>GateAdmin, Scan</td>
+</tr>
+<tr>
+<td>Workload admins</td>
+<td>Project admins</td>
+</tr>
+<tr>
+<td>Workload developers</td>
+<td>Project: CodeViewer, IssueAdmin, Scan, SecurityHotSpotAdmin</td>
+</tr>
+</tbody>
+</table>
+<p>OIDC configuration <code>terraform/modules/code_quality_sonarqube/oidc.tf</code></p>
+<p>Group mapping <code>terraform/modules/code_quality_sonarqube/groups.tf</code></p>
+<pre><code class="language-hcl">resource &quot;sonarqube_group&quot; &quot;admins&quot; {
+  name        = &quot;admins&quot;
+  description = &quot;This is a vault admin group&quot;
+}
+
+resource &quot;sonarqube_group&quot; &quot;developers&quot; {
+  name        = &quot;developers&quot;
+  description = &quot;This is a vault developers group&quot;
+}
+
+resource &quot;sonarqube_permissions&quot; &quot;admins&quot; {
+  depends_on  = [sonarqube_group.admins]
+  group_name  = &quot;admins&quot;
+  permissions = [&quot;admin&quot;]
+}
+
+# Valid values are [admin, gateadmin, profileadmin, provisioning, scan]
+# incorrect documentation here https://registry.terraform.io/providers/jdamata/sonarqube/latest/docs/resources/sonarqube_permissions
+resource &quot;sonarqube_permissions&quot; &quot;developers&quot; {
+  depends_on  = [sonarqube_group.developers]
+  group_name  = &quot;developers&quot;
+  permissions = [&quot;gateadmin&quot;, &quot;scan&quot;]
+}
+</code></pre>
+<p>Workload group mapping <code>terraform/modules/code_quality_sonarqube/project/main.tf</code></p>
+<pre><code class="language-hcl">resource &quot;sonarqube_group&quot; &quot;workload_admins&quot; {
+  name        = &quot;${var.project_name}-admins&quot;
+  description = &quot;This is a ${var.project_name} admin group&quot;
+}
+
+resource &quot;sonarqube_group&quot; &quot;workload_developers&quot; {
+  name        = &quot;${var.project_name}-developers&quot;
+  description = &quot;This is a ${var.project_name} developers group&quot;
+}
+
+resource &quot;sonarqube_permissions&quot; &quot;workload-admins&quot; {
+  group_name  = &quot;${var.project_name}-admins&quot;
+  project_key = sonarqube_project.this.project
+  permissions = [&quot;admin&quot;]
+  depends_on  = [sonarqube_group.workload_admins]
+}
+
+resource &quot;sonarqube_permissions&quot; &quot;workload-developers&quot; {
+  group_name  = &quot;${var.project_name}-developers&quot;
+  project_key = sonarqube_project.this.project
+  permissions = [&quot;codeviewer&quot;, &quot;issueadmin&quot;, &quot;scan&quot;, &quot;securityhotspotadmin&quot;]
+  depends_on  = [sonarqube_group.workload_developers]
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../architecture/" class="btn btn-neutral float-left" title="Under the hood"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../network/networking/" class="btn btn-neutral float-right" title="Networking">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../architecture/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../network/networking/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

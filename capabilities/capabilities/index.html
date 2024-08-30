@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="alexu@cloudgeometry.io" name="author"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Capabilities Overview - CG DevX Guide</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Capabilities Overview";
+        var mkdocs_page_input_path = "capabilities/capabilities.md";
+        var mkdocs_page_url = null;
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/hcl.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> CG DevX Guide
+        </a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">CG DevX</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../platform_engineering/">Platform Engineering</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cgdevx/">Why CG DevX</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../approach/">Concept</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Capabilities</a>
+<ul class="current">
+<li class="toctree-l2 current"><a class="reference internal current" href="./">Capabilities Overview</a>
+<ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#core-services">Core Services</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#flexibility-and-customizability">Flexibility and Customizability</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#seamless-module-replacement">Seamless Module Replacement</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#efficient-troubleshooting-and-maintenance">Efficient Troubleshooting and Maintenance</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#source-code-management">Source Code Management</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#added-value">Added Value</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#infrastructure-as-code-iac">Infrastructure as Code (IaC)</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#key-features-of-iac-at-cg-devx">Key Features of IaC at CG DevX</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#approaches-to-infrastructure-management">Approaches to Infrastructure Management</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#preferred-iac-tools">Preferred IaC Tools</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#integration-with-kubernetes">Integration with Kubernetes</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#continuous-integration-ci">Continuous Integration (CI)</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#added-value_1">Added Value</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#continuous-delivery-cd">Continuous Delivery (CD)</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#adoption-of-gitops">Adoption of GitOps</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#added-value_2">Added Value</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#secrets-management">Secrets Management</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#added-value_3">Added Value</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#identity-and-access">Identity and Access</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#added-value_4">Added Value</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#artifact-registries">Artifact Registries</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#added-value_5">Added Value</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#developer-portal">Developer Portal</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#added-value_6">Added Value</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#observability">Observability</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#added-value_7">Added Value</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gitops-and-pr-automation">GitOps and PR Automation</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#governance-and-validation">Governance and Validation</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#added-value_8">Added Value</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#workload-runtime">Workload Runtime</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#incident-response-and-automation">Incident Response and Automation</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#added-value_9">Added Value</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cost-management">Cost Management</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#added-value_10">Added Value</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reference_implementation/">Reference Implementation</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../known_limitations/">Shared Responsibility</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Acknowledgements</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Operators Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../operators_guide/concept/">Concept</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../operators_guide/supported_platforms/">Platforms and providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Installation</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operators_guide/installation/quickstart/">Installation process</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">CLI</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/installation/installing_cli/">Installing CG DevX CLI</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/installation/building_cli/">Building CG DevX CLI</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/installation/cli_commands/">CG DevX CLI commands</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">Cloud</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/installation/cloud/aws_setup/">Deploying on AWS</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/installation/cloud/azure_setup/">Deploying on Azure</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">Git</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/installation/vcs/github_setup/">Using GitHub</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/installation/vcs/gitlab_setup/">Using GitLab</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Platform Management</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operators_guide/platform_management/platform_repo/">CG DevX platform GitOps repository</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">Terraform</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/platform_management/iac/vcs_management/">VCS management</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/platform_management/iac/core_infrastructure_management/">Platform infrastructure</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/platform_management/iac/secrets_management/">Secrets management</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/platform_management/iac/users_management/">User management</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/platform_management/iac/core_services/">Core platform services</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">Services</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/platform_management/services/delivery/">Delivery</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/platform_management/services/integration/">Integration</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/platform_management/services/monitoring/">Monitoring</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/platform_management/services/registry/">Registry</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/platform_management/services/secrets/">Secrets Management</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators_guide/platform_management/services/security/">Security</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Workload Management</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operators_guide/workload_management/workloads/">Workloads Quickstart Guide</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../operators_guide/workload_management/cli_commands/">CG DevX CLI Workload Management commands</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../operators_guide/workload_management/bootstrap_templates/">Bootstrap templates</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../operators_guide/workload_management/environments/">Workload Environments</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Delivery Pipelines</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operators_guide/delivery_pipelines/core_services_delivery/">Delivery Pipelines</a>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Developers Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/concept/">Concept</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Workloads</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/workloads/concept/">Workload concept</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/workloads/gitops_environments/">How to Model Your Environments</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Pipelines</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/cd/delivery/">Delivery</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/cd/promotion/">Promotion</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/ci/integration/">Integration</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/ci/argo_workflows/">Argo workflows: basic flows and templates</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/ci/github_action_workflow/">Github Action Workflow Structure</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/ci/build_routine/">Build routine execution</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/ci/kaniko_build/">Image build: Kaniko</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/ci/megalinter/">Megalinter</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/ci/trivy/">Trivy</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/ci/code_quality/">Code quality</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/ci/devsecops/">Devsecops</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Observability</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/observability/monitoring/">Monitoring</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/observability/dashboards/">List of Dashboards</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/observability/log_management/">Log management</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Artifacts</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/artifacts/registry/">Registry</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers_guide/artifacts/registry_proxy/">Registry proxy</a>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Under the hood</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#">Architecture</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../under_the_hood/architecture/">Under the hood</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../under_the_hood/iam/iam/">IAM</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../under_the_hood/network/networking/">Networking</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../under_the_hood/devsecops/devsecops/">DevSecOps</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../under_the_hood/observability/observability/">Observability</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../under_the_hood/runtime/runtime/">Runtime</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../under_the_hood/delivery_pipelines/delivery_pipelines/">Delivery Pipelines</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../under_the_hood/delivery_pipelines/argo_cleanup/">Argo workflows cleanup options</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../under_the_hood/delivery_pipelines/argo_config/">Argo workflows configuration</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../under_the_hood/delivery_pipelines/argo_permissions/">Argo workflows permission scopes</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../under_the_hood/delivery_pipelines/atlantis/">Atlantis</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../under_the_hood/cost_management/cost_management/">Cost Management</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../under_the_hood/workloads/workload_management/">Workload Management</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">CG DevX Guide</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item">CG DevX</li>
+<li class="breadcrumb-item">Capabilities</li>
+<li class="breadcrumb-item active">Capabilities Overview</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="capabilities">Capabilities</h1>
+<h2 id="core-services">Core Services</h2>
+<p><div class="mxgraph" data-mxgraph='{"highlight":"#0000ff","nav":true,"resize":true,"toolbar":"zoom layers tags lightbox","edit":"_blank","xml":"&lt;mxfile host=\"drawio-plugin\" modified=\"2024-08-09T20:33:50.569Z\" agent=\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36\" etag=\"SklfI_b_0prkJaNRCnj_\" version=\"22.1.22\" type=\"embed\" pages=\"17\"&gt;&lt;diagram id=\"30WZSiJqs4U-dFYQl0-q\" name=\"modules\"&gt;    &lt;mxGraphModel dx=\"2440\" dy=\"1161\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"850\" pageHeight=\"1100\" math=\"0\" shadow=\"0\"&gt;      &lt;root&gt;        &lt;mxCell id=\"0\"/&gt;        &lt;mxCell id=\"1\" style=\"\" parent=\"0\"/&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-17\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-1\" target=\"6yjm4zlx42AxHQI20ht1-4\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"yACxhKQ8Fp1Ab2Uv3TDw-1\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-1\" target=\"6yjm4zlx42AxHQI20ht1-6\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"&gt;            &lt;Array as=\"points\"&gt;              &lt;mxPoint x=\"-80\" y=\"390\"/&gt;              &lt;mxPoint x=\"-80\" y=\"600\"/&gt;              &lt;mxPoint x=\"420\" y=\"600\"/&gt;            &lt;/Array&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"yACxhKQ8Fp1Ab2Uv3TDw-6\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-1\" target=\"6yjm4zlx42AxHQI20ht1-8\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-1\" value=\"&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span style=&amp;quot;font-size: 16px; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline;&amp;quot;&amp;gt;Vulnerability analysis&amp;lt;/span&amp;gt;&amp;lt;span id=&amp;quot;docs-internal-guid-8bedb947-7fff-26b5-8b0d-333244aeac9e&amp;quot; style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;\" style=\"rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"-40\" y=\"360\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-18\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-2\" target=\"6yjm4zlx42AxHQI20ht1-4\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"yACxhKQ8Fp1Ab2Uv3TDw-2\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-2\" target=\"6yjm4zlx42AxHQI20ht1-8\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"&gt;            &lt;Array as=\"points\"&gt;              &lt;mxPoint x=\"-80\" y=\"550\"/&gt;              &lt;mxPoint x=\"-80\" y=\"180\"/&gt;              &lt;mxPoint x=\"420\" y=\"180\"/&gt;            &lt;/Array&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"yACxhKQ8Fp1Ab2Uv3TDw-3\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-2\" target=\"6yjm4zlx42AxHQI20ht1-6\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-2\" value=\"&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span style=&amp;quot;font-size: 16px; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline;&amp;quot;&amp;gt;Code Quality&amp;lt;/span&amp;gt;&amp;lt;span id=&amp;quot;docs-internal-guid-8bedb947-7fff-26b5-8b0d-333244aeac9e&amp;quot; style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;\" style=\"rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"-40\" y=\"520\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-20\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-3\" target=\"6yjm4zlx42AxHQI20ht1-4\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-3\" value=\"&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span style=&amp;quot;font-size: 16px; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline;&amp;quot;&amp;gt;Software Catalog&amp;lt;/span&amp;gt;&amp;lt;span id=&amp;quot;docs-internal-guid-8bedb947-7fff-26b5-8b0d-333244aeac9e&amp;quot; style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;br style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;\" style=\"rounded=0;whiteSpace=wrap;html=1;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"160\" y=\"200\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-21\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-4\" target=\"6yjm4zlx42AxHQI20ht1-7\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-22\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-4\" target=\"6yjm4zlx42AxHQI20ht1-6\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-23\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-4\" target=\"6yjm4zlx42AxHQI20ht1-8\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-4\" value=\"&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span style=&amp;quot;font-size: 16px; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline;&amp;quot;&amp;gt;VCS integration&amp;lt;/span&amp;gt;&amp;lt;span id=&amp;quot;docs-internal-guid-8bedb947-7fff-26b5-8b0d-333244aeac9e&amp;quot; style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;\" style=\"rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"160\" y=\"360\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-19\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-5\" target=\"6yjm4zlx42AxHQI20ht1-4\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"yACxhKQ8Fp1Ab2Uv3TDw-5\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-5\" target=\"6yjm4zlx42AxHQI20ht1-6\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"&gt;            &lt;mxPoint x=\"360\" y=\"550.3333333333333\" as=\"targetPoint\"/&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-5\" value=\"&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span style=&amp;quot;font-size: 16px; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline;&amp;quot;&amp;gt;IaC&amp;lt;/span&amp;gt;&amp;lt;span id=&amp;quot;docs-internal-guid-8bedb947-7fff-26b5-8b0d-333244aeac9e&amp;quot; style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;\" style=\"rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"160\" y=\"520\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-27\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-6\" target=\"6yjm4zlx42AxHQI20ht1-10\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-6\" value=\"&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span style=&amp;quot;font-size: 16px; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline;&amp;quot;&amp;gt;Infra&amp;amp;nbsp; CI/CD&amp;lt;/span&amp;gt;&amp;lt;span id=&amp;quot;docs-internal-guid-8bedb947-7fff-26b5-8b0d-333244aeac9e&amp;quot; style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;\" style=\"rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"360\" y=\"520\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-24\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-7\" target=\"6yjm4zlx42AxHQI20ht1-10\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-25\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-7\" target=\"6yjm4zlx42AxHQI20ht1-9\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"tyXvPFDiBGDfMefCPYUr-1\" value=\"\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-7\" target=\"6yjm4zlx42AxHQI20ht1-6\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-7\" value=\"&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span style=&amp;quot;font-size: 16px; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline;&amp;quot;&amp;gt;CD&amp;lt;/span&amp;gt;&amp;lt;span id=&amp;quot;docs-internal-guid-8bedb947-7fff-26b5-8b0d-333244aeac9e&amp;quot; style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;\" style=\"rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"360\" y=\"360\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-26\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-8\" target=\"6yjm4zlx42AxHQI20ht1-9\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-8\" value=\"&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span style=&amp;quot;font-size: 16px; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline;&amp;quot;&amp;gt;App CI&amp;lt;/span&amp;gt;&amp;lt;span id=&amp;quot;docs-internal-guid-8bedb947-7fff-26b5-8b0d-333244aeac9e&amp;quot; style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;\" style=\"rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"360\" y=\"200\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"zWwuIdACPNdKSPB3VL8X-5\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-9\" target=\"6yjm4zlx42AxHQI20ht1-10\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-9\" value=\"&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span style=&amp;quot;font-size: 16px; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline;&amp;quot;&amp;gt;Artifacts management&amp;lt;/span&amp;gt;&amp;lt;span id=&amp;quot;docs-internal-guid-8bedb947-7fff-26b5-8b0d-333244aeac9e&amp;quot; style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;\" style=\"rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"560\" y=\"200\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-10\" value=\"&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span style=&amp;quot;font-size: 16px; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline;&amp;quot;&amp;gt;Runtime&amp;lt;/span&amp;gt;&amp;lt;span id=&amp;quot;docs-internal-guid-8bedb947-7fff-26b5-8b0d-333244aeac9e&amp;quot; style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;\" style=\"rounded=0;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"560\" y=\"360\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"zWwuIdACPNdKSPB3VL8X-6\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-11\" target=\"6yjm4zlx42AxHQI20ht1-10\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-11\" value=\"&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span style=&amp;quot;font-size: 16px; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline;&amp;quot;&amp;gt;Runtime security&amp;lt;/span&amp;gt;&amp;lt;span id=&amp;quot;docs-internal-guid-8bedb947-7fff-26b5-8b0d-333244aeac9e&amp;quot; style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;\" style=\"rounded=0;whiteSpace=wrap;html=1;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"560\" y=\"520\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-33\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-12\" target=\"6yjm4zlx42AxHQI20ht1-13\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-35\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-12\" target=\"6yjm4zlx42AxHQI20ht1-10\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-12\" value=\"&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span style=&amp;quot;font-size: 16px; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline;&amp;quot;&amp;gt;Log management&amp;lt;/span&amp;gt;&amp;lt;span id=&amp;quot;docs-internal-guid-8bedb947-7fff-26b5-8b0d-333244aeac9e&amp;quot; style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;\" style=\"rounded=0;whiteSpace=wrap;html=1;fillColor=#6d8764;fontColor=#ffffff;strokeColor=#3A5431;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"760\" y=\"200\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-34\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" source=\"6yjm4zlx42AxHQI20ht1-13\" target=\"6yjm4zlx42AxHQI20ht1-10\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-13\" value=\"&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span style=&amp;quot;font-size: 16px; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline;&amp;quot;&amp;gt;Workload&amp;amp;nbsp; monitoring&amp;lt;/span&amp;gt;&amp;lt;span id=&amp;quot;docs-internal-guid-8bedb947-7fff-26b5-8b0d-333244aeac9e&amp;quot; style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;\" style=\"rounded=0;whiteSpace=wrap;html=1;fillColor=#6d8764;fontColor=#ffffff;strokeColor=#3A5431;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"760\" y=\"360\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-36\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;exitX=0;exitY=0.5;exitDx=0;exitDy=0;\" parent=\"1\" source=\"zWwuIdACPNdKSPB3VL8X-4\" target=\"6yjm4zlx42AxHQI20ht1-10\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"&gt;            &lt;mxPoint x=\"759.9999999999995\" y=\"550.0769230769229\" as=\"sourcePoint\"/&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-30\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;exitX=0.5;exitY=1;exitDx=0;exitDy=0;\" parent=\"1\" source=\"zWwuIdACPNdKSPB3VL8X-1\" target=\"6yjm4zlx42AxHQI20ht1-11\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"&gt;            &lt;mxPoint x=\"1100\" y=\"540\" as=\"sourcePoint\"/&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-31\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;exitX=0;exitY=0.5;exitDx=0;exitDy=0;\" parent=\"1\" source=\"zWwuIdACPNdKSPB3VL8X-1\" target=\"6yjm4zlx42AxHQI20ht1-13\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"&gt;            &lt;mxPoint x=\"959.9999999999995\" y=\"390\" as=\"sourcePoint\"/&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"6yjm4zlx42AxHQI20ht1-32\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;exitX=0.5;exitY=1;exitDx=0;exitDy=0;\" parent=\"1\" source=\"zWwuIdACPNdKSPB3VL8X-1\" target=\"zWwuIdACPNdKSPB3VL8X-4\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"&gt;            &lt;mxPoint x=\"959.9999999999995\" y=\"390.07692307692287\" as=\"sourcePoint\"/&gt;            &lt;mxPoint x=\"879.9999999999995\" y=\"550\" as=\"targetPoint\"/&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"zWwuIdACPNdKSPB3VL8X-1\" value=\"&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;Incident response\" style=\"rounded=0;whiteSpace=wrap;html=1;fillColor=#6d8764;fontColor=#ffffff;strokeColor=#3A5431;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"960\" y=\"360\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"zWwuIdACPNdKSPB3VL8X-4\" value=\"&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;p style=&amp;quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 16px;&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div style=&amp;quot;font-size: 16px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;Infra&amp;amp;nbsp; monitoring\" style=\"rounded=0;whiteSpace=wrap;html=1;fillColor=#6d8764;fontColor=#ffffff;strokeColor=#3A5431;fontSize=16;align=center;verticalAlign=middle;spacing=2;spacingLeft=2;spacingRight=2;spacingTop=2;fontFamily=Helvetica;\" parent=\"1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"760\" y=\"520\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;      &lt;/root&gt;    &lt;/mxGraphModel&gt;  &lt;/diagram&gt;  &lt;/mxfile&gt;"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+<p>In CG DevX, each module is meticulously crafted and encapsulated to function independently within its designated area of
+usage. This isolation ensures that modules remain self-contained and do not interfere with the functionality of other
+components. Consequently, any changes or updates made to one module have minimal impact on the overall system, promoting
+stability and reliability.</p>
+<h3 id="flexibility-and-customizability">Flexibility and Customizability</h3>
+<p>The modular architecture of CG DevX empowers users to tailor their platform experience to meet their unique
+requirements. Since modules are decoupled and autonomous, users can easily customize individual components without
+affecting the integrity of the entire system. This flexibility enables teams to curate a platform that aligns precisely
+with their specific needs and preferences.</p>
+<h3 id="seamless-module-replacement">Seamless Module Replacement</h3>
+<p>In the dynamic landscape of technology, advancements and innovations are ever-evolving. CG DevX's modular design ensures
+that users can readily embrace new technologies by seamlessly replacing existing modules with improved alternatives.
+This empowers teams to stay at the forefront of technological progress without having to undergo cumbersome and
+disruptive system-wide changes.</p>
+<h3 id="efficient-troubleshooting-and-maintenance">Efficient Troubleshooting and Maintenance</h3>
+<p>Isolated modules simplify the troubleshooting and maintenance process in CG DevX. If an issue arises within a specific
+module, it can be addressed independently without necessitating an extensive system-wide investigation. This targeted
+approach accelerates the resolution of problems, reducing downtime and enhancing the overall platform experience.</p>
+<h2 id="source-code-management">Source Code Management</h2>
+<p>Source code repositories store your business logic services code, manifests, and Infrastructure as Code (IaC). They act
+as a ledger and provide a historical lineage of changes, allowing developers and operators to work collaboratively on
+common codebases.</p>
+<p>CG DevX standardizes workflows associated with code review and automation driven by Git, also known as "GitOps." When
+managed properly, pull requests (and associated changes) can serve as a "system of record" for change control and
+approval in regulatory environments.</p>
+<p>CG DevX provides unified repository management via VCS modules.</p>
+<h3 id="added-value">Added Value</h3>
+<ul>
+<li>Enables asynchronous collaboration on codebases, including:<ul>
+<li>Peer reviews</li>
+<li>Quality gates</li>
+<li>Change request approvals</li>
+</ul>
+</li>
+<li>Centralizes collaboration workflows</li>
+<li>Provides additional control for peer reviews and change request approvals</li>
+<li>Extends VCS quality gate capabilities</li>
+</ul>
+<h2 id="infrastructure-as-code-iac">Infrastructure as Code (IaC)</h2>
+<p>Infrastructure as Code (IaC) uses the foundational elements of Infrastructure as a Service (IaaS) to streamline and
+standardize the deployment of various cloud resources. By offering a programmatic approach to infrastructure management,
+IaC simplifies the development of systems that are both scalable and adaptable to specific organizational needs.</p>
+<h3 id="key-features-of-iac-at-cg-devx">Key Features of IaC at CG DevX</h3>
+<ol>
+<li>
+<p><strong>Unified Template Library</strong>
+   CG DevX provides a comprehensive collection of IaC templates, enabling quick deployment and management of
+   infrastructure across various cloud environments. This library serves as a resource for both creating new projects
+   and scaling existing applications.</p>
+</li>
+<li>
+<p><strong>Development of Advanced Resources</strong>
+   Our IaC framework allows teams to develop complex, higher-order resources that align closely with business
+   objectives, going beyond basic cloud provider offerings to deliver tailored functionality.</p>
+</li>
+<li>
+<p><strong>Enforcement of Best Practices</strong>
+   By embedding sensible defaults and strong security protocols into infrastructure configurations, CG DevX ensures
+   deployments comply with both industry standards and the organization's internal security policies.</p>
+</li>
+</ol>
+<h3 id="approaches-to-infrastructure-management">Approaches to Infrastructure Management</h3>
+<p>CG DevX supports multiple reconciliation strategies to accommodate different team needs:</p>
+<ul>
+<li>
+<p><strong>Occasional Reconciliation Tools</strong>
+  Platforms such as Terraform and AWS CloudFormation are integrated into our workflow to manage infrastructure with
+  periodic updates, providing stability and control over when changes are applied.</p>
+</li>
+<li>
+<p><strong>Continuous Reconciliation Tools</strong>
+  Tools such as Crossplane are used for environments where continuous updates are crucial. These tools maintain constant
+  synchronization with the desired infrastructure state, ideal for dynamic and rapidly evolving cloud landscapes.</p>
+</li>
+</ul>
+<h3 id="preferred-iac-tools">Preferred IaC Tools</h3>
+<ul>
+<li><strong>For Workload IaC</strong>: Terraform and Crossplane are recommended for their robustness and flexibility, supporting both
+  static and dynamic environments respectively.</li>
+<li><strong>For Platform IaC Management</strong>: Terraform is the primary tool, trusted for its comprehensive feature set and
+  reliability in maintaining consistent infrastructure states across deployments.</li>
+</ul>
+<h3 id="integration-with-kubernetes">Integration with Kubernetes</h3>
+<p>The use of Kubernetes alongside IaC tools like Crossplane enhances our capability to manage resources seamlessly and
+efficiently. This integration is pivotal in achieving real-time, automated updates and maintaining system integrity
+across our operational landscape.</p>
+<h2 id="continuous-integration-ci">Continuous Integration (CI)</h2>
+<p>Continuous Integration (CI) refers to the build and unit testing stages of the release process. As workflows become more
+complex, CI can also orchestrate tasks to make the application ready for delivery. This includes running tests (unit
+tests, smoke tests, integration tests, acceptance tests, etc.), validations, and verifications.</p>
+<h3 id="added-value_1">Added Value</h3>
+<ul>
+<li>Defines imperative steps to be completed</li>
+<li>Uses a DSL for describing directional workflow graphs</li>
+<li>Enables side effects like notifications or manual interventions</li>
+</ul>
+<h2 id="continuous-delivery-cd">Continuous Delivery (CD)</h2>
+<p>The primary aim of Continuous Delivery (CD) is to prepare infrastructure and applications to efficiently handle
+production-level demands.</p>
+<h3 id="adoption-of-gitops">Adoption of GitOps</h3>
+<p>GitOps represents an evolving approach within CD, where automation ensures alignment between the intended and actual
+states of system resources. This connection is maintained through a Git repository, which acts as the definitive source
+for application and infrastructure definitions. Changes to this repository trigger updates via controllers such as
+ArgoCD and FluxCD, ensuring system consistency. Although ArgoCD and FluxCD are similar, they can operate together,
+improving both flexibility and coverage.</p>
+<h3 id="added-value_2">Added Value</h3>
+<ul>
+<li><strong>Automation Benefits</strong>: Each successful code merge triggers automated processes to build, test, and release updates,
+  streamlining the deployment cycle.</li>
+<li><strong>Continuous Deployment</strong>: With this feature enabled, updates are seamlessly transitioned into live environments,
+  achieving a state of constant readiness and deployment without manual intervention.</li>
+<li><strong>Enhanced Testing</strong>: CD supports extensive testing regimes that extend well beyond basic checks, incorporating
+  comprehensive E2E or functional testing, often within preview environments.</li>
+<li><strong>Risk-Managed Deployments</strong>: Incorporates methods like Blue/Green or Canary deployments, which introduce new versions
+  alongside the old, reducing rollout risks.</li>
+<li><strong>Feature Management</strong>: Utilizes feature flags to manage the exposure of new functionalities, allowing controlled and
+  incremental user exposure.</li>
+<li><strong>Operational Efficiency</strong>: Accelerates delivery, reduces time to market, and enhances the feedback loop, leading to
+  quicker identification of issues and adjustments.</li>
+</ul>
+<h2 id="secrets-management">Secrets Management</h2>
+<p>Secrets Management provides long-term secured storage and management for sensitive data (passwords, secrets, access
+keys, certificates, etc.). Similar to VCS, it offers versioning and metadata capabilities, combined with stricter access
+controls and auditing. The storage is also encrypted and can integrate with Hardware Security Modules (HSMs). Secrets
+Management may also offer the ability to generate, lease, rotate, and revoke secrets.</p>
+<p>CG DevX's reference implementation is based on Hashicorp Vault, integrated with cloud-specific services via cloud
+provider module abstraction, such as AWS Secrets Manager or Azure Key Vault.</p>
+<h3 id="added-value_3">Added Value</h3>
+<ul>
+<li>Secure and durable storage</li>
+<li>Uses a simple key-value pair data structure</li>
+<li>Data is encrypted</li>
+<li>Values can be extended with metadata</li>
+<li>Values can be versioned</li>
+<li>Provides tight access control</li>
+<li>May offer the ability to generate, lease, rotate, and revoke secrets</li>
+</ul>
+<h2 id="identity-and-access">Identity and Access</h2>
+<p>CG DevX offers Identity and Access management as part of the platform. By unifying and centralizing this critical
+functionality, CG DevX allows other core services to offload proof of identity and access management to the platform.
+This improves the maintainability of the system and makes access policies more transparent.</p>
+<p>CG DevX uses Hashicorp Vault OIDC capabilities but can be integrated with other providers such as Active Directory,
+Okta, etc.</p>
+<h3 id="added-value_4">Added Value</h3>
+<ul>
+<li>Provides Single Sign-On (SSO)</li>
+<li>Reduces duplication of effort</li>
+<li>Identity can be federated</li>
+</ul>
+<h2 id="artifact-registries">Artifact Registries</h2>
+<p>Artifact registries serve as centralized storage for artifacts produced by the CI pipeline. They can also act as proxy
+registries for common external registries, such as DockerHub, Quay, and GCR. This integration with external registries
+can be bidirectional, allowing offloading of artifacts to external repositories, contributing to Business Continuity and
+Disaster Recovery. It provides integration with static code analysis tools, enabling secure software supply chain (SSSC)
+best practices.</p>
+<h3 id="added-value_5">Added Value</h3>
+<ul>
+<li>Long-term artifact storage</li>
+<li>Provides built-in Role-Based Access Control (RBAC) to limit access to artifacts</li>
+<li>Versioned and immutable</li>
+<li>Integrated with static analysis tools to detect known vulnerabilities in artifacts</li>
+<li>Can be extended with cryptographic signing, enabling consistency and integrity verification</li>
+</ul>
+<h2 id="developer-portal">Developer Portal</h2>
+<p>The Developer Portal is a key productivity tool that serves as a high-order interface for all the underlying tooling and
+services, presenting them in a user-friendly manner. CG DevX integrates with Backstage to provide a single pane of glass
+for developer productivity solutions.</p>
+<h3 id="added-value_6">Added Value</h3>
+<ul>
+<li>Software catalog of all components, systems, and domains, and their cross-dependencies</li>
+<li>Documentation system using the docs-as-code approach, where docs are typically in Markdown and stored in code
+  repositories</li>
+<li>Catalog of templates for creating new projects or consuming services</li>
+<li>Trust and security onboarding automation</li>
+</ul>
+<h2 id="observability">Observability</h2>
+<p>Gain deep insights into the health and performance of your platform and workloads. Log and telemetry data collection and
+visualization tools track the health of the system. CG DevX integrates seamlessly with Prometheus, Loki, and Grafana.</p>
+<h3 id="added-value_7">Added Value</h3>
+<ul>
+<li>Provides insights on system behavior</li>
+<li>Enables near real-time visibility of system events</li>
+<li>Offers logs and metrics-based alerts</li>
+</ul>
+<h2 id="gitops-and-pr-automation">GitOps and PR Automation</h2>
+<p>CG DevX offers robust CI/CD capabilities to accelerate your software delivery lifecycle. Set up seamless pipelines to
+automate building, testing, and deploying your applications. Integrate with popular version control systems like Git,
+and choose from a range of deployment strategies such as rolling updates and canary deployments. Effortlessly deliver
+your applications with confidence.</p>
+<h2 id="governance-and-validation">Governance and Validation</h2>
+<p>While "shift left" empowers developers and gives them almost complete control over their workloads, this power comes
+with great responsibility. Without proper guardrails, it is impossible to protect the platform from human errors such as
+misconfiguration, wide access policies, and misplaced labels.</p>
+<p>Platforms can use specifications to validate all client interactions with the system. The end goal is to make suspicious
+or unwanted interactions with the platform visible to operators. For instance, Kubernetes offers a built-in policy-based
+validation engine when working with its APIs. However, such behavior can be detected and prevented early by providing
+additional checks within many services in the platform toolbox. Admission control can also be a common substrate for
+injecting policy controls or building guardrails within the platform to meet security or regulatory requirements.</p>
+<h3 id="added-value_8">Added Value</h3>
+<ul>
+<li>Ensures internal policies are obeyed</li>
+<li>Kubernetes can enable a common policy plane</li>
+<li>Prevents security issues by detecting issues in the early stages</li>
+</ul>
+<h2 id="workload-runtime">Workload Runtime</h2>
+<p>This is the main platform runtime and can also be considered a deployment target for the applications that make up the
+platform. Kubernetes provides the compute substrate and foundation for platform capabilities.</p>
+<h2 id="incident-response-and-automation">Incident Response and Automation</h2>
+<p>The goal of incident response is to ensure quick and efficient resolution to incidents detected by the observability
+stack. It usually serves as a dedicated communication channel for collaborating on resolving incidents. It can also
+leverage run-books to automate repetitive tasks and improve incident response times.</p>
+<h3 id="added-value_9">Added Value</h3>
+<ul>
+<li>Detect, triage, and resolve incidents</li>
+<li>Foster collaboration among teams responsible for incident response</li>
+</ul>
+<h2 id="cost-management">Cost Management</h2>
+<p>Cost Management allows transparent resource ownership and lineage tracking, improving overall cost visibility and
+enabling cost attribution. It provides insights into resource usage, helps identify cost-saving opportunities, and
+implements effective cost-optimization strategies. Some cost-saving opportunities like resource cleanup and on/off
+schedules can be automated. It integrates with governance and enables cloud and Kubernetes resource labeling.</p>
+<h3 id="added-value_10">Added Value</h3>
+<ul>
+<li>Cost attribution back to a service, team, or consumer of the service</li>
+<li>Rightsizing and cost optimization recommendations</li>
+<li>Visualize spending over time to detect unwanted changes</li>
+</ul>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../../approach/" title="Concept"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../reference_implementation/" title="Reference Implementation">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../../approach/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../reference_implementation/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="../../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script src="https://viewer.diagrams.net/js/viewer-static.min.js"></script></body>
+</html>

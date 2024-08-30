@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="alexu@cloudgeometry.io" name="author"/>
+<link href="../../../img/favicon.ico" rel="shortcut icon"/>
+<title>Delivery Pipelines - CG DevX Guide</title>
+<link href="../../../css/theme.css" rel="stylesheet"/>
+<link href="../../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Delivery Pipelines";
+        var mkdocs_page_input_path = "operators_guide/delivery_pipelines/core_services_delivery.md";
+        var mkdocs_page_url = null;
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/hcl.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../.."> CG DevX Guide
+        </a><div role="search">
+<form action="../../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">CG DevX</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../platform_engineering/">Platform Engineering</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cgdevx/">Why CG DevX</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../approach/">Concept</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Capabilities</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../capabilities/capabilities/">Capabilities Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../capabilities/reference_implementation/">Reference Implementation</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../capabilities/known_limitations/">Shared Responsibility</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/">Acknowledgements</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Operators Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../concept/">Concept</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../supported_platforms/">Platforms and providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Installation</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation/quickstart/">Installation process</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">CLI</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../installation/installing_cli/">Installing CG DevX CLI</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../installation/building_cli/">Building CG DevX CLI</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../installation/cli_commands/">CG DevX CLI commands</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">Cloud</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../installation/cloud/aws_setup/">Deploying on AWS</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../installation/cloud/azure_setup/">Deploying on Azure</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">Git</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../installation/vcs/github_setup/">Using GitHub</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../installation/vcs/gitlab_setup/">Using GitLab</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Platform Management</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../platform_management/platform_repo/">CG DevX platform GitOps repository</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">Terraform</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../platform_management/iac/vcs_management/">VCS management</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../platform_management/iac/core_infrastructure_management/">Platform infrastructure</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../platform_management/iac/secrets_management/">Secrets management</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../platform_management/iac/users_management/">User management</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../platform_management/iac/core_services/">Core platform services</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">Services</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../platform_management/services/delivery/">Delivery</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../platform_management/services/integration/">Integration</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../platform_management/services/monitoring/">Monitoring</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../platform_management/services/registry/">Registry</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../platform_management/services/secrets/">Secrets Management</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../platform_management/services/security/">Security</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Workload Management</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../workload_management/workloads/">Workloads Quickstart Guide</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../workload_management/cli_commands/">CG DevX CLI Workload Management commands</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../workload_management/bootstrap_templates/">Bootstrap templates</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../workload_management/environments/">Workload Environments</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Delivery Pipelines</a>
+<ul class="current">
+<li class="toctree-l2 current"><a class="reference internal current" href="./">Delivery Pipelines</a>
+<ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#iac-pipeline">IaC Pipeline</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#automatic-plans-with-atlantis">Automatic Plans With Atlantis</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#apply-and-merge">Apply and Merge</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#core-services">Core Services</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Developers Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/concept/">Concept</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Workloads</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/workloads/concept/">Workload concept</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/workloads/gitops_environments/">How to Model Your Environments</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Pipelines</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/cd/delivery/">Delivery</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/cd/promotion/">Promotion</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/integration/">Integration</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/argo_workflows/">Argo workflows: basic flows and templates</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/github_action_workflow/">Github Action Workflow Structure</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/build_routine/">Build routine execution</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/kaniko_build/">Image build: Kaniko</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/megalinter/">Megalinter</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/trivy/">Trivy</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/code_quality/">Code quality</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/ci/devsecops/">Devsecops</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Observability</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/observability/monitoring/">Monitoring</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/observability/dashboards/">List of Dashboards</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/observability/log_management/">Log management</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Artifacts</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/artifacts/registry/">Registry</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developers_guide/artifacts/registry_proxy/">Registry proxy</a>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Under the hood</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#">Architecture</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/architecture/">Under the hood</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/iam/iam/">IAM</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/network/networking/">Networking</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/devsecops/devsecops/">DevSecOps</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/observability/observability/">Observability</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/runtime/runtime/">Runtime</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/delivery_pipelines/delivery_pipelines/">Delivery Pipelines</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/delivery_pipelines/argo_cleanup/">Argo workflows cleanup options</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/delivery_pipelines/argo_config/">Argo workflows configuration</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/delivery_pipelines/argo_permissions/">Argo workflows permission scopes</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/delivery_pipelines/atlantis/">Atlantis</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/cost_management/cost_management/">Cost Management</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../under_the_hood/workloads/workload_management/">Workload Management</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../..">CG DevX Guide</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
+<li class="breadcrumb-item">Operators Guide</li>
+<li class="breadcrumb-item">Delivery Pipelines</li>
+<li class="breadcrumb-item active">Delivery Pipelines</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="delivery-pipelines">Delivery Pipelines</h1>
+<p>The <a href="../../platform_management/platform_repo/">platform repository</a> provides two flows of platform delivery:
+one for IaC changes, and another for K8s manifests of core services.</p>
+<h2 id="iac-pipeline">IaC Pipeline</h2>
+<p>Often, when using Terraform or other IaC tools, changes to the infrastructure are applied directly from the local
+machine using the CLI (which we find to be a terrible practice), or via Infrastructure as Code (IaC), which is better
+but still lacks collaboration. CG DevX changes the IaC practice to be more GitOps-oriented by managing (planning and
+applying) Terraform changes using an automation tool called Atlantis.</p>
+<p>These changes allow implementing
+most <a href="https://github.com/open-gitops/documents/blob/main/PRINCIPLES.md">GitOps principles</a> as:</p>
+<ul>
+<li>Terraform is declarative.</li>
+<li>By storing Terraform files in Git, we make them versioned and immutable.</li>
+<li>Changes will be tracked and applied automatically.</li>
+</ul>
+<blockquote>
+<p>Note: It's not possible to be 100% true to GitOps principles while using Terraform or any other tool that has a state
+not stored in Git.</p>
+</blockquote>
+<p>By using the GitOps approach and Atlantis, we provide better version history, enhance collaboration, and give better
+visibility of changes. By keeping a complete history of the changes, we also make it easier to roll back. Atlantis also
+provides a locking mechanism, which prevents possible conflicts when working in a shared environment.</p>
+<h3 id="automatic-plans-with-atlantis">Automatic Plans With Atlantis</h3>
+<p>Any change request that includes a <code>.tf</code> file will trigger Atlantis to run your Terraform plan. Atlantis will post the
+plan's result to your PR as a comment.</p>
+<p>At that point, you can review and approve the PR. The default requirement for a PR to be processed by Atlantis is to
+have one approval from anyone who is not the owner of the PR.</p>
+<p>You can always run a new Terraform plan for your PR by adding a comment that says <code>atlantis plan</code>.</p>
+<h3 id="apply-and-merge">Apply and Merge</h3>
+<p>To merge the PR, add the comment <code>atlantis apply</code>. This will prompt Atlantis to run <code>terraform apply</code>.</p>
+<p>The results of the <code>apply</code> operation will be added to the PR as comments.</p>
+<p>If the <code>apply</code> is successful, your change will be automatically merged into <code>main</code>, the PR will be closed, the branch
+deleted, and the state lock will be removed in Atlantis.</p>
+<p><div class="mxgraph" data-mxgraph='{"highlight":"#0000ff","nav":true,"resize":true,"toolbar":"zoom layers tags lightbox","edit":"_blank","xml":"&lt;mxfile host=\"drawio-plugin\" modified=\"2024-08-09T20:33:50.569Z\" agent=\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36\" etag=\"SklfI_b_0prkJaNRCnj_\" version=\"22.1.22\" type=\"embed\" pages=\"17\"&gt;&lt;diagram name=\"delivery_iac\" id=\"7NX8Sk5lTDuj79tFoyMo\"&gt;    &lt;mxGraphModel dx=\"763\" dy=\"1161\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"827\" pageHeight=\"1169\" math=\"0\" shadow=\"0\"&gt;      &lt;root&gt;        &lt;mxCell id=\"ZpjJw1joLAkebeV_-XDx-0\"/&gt;        &lt;mxCell id=\"ZpjJw1joLAkebeV_-XDx-1\" parent=\"ZpjJw1joLAkebeV_-XDx-0\"/&gt;        &lt;mxCell id=\"ZpjJw1joLAkebeV_-XDx-2\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=14;\" parent=\"ZpjJw1joLAkebeV_-XDx-1\" source=\"ZpjJw1joLAkebeV_-XDx-4\" target=\"ZpjJw1joLAkebeV_-XDx-6\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"3jgYWyaU_wRnb3UTr2rq-3\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;\" parent=\"ZpjJw1joLAkebeV_-XDx-1\" source=\"ZpjJw1joLAkebeV_-XDx-4\" target=\"ZpjJw1joLAkebeV_-XDx-18\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"3jgYWyaU_wRnb3UTr2rq-7\" value=\"&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Infrastructure&amp;lt;br style=&amp;quot;border-color: var(--border-color);&amp;quot;&amp;gt;change&amp;lt;br style=&amp;quot;border-color: var(--border-color);&amp;quot;&amp;gt;management&amp;lt;/font&amp;gt;\" style=\"edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];\" parent=\"3jgYWyaU_wRnb3UTr2rq-3\" connectable=\"0\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"-0.1789\" y=\"3\" relative=\"1\" as=\"geometry\"&gt;            &lt;mxPoint y=\"1\" as=\"offset\"/&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"ZpjJw1joLAkebeV_-XDx-4\" value=\"Pull Request\" style=\"rounded=1;whiteSpace=wrap;html=1;fontSize=14;\" parent=\"ZpjJw1joLAkebeV_-XDx-1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"1040\" y=\"140\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"ZpjJw1joLAkebeV_-XDx-6\" value=\"GitHub Actions\" style=\"rounded=1;whiteSpace=wrap;html=1;fontSize=14;\" parent=\"ZpjJw1joLAkebeV_-XDx-1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"1040\" y=\"40\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"ZpjJw1joLAkebeV_-XDx-15\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;\" parent=\"ZpjJw1joLAkebeV_-XDx-1\" source=\"ZpjJw1joLAkebeV_-XDx-14\" target=\"ZpjJw1joLAkebeV_-XDx-19\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"ZpjJw1joLAkebeV_-XDx-16\" value=\"Infrastructure &amp;lt;br&amp;gt;provisioning\" style=\"edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=14;\" parent=\"ZpjJw1joLAkebeV_-XDx-15\" connectable=\"0\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"0.0167\" y=\"-1\" relative=\"1\" as=\"geometry\"&gt;            &lt;mxPoint as=\"offset\"/&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"3jgYWyaU_wRnb3UTr2rq-2\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\" parent=\"ZpjJw1joLAkebeV_-XDx-1\" source=\"ZpjJw1joLAkebeV_-XDx-18\" target=\"ZpjJw1joLAkebeV_-XDx-14\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"3jgYWyaU_wRnb3UTr2rq-4\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;\" parent=\"ZpjJw1joLAkebeV_-XDx-1\" source=\"ZpjJw1joLAkebeV_-XDx-18\" target=\"ZpjJw1joLAkebeV_-XDx-4\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"3jgYWyaU_wRnb3UTr2rq-6\" value=\"&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;PR Annotation&amp;lt;/font&amp;gt;\" style=\"edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];\" parent=\"3jgYWyaU_wRnb3UTr2rq-4\" connectable=\"0\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"-0.1684\" y=\"1\" relative=\"1\" as=\"geometry\"&gt;            &lt;mxPoint as=\"offset\"/&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"ZpjJw1joLAkebeV_-XDx-18\" value=\"Atlantis\" style=\"rounded=1;whiteSpace=wrap;html=1;fontSize=14;\" parent=\"ZpjJw1joLAkebeV_-XDx-1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"1240\" y=\"220\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"ZpjJw1joLAkebeV_-XDx-19\" value=\"Cloud API\" style=\"rounded=1;whiteSpace=wrap;html=1;fontSize=14;\" parent=\"ZpjJw1joLAkebeV_-XDx-1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"1460\" y=\"330\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"ZpjJw1joLAkebeV_-XDx-20\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;\" parent=\"ZpjJw1joLAkebeV_-XDx-1\" source=\"ZpjJw1joLAkebeV_-XDx-23\" target=\"ZpjJw1joLAkebeV_-XDx-4\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"ZpjJw1joLAkebeV_-XDx-23\" value=\"GitOps Repository\" style=\"rounded=1;whiteSpace=wrap;html=1;fontSize=14;\" parent=\"ZpjJw1joLAkebeV_-XDx-1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"860\" y=\"140\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"ZpjJw1joLAkebeV_-XDx-14\" value=\"Terraform\" style=\"rounded=1;whiteSpace=wrap;html=1;fontSize=14;\" parent=\"ZpjJw1joLAkebeV_-XDx-1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"1240\" y=\"330\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;      &lt;/root&gt;    &lt;/mxGraphModel&gt;  &lt;/diagram&gt;  &lt;/mxfile&gt;"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+<h2 id="core-services">Core Services</h2>
+<p>CG DevX core services use GitOps and are delivered by the continuous delivery tool ArgoCD. It manages all core services
+and workloads across all K8s clusters. ArgoCD is a straightforward mechanism for managing:</p>
+<ul>
+<li>Helm charts, versions, configuration overrides, etc.</li>
+<li>Plain K8s manifests</li>
+<li>K8s manifests with <a href="https://kustomize.io/">Kustomize</a></li>
+</ul>
+<p>The configuration for all the services installed on your K8s cluster can be found in the platform GitOps repository
+under the path <code>/gitops-pipelines/delivery/clusters/cc-cluster/core-services</code>.</p>
+<p>Files are organized in a logical sequence and contain definitions for a service source, destination, and configuration
+overrides. Core services are built using an "App of Apps" pattern to form one registry.</p>
+<p>As the desired state is described declaratively in the GitOps repository, once you change it, it will be detected by
+ArgoCD, which will reconcile the state. In other words, any apps in Kubernetes that need to be added or adjusted will
+automatically sync with the state defined in Git.</p>
+<p>For more details, please check the ArgoCD <a href="https://argo-cd.readthedocs.io/en/stable/">documentation</a>.</p>
+<p><div class="mxgraph" data-mxgraph='{"highlight":"#0000ff","nav":true,"resize":true,"toolbar":"zoom layers tags lightbox","edit":"_blank","xml":"&lt;mxfile host=\"drawio-plugin\" modified=\"2024-08-09T20:33:50.569Z\" agent=\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36\" etag=\"SklfI_b_0prkJaNRCnj_\" version=\"22.1.22\" type=\"embed\" pages=\"17\"&gt;&lt;diagram name=\"delivery_platform\" id=\"FqLc2F0YI5Mk2ptFlPcB\"&gt;    &lt;mxGraphModel dx=\"1590\" dy=\"1161\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"827\" pageHeight=\"1169\" math=\"0\" shadow=\"0\"&gt;      &lt;root&gt;        &lt;mxCell id=\"bYiX7txiLk3D3ldBV4NR-0\"/&gt;        &lt;mxCell id=\"bYiX7txiLk3D3ldBV4NR-1\" parent=\"bYiX7txiLk3D3ldBV4NR-0\"/&gt;        &lt;mxCell id=\"P16i6ORkjTimeMqjxWlu-1\" value=\"&amp;lt;span style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Artifact Pull&amp;lt;/span&amp;gt;\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;\" parent=\"bYiX7txiLk3D3ldBV4NR-1\" source=\"P16i6ORkjTimeMqjxWlu-0\" target=\"bYiX7txiLk3D3ldBV4NR-27\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"bYiX7txiLk3D3ldBV4NR-9\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=14;exitX=0.5;exitY=1;exitDx=0;exitDy=0;startArrow=classic;startFill=1;\" parent=\"bYiX7txiLk3D3ldBV4NR-1\" source=\"bYiX7txiLk3D3ldBV4NR-14\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"&gt;            &lt;mxPoint x=\"140\" y=\"390\" as=\"targetPoint\"/&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"bYiX7txiLk3D3ldBV4NR-10\" value=\"&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Push/Pull&amp;lt;/font&amp;gt;\" style=\"edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];\" parent=\"bYiX7txiLk3D3ldBV4NR-9\" connectable=\"0\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"-0.0414\" y=\"-1\" relative=\"1\" as=\"geometry\"&gt;            &lt;mxPoint as=\"offset\"/&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"bYiX7txiLk3D3ldBV4NR-12\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;\" parent=\"bYiX7txiLk3D3ldBV4NR-1\" source=\"bYiX7txiLk3D3ldBV4NR-14\" target=\"bYiX7txiLk3D3ldBV4NR-28\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"bYiX7txiLk3D3ldBV4NR-13\" value=\"&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Manifest Pull&amp;lt;/font&amp;gt;\" style=\"edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];\" parent=\"bYiX7txiLk3D3ldBV4NR-12\" connectable=\"0\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"0.0538\" y=\"-3\" relative=\"1\" as=\"geometry\"&gt;            &lt;mxPoint y=\"-27\" as=\"offset\"/&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"bYiX7txiLk3D3ldBV4NR-14\" value=\"GitOps Repository\" style=\"rounded=1;whiteSpace=wrap;html=1;fontSize=14;\" parent=\"bYiX7txiLk3D3ldBV4NR-1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"80\" y=\"270\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"bYiX7txiLk3D3ldBV4NR-22\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\" parent=\"bYiX7txiLk3D3ldBV4NR-1\" source=\"bYiX7txiLk3D3ldBV4NR-24\" target=\"bYiX7txiLk3D3ldBV4NR-28\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"bYiX7txiLk3D3ldBV4NR-23\" value=\"&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;GitOps sync&amp;lt;/font&amp;gt;\" style=\"edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];\" parent=\"bYiX7txiLk3D3ldBV4NR-22\" connectable=\"0\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"-0.3\" y=\"-1\" relative=\"1\" as=\"geometry\"&gt;            &lt;mxPoint as=\"offset\"/&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"bYiX7txiLk3D3ldBV4NR-24\" value=\"ArgoCD\" style=\"rounded=1;whiteSpace=wrap;html=1;fontSize=14;\" parent=\"bYiX7txiLk3D3ldBV4NR-1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"80\" y=\"390\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"bYiX7txiLk3D3ldBV4NR-25\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;\" parent=\"bYiX7txiLk3D3ldBV4NR-1\" source=\"bYiX7txiLk3D3ldBV4NR-27\" target=\"bYiX7txiLk3D3ldBV4NR-28\" edge=\"1\"&gt;          &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"bYiX7txiLk3D3ldBV4NR-26\" value=\"&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Artifact Pull&amp;lt;/font&amp;gt;\" style=\"edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];\" parent=\"bYiX7txiLk3D3ldBV4NR-25\" connectable=\"0\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"-0.04\" relative=\"1\" as=\"geometry\"&gt;            &lt;mxPoint as=\"offset\"/&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"bYiX7txiLk3D3ldBV4NR-27\" value=\"Harbor&amp;lt;br&amp;gt;Proxy Registry\" style=\"rounded=1;whiteSpace=wrap;html=1;fontSize=14;\" parent=\"bYiX7txiLk3D3ldBV4NR-1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"400\" y=\"520\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"bYiX7txiLk3D3ldBV4NR-28\" value=\"K8 cluster\" style=\"rounded=1;whiteSpace=wrap;html=1;fontSize=14;\" parent=\"bYiX7txiLk3D3ldBV4NR-1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"180\" y=\"520\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"P16i6ORkjTimeMqjxWlu-0\" value=\"Registry\" style=\"rounded=1;whiteSpace=wrap;html=1;fontSize=14;\" parent=\"bYiX7txiLk3D3ldBV4NR-1\" vertex=\"1\"&gt;          &lt;mxGeometry x=\"620\" y=\"520\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;      &lt;/root&gt;    &lt;/mxGraphModel&gt;  &lt;/diagram&gt;  &lt;/mxfile&gt;"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../../workload_management/environments/" title="Workload Environments"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../../../developers_guide/concept/" title="Concept">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../../workload_management/environments/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../../../developers_guide/concept/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../../..";</script>
+<script src="../../../js/theme_extra.js"></script>
+<script src="../../../js/theme.js"></script>
+<script src="../../../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script src="https://viewer.diagrams.net/js/viewer-static.min.js"></script></body>
+</html>
