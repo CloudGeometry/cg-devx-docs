@@ -23,6 +23,7 @@ nav:
           - 'Cloud':
               - operators_guide/installation/cloud/aws_setup.md
               - operators_guide/installation/cloud/azure_setup.md
+              - operators_guide/installation/cloud/gcp_setup.md
           - 'Git':
               - operators_guide/installation/vcs/github_setup.md
               - operators_guide/installation/vcs/gitlab_setup.md
