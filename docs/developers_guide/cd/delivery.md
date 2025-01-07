@@ -2,8 +2,6 @@
 
 The CG DevX reference implementation provides continuous delivery using a tool called ArgoCD. ArgoCD is a declarative, GitOps-based continuous delivery tool for Kubernetes applications. This guide provides a beginner-friendly walkthrough on how to work with ArgoCD to manage application deployments in CGDevX.
 
----
-
 ## Overview
 
 ArgoCD integrates seamlessly with CGDevX to automate the deployment and synchronization of Kubernetes applications. It continuously monitors the **GitOps Repository** for changes and updates your cluster automatically. This guide will help you:
@@ -11,8 +9,6 @@ ArgoCD integrates seamlessly with CGDevX to automate the deployment and synchron
 - Understand ArgoCD's core concepts.
 - Learn how to navigate the ArgoCD UI.
 - Deploy, monitor, and troubleshoot applications using ArgoCD.
-
----
 
 ## Core Concepts
 
@@ -26,8 +22,6 @@ The GitOps repository stores Kubernetes manifests, ArgoCD application configurat
 
 ### **Sync**
 The process of aligning the desired state (as defined in the GitOps Repository) with the live state in the Kubernetes cluster.
-
----
 
 ## Setting Up ArgoCD for Your Workload
 
@@ -59,8 +53,6 @@ statistics on the pod and node level, and ingress configuration.
 ![argocd_workload_environment_resource.png](../../assets/argocd_workload_environment_resource.png)
 ![argocd_workload_environment_network.png](../../assets/argocd_workload_environment_network.png)
 
----
-
 ### 2. **Deploying an Application**
 
 ArgoCD automatically detects and deploys applications defined in the GitOps Repository. To deploy a workload:
@@ -72,8 +64,6 @@ ArgoCD will automatically sync the changes and deploy the application to your cl
 
 ![argocd_workload.png](../../assets/argocd_workload.png)
 
----
-
 ### 3. **Syncing Your Application**
 
 ArgoCD will continuously monitor the GitOps Repository, but you can also trigger a manual sync:
@@ -83,8 +73,6 @@ ArgoCD will continuously monitor the GitOps Repository, but you can also trigger
 3. Monitor the sync process and confirm successful deployment.  
 
    ![argocd_sync.png](../../assets/argocd_sync.png)
-
----
 
 ## Troubleshooting Common Issues
 
@@ -105,8 +93,6 @@ ArgoCD will continuously monitor the GitOps Repository, but you can also trigger
 - **Solution**:
   1. Check ArgoCD's connectivity to the GitOps Repository.
   2. Trigger a manual sync in the dashboard.
-
----
 
 ## Additional Resources
 
