@@ -36,22 +36,19 @@ Checks out the workload repository
 n3["`**argo_cli_install**
 Installs the Argo CLI for workflow submission
 `"]-->
-n4["`**check conditions**
-Detect modified services by comparing tags and prepare a list
-`"]-->
-n5["`**build**`"
-Submit _build-wow-wf_ Kaniko workflow to build Docker images and push to Harbor
+n4["`**build**`"
+Detects modified services and submits the _build-wow-wf_ argo workflow to build Docker images for them using Kaniko
 ]-- if any build fails, exit -->
-n6["`**trivy_libs**
+n5["`**trivy_libs**
 Submits _trivy-libs-wf_ argo workflow to scan shared libraries with Trivy (if workload follows _#quot;apps#quot;_ structure)
 `"]-->
-n7["`**registry_put**
+n6["`**registry_put**
 Submits _crane-p-wf_ argo workflow to tag and push built images to Harbor
 `"]-- if any push fails, exit -->
-n8["`**up_tags**
+n7["`**up_tags**
 Submits _crane-img-tag-wf_ argo workflow to update tags for unchanged services in apps structure
 `"]-->
-n9["`**version_change**
+n8["`**version_change**
 Submits _version_changer-wf_ argo workflow to update GitOps manifests with new image tags
 `"]
 ```
