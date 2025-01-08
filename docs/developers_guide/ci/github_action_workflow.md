@@ -1,6 +1,6 @@
 # Github Action Workflow Structure
 
-The **Multi-Service Parallel Build** workflow in CGDevX automates the process of building, testing, and pushing container images for your workload. It is designed to handle multiple services efficiently, making it ideal for microservices architectures.
+The **multi_service_parallel_build** GA workflow in CGDevX automates the process of building, testing, and pushing container images for your workload. It is designed to handle multiple services efficiently, making it ideal for microservices architectures.
 
 ## What Does This Workflow Do?
 
@@ -8,67 +8,59 @@ The workflow focuses on the following tasks:
 
 1. **Build Container Images**: Builds Docker images for all changed services in your repository.
 2. **Push to Container Registry**: Uploads the built images to the Harbor container registry for deployment.
-3. **Run Security Scans**: Optionally scans shared libraries for vulnerabilities using Trivy.
-4. **Update GitOps Repository**: Updates deployment manifests in the GitOps repository to reflect new image versions.
+3. **Update GitOps Repository**: Updates deployment manifests in the GitOps repository to reflect new image versions.
 
 ## How Is It Triggered?
 
 The workflow starts automatically when a tag is pushed. For example, pushing a tag like `v1.0.0` to your workload repository triggers the workflow.
 
-## How Does It Work?
-
-Here’s a high-level overview of what happens when the workflow runs:
-
-1. **Check the Tag**: Validates the pushed tag to ensure it follows semantic versioning (e.g., `v1.0.0`).
-2. **Detect Changed Services**: Compares the current and previous tags to identify services that have changed.
-3. **Build and Push Images**:
-   - Builds Docker images for the changed services using Kaniko.
-   - Pushes the images to the Harbor container registry with the specified version tag.
-4. **Run Trivy Scans** (Optional): If shared libraries are used, scans them for vulnerabilities.
-5. **Update GitOps Repository**: Updates Kubernetes manifests in the GitOps repository to use the new image versions.
-
 ## Key Steps
 
 All the CI chain elements run as part of the job `multi_service_parallel_build`, described in the `multi_service_parallel_build.yml` file located in the `.github/workflows` directory of your workload repository.
 
-If any step fails, the entire GitHub Action fails. Some steps are simple bash scripts executed on the runner, while others involve submitting more complex workflows to Argo Workflows.
+If any step fails, the entire GitHub Action fails. Some steps are simple bash scripts executed on the runner, while others involve submitting more complex workflows to Argo Workflows. You can find these workflows in `.argo` directory of your workload repository.
 
 The workflow follows a linear structure: steps are executed sequentially, one after another.
 
 ```mermaid
 ---
-title: multi_service_parallel_build  workflow chart
+title: multi_service_parallel_build workflow chart
 ---
 flowchart 
 n1["`**semver_chk**`"
-cheks if tag matchs SEMVER format
+Validates SEMVER tag format
 ]--if not SEMVER tag, exit-->
 n2["`**actions/checkout@v4**`"
+Checks out the workload repository
 ]-->
 n3["`**argo_cli_install**
-installs _argo cli_  on runner`"]-->
-n4["`**build**`"
-checks build conditions, detects repo changes and submits workflow of services build workflows 
+Installs the Argo CLI for workflow submission
+`"]-->
+n4["`**check conditions**
+Detect modified services by comparing tags and prepare a list
+`"]-->
+n5["`**build**`"
+Submit _build-wow-wf_ Kaniko workflow to build Docker images and push to Harbor
 ]-- if any build fails, exit -->
-n41["`**trivy_libs**
-    if _#quot;apps#quot;_ structure, submits _trivy-libs-wf_ workflow to scan shared libs source code in _libs_ directory. 
+n6["`**trivy_libs**
+Submits _trivy-libs-wf_ argo workflow to scan shared libraries with Trivy (if workload follows _#quot;apps#quot;_ structure)
 `"]-->
-n5["`**registry_put**
-submits _crane_ workflow to tag and put images to Harbor`"
-]-- if any put fails, exit -->
-n6["`**up_tags**
-submits _crane-img-tag_ workflow to up the tag for unchanged services (if any)
+n7["`**registry_put**
+Submits _crane-p-wf_ argo workflow to tag and push built images to Harbor
+`"]-- if any push fails, exit -->
+n8["`**up_tags**
+Submits _crane-img-tag-wf_ argo workflow to update tags for unchanged services in apps structure
 `"]-->
-n7["`**version_change**
-submits _version_change_ workflow to change version in gitops repo
+n9["`**version_change**
+Submits _version_changer-wf_ argo workflow to update GitOps manifests with new image tags
 `"]
 ```
 
 ## Core Tools
 
-- **Kaniko**: Used for building container images directly in the CI environment without requiring a local Docker daemon. Learn more [here](https://cloudgeometry.github.io/cg-devx-docs/developers_guide/ci/kaniko_build/).
-- **Trivy**: A security scanner that detects vulnerabilities in shared libraries (if applicable). Learn more [here](https://cloudgeometry.github.io/cg-devx-docs/developers_guide/ci/trivy/).
-- **Harbor**: A container image registry where built images are stored for deployment. Learn more [here](https://cloudgeometry.github.io/cg-devx-docs/developers_guide/artifacts/registry/).
+- **Kaniko**: Used for building container images directly in the CI environment without requiring a local Docker daemon. Learn more about Kaniko workflow [here](https://cloudgeometry.github.io/cg-devx-docs/developers_guide/ci/kaniko_build/).
+- **Trivy**: A security scanner that detects vulnerabilities in shared libraries. Learn more about Trivy workflow [here](https://cloudgeometry.github.io/cg-devx-docs/developers_guide/ci/trivy/).
+- **Harbor**: A container image registry where built images are stored for deployment. Learn more about Harbor registry [here](https://cloudgeometry.github.io/cg-devx-docs/developers_guide/artifacts/registry/).
 
 ## Monitoring the Workflow
 
