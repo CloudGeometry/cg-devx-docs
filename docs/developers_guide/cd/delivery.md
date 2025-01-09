@@ -74,26 +74,6 @@ ArgoCD will continuously monitor the GitOps Repository, but you can also trigger
 
    ![argocd_sync.png](../../assets/argocd_sync.png)
 
-## Troubleshooting Common Issues
-
-### **Sync Errors**
-- **Issue**: The sync process fails due to invalid manifests or configuration errors.
-- **Solution**:
-  1. Check the logs in the **Sync Status** tab.
-  2. Verify that your manifests in the GitOps Repository are correct.
-
-### **Image Pull Errors**
-- **Issue**: The application cannot pull the container image.
-- **Solution**:
-  1. Ensure the image exists in the registry.
-  2. Check Kubernetes secrets for correct credentials.
-
-### **Application Not Synced**
-- **Issue**: Changes in the GitOps Repository are not reflected in the cluster.
-- **Solution**:
-  1. Check ArgoCD's connectivity to the GitOps Repository.
-  2. Trigger a manual sync in the dashboard.
-
 ## Additional Resources
 
 - [Official ArgoCD Documentation](https://argo-cd.readthedocs.io/)
