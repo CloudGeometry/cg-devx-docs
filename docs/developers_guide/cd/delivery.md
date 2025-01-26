@@ -1,10 +1,10 @@
 # Continuous Delivery with ArgoCD
 
-The CG DevX reference implementation provides continuous delivery using a tool called ArgoCD. ArgoCD is a declarative, GitOps-based continuous delivery tool for Kubernetes applications. This guide provides a beginner-friendly walkthrough on how to work with ArgoCD to manage application deployments in CGDevX.
+The CG DevX reference implementation provides continuous delivery using a tool called ArgoCD. ArgoCD is a declarative, GitOps-based continuous delivery tool for Kubernetes applications. This guide provides a beginner-friendly walkthrough on how to work with ArgoCD to manage application deployments in CG DevX.
 
 ## Overview
 
-ArgoCD integrates seamlessly with CGDevX to automate the deployment and synchronization of Kubernetes applications. It continuously monitors the **GitOps Repository** for changes and updates your cluster automatically. This guide will help you:
+ArgoCD integrates seamlessly with CG DevX to automate the deployment and synchronization of Kubernetes applications. It continuously monitors the **GitOps Repository** for changes and updates your cluster automatically. This guide will help you:
 
 - Understand ArgoCD's core concepts.
 - Learn how to navigate the ArgoCD UI.
