@@ -1,6 +1,6 @@
 # Github Action Workflow Structure
 
-The **multi_service_parallel_build** GA workflow in CGDevX automates the process of building, testing, and pushing container images for your workload. It is designed to handle multiple services efficiently, making it ideal for microservices architectures.
+The **multi_service_parallel_build** GA workflow in CG DevX automates the process of building, testing, and pushing container images for your workload. It is designed to handle multiple services efficiently, making it ideal for microservices architectures.
 
 ## What Does This Workflow Do?
 
@@ -55,9 +55,9 @@ Submits _version_changer-wf_ argo workflow to update GitOps manifests with new i
 
 ## Core Tools
 
-- **Kaniko**: Used for building container images directly in the CI environment without requiring a local Docker daemon. Learn more about Kaniko workflow [here](https://cloudgeometry.github.io/cg-devx-docs/developers_guide/ci/kaniko_build/).
-- **Trivy**: A security scanner that detects vulnerabilities in shared libraries. Learn more about Trivy workflow [here](https://cloudgeometry.github.io/cg-devx-docs/developers_guide/ci/trivy/).
-- **Harbor**: A container image registry where built images are stored for deployment. Learn more about Harbor registry [here](https://cloudgeometry.github.io/cg-devx-docs/developers_guide/artifacts/registry/).
+- **Kaniko**: Used for building container images directly in the CI environment without requiring a local Docker daemon. Learn more about Kaniko workflow [here](kaniko_build.md).
+- **Trivy**: A security scanner that detects vulnerabilities in shared libraries. Learn more about Trivy workflow [here](trivy.md).
+- **Harbor**: A container image registry where built images are stored for deployment. Learn more about Harbor registry [here](../artifacts/registry.md).
 
 ## Monitoring the Workflow
 
