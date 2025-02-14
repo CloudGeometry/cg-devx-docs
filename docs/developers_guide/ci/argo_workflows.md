@@ -50,15 +50,15 @@ The `.argo` directory in your workload repository contains workflows for common 
    Orchestrates the build process through a series of steps:
    - **megalinter-cwft**: Lints the code to ensure it meets quality standards.
    - **trivy-fs-s3-cwft**: Scans the filesystem for vulnerabilities.
-   - **kaniko-s3-p-cwft**: Builds container tar-images with Kaniko and puts them to the S3.
+   - **kaniko-s3-p-cwft**: Builds container tar-images with Kaniko.
 
 - **crane-s3-p-cwft**  
-   Tags and pushes built images from S3 to the Harbor container registry.
+   Pushes built tar-image to the Harbor container registry.
 
 - **crane-img-tag-cwft**  
    Updates tags for unchanged services to keep them consistent with updated ones.
 
 - **version-changer-cwft**  
-   Updates the `version.yaml` file in the GitOps repository to reference the latest image versions.
+   Updates the `version.yaml` file in the GitOps repository for the dev environment to reference the latest image versions.
 
  
