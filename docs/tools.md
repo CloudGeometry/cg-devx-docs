@@ -27,3 +27,4 @@ This page is dedicated to giving those projects credit for their incredible offe
 - [Prometheus](https://github.com/prometheus/prometheus) ([Apache 2.0](https://github.com/prometheus/prometheus/blob/main/LICENSE))
 - [Reloader](https://github.com/stakater/Reloader) ([Apache 2.0](https://github.com/stakater/Reloader/blob/master/LICENSE))
 - [SonarQube](https://github.com/SonarSource/sonarqube) ([GNU 3.0](https://github.com/SonarSource/sonarqube/blob/master/LICENSE.txt))
+- [Velero](https://github.com/vmware-tanzu/velero) ([Apache 2.0](https://github.com/vmware-tanzu/velero/blob/main/LICENSE))
