@@ -51,6 +51,7 @@ nav:
           - operators_guide/delivery_pipelines/core_services_delivery.md
 
   - 'Developers Guide':
+      - developers_guide/getting_started.md
       - developers_guide/concept.md
       - 'Workloads':
           - developers_guide/workloads/concept.md
