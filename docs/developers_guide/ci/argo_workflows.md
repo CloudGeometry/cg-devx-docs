@@ -1,37 +1,64 @@
 # Argo workflows: basic flows and templates
 
-CG DEVX's argo workflows approach implements following execution scheme:
+CG DevX leverages **Argo Workflows** to streamline CI/CD processes. Workflows defined in the `.argo` directory of your workload repository.
+These workflows rely on pre-configured **Cluster Workflow Templates (CWFTs)** to perform specific actions, ensuring efficiency and consistency across all workloads.
+
+CG DevX's argo workflows approach implements following execution scheme:
 
 ```mermaid
 flowchart TD
-    node_A["GitHub Action Job Step"] --> node_B["argo workflow in .argo/"]
-    node_B --> node_C["cwft"]
+    node_A["GitHub Action Job Step"]
+    node_A --> node_B["Argo Workflow in .argo/"]
+    node_B --> node_C["CWFT"]
     node_C --> node_D["DAG steps"]
     linkStyle 1 stroke:#000000
 ```
 
 &nbsp;
 
-## Basic workflows
+## How It Works
 
-- **build**, which includes *build*, *lint* and *check* steps
-- **registry_put** places successfully builded image into the Harbor image repository
-- **crane_img_tag** tags images for unchanged services in the same *apps* structure
-- **version_change** promotes version in the version.yaml file in workload's gitops-repo.
+1. **GitHub Actions Job**: When triggered, a step from your GitHub Actions job submits an Argo Workflow.
 
-## Cluster workflow templates
+2. **Argo Workflow Submission**: The Argo Workflow acts as orchestrator, submitting tasks to CWFTs.
 
-For every action workflows use cluster workflow templates consist of one or several steps to perform.
-In case of a list of parameters to process templates from clusterworkflow templates can be called iteratively.
-Cluster workflow templates are used to implement atomic phases of services images build process,
-except  `build_chain_p_cwft`, which have a DAG inside and called in a special way: inside so-called
-workflow-of-workflows structure in `.argo/build-wow-wf.yaml`.
+3. **Cluster Workflow Templates (CWFTs)**  
+   Cluster Workflow Templates (CWFTs) are reusable building blocks that execute individual tasks, such as building images or scanning code. They are centrally defined and shared across workloads.
 
-- build_chain_p_cwft
-    - megalinter-cwft — lints service code using Megalinter
-    - trivy-fs-s3-cwft — checks service fs with Trivy
-    - kaniko-s3-p-cwft — builds tar-image with Kaniko
-- crane-s3-p-cwft — tags and puts image into the Harbor image repo
-- crane-img-tag-cwft — tags unchanged (if any) services latest images and tag it with the same tag as changed
-- version-changer-cwft — change version in version.yaml in gitops-repo
-     
+4. **DAG Steps**  
+   Some CWFTs, like _build_chain_p_cwft_, use a Directed Acyclic Graph (DAG) to handle tasks with dependencies, allowing for parallel execution wherever possible.
+
+## Basic Workflows
+
+The `.argo` directory in your workload repository contains workflows for common CI/CD tasks:
+
+- **build-wow-wf**  
+   Handles building, linting, and running quality checks to prepare your workload for deployment.
+
+- **crane-p-wf**  
+   Pushes successfully built Docker images to the Harbor container registry.
+
+- **crane-img-tag-wf**  
+   Updates tags for unchanged services to keep their versions aligned with the new ones.
+
+- **version_changer-wf**  
+   Updates the `version.yaml` file in the GitOps repository with the latest versions for deployment.
+
+## Key Cluster Workflow Templates
+
+- **build_chain_p_cwft**  
+   Orchestrates the build process through a series of steps:
+   - **megalinter-cwft**: Lints the code to ensure it meets quality standards.
+   - **trivy-fs-s3-cwft**: Scans the filesystem for vulnerabilities.
+   - **kaniko-s3-p-cwft**: Builds container tar-images with Kaniko.
+
+- **crane-s3-p-cwft**  
+   Pushes built tar-image to the Harbor container registry.
+
+- **crane-img-tag-cwft**  
+   Updates tags for unchanged services to keep them consistent with updated ones.
+
+- **version-changer-cwft**  
+   Updates the `version.yaml` file in the GitOps repository for the dev environment to reference the latest image versions.
+
+ 
