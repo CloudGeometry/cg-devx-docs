@@ -3,7 +3,7 @@
 CG DevX leverages **Argo Workflows** to streamline CI/CD processes. Workflows defined in the `.argo` directory of your workload repository.
 These workflows rely on pre-configured **Cluster Workflow Templates (CWFTs)** to perform specific actions, ensuring efficiency and consistency across all workloads.
 
-CG DEVX's argo workflows approach implements following execution scheme:
+CG DevX's argo workflows approach implements following execution scheme:
 
 ```mermaid
 flowchart TD
