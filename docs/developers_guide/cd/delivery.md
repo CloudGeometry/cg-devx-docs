@@ -18,7 +18,7 @@ Before diving in, it’s essential to understand the following concepts:
 An ArgoCD **Application** represents a deployed Kubernetes workload. It maps to a specific directory in your **GitOps Repository**, containing manifests that define the desired state of your application.
 
 ### **GitOps Repository**
-The GitOps repository stores Kubernetes manifests, ArgoCD application configurations, and Terraform setups. These files define your workload and its infrastructure.
+The GitOps repository stores Kubernetes manifests, and Terraform setups. These files define your workload and its infrastructure. Please not that ArgoCD application configuration is a part of the platform GitOps repository, not a workload GitOps repository.
 
 ### **Sync**
 The process of aligning the desired state (as defined in the GitOps Repository) with the live state in the Kubernetes cluster.
