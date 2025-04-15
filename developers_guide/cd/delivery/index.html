@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="alexu@cloudgeometry.io" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
-    <title>Delivery - CG DevX Guide</title>
+    <title>Continuous Delivery with ArgoCD - CG DevX Guide</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Delivery";
+        var mkdocs_page_name = "Continuous Delivery with ArgoCD";
         var mkdocs_page_input_path = "developers_guide/cd/delivery.md";
         var mkdocs_page_url = null;
       </script>
@@ -165,6 +165,8 @@
               </ul>
               <p class="caption"><span class="caption-text">Developers Guide</span></p>
               <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/">How to Start</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../concept/">Concept</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">Workloads</a>
@@ -177,7 +179,33 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Pipelines</a>
     <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Delivery</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Continuous Delivery with ArgoCD</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#core-concepts">Core Concepts</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#application">Application</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#gitops-repository">GitOps Repository</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sync">Sync</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setting-up-argocd-for-your-workload">Setting Up ArgoCD for Your Workload</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-accessing-the-argocd-dashboard">1. Accessing the ArgoCD Dashboard</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-deploying-an-application">2. Deploying an Application</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3-syncing-your-application">3. Syncing Your Application</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#additional-resources">Additional Resources</a>
+    </li>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../promotion/">Promotion</a>
                 </li>
@@ -269,7 +297,7 @@
     <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Developers Guide</li>
           <li class="breadcrumb-item">Pipelines</li>
-      <li class="breadcrumb-item active">Delivery</li>
+      <li class="breadcrumb-item active">Continuous Delivery with ArgoCD</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -278,24 +306,62 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>The CG DevX reference implementation provides continuous delivery using a tool called ArgoCD.</p>
-<p>ArgoCD is K8s and GitOps centric, and provides detailed visualization.
-To access ArgoCD, follow the link in the platform GitOps repository readme file (<code>README.md</code>),
+                <h1 id="continuous-delivery-with-argocd">Continuous Delivery with ArgoCD</h1>
+<p>The CG DevX reference implementation provides continuous delivery using a tool called ArgoCD. ArgoCD is a declarative, GitOps-based continuous delivery tool for Kubernetes applications. This guide provides a beginner-friendly walkthrough on how to work with ArgoCD to manage application deployments in CG DevX.</p>
+<h2 id="overview">Overview</h2>
+<p>ArgoCD integrates seamlessly with CG DevX to automate the deployment and synchronization of Kubernetes applications. It continuously monitors the <strong>GitOps Repository</strong> for changes and updates your cluster automatically. This guide will help you:</p>
+<ul>
+<li>Understand ArgoCD's core concepts.</li>
+<li>Learn how to navigate the ArgoCD UI.</li>
+<li>Deploy, monitor, and troubleshoot applications using ArgoCD.</li>
+</ul>
+<h2 id="core-concepts">Core Concepts</h2>
+<p>Before diving in, it’s essential to understand the following concepts:</p>
+<h3 id="application"><strong>Application</strong></h3>
+<p>An ArgoCD <strong>Application</strong> represents a deployed Kubernetes workload. It maps to a specific directory in your <strong>GitOps Repository</strong>, containing manifests that define the desired state of your application.</p>
+<h3 id="gitops-repository"><strong>GitOps Repository</strong></h3>
+<p>The GitOps repository stores Kubernetes manifests, and Terraform setups. These files define your workload and its infrastructure. Please not that ArgoCD application configuration is a part of the platform GitOps repository, not a workload GitOps repository.</p>
+<h3 id="sync"><strong>Sync</strong></h3>
+<p>The process of aligning the desired state (as defined in the GitOps Repository) with the live state in the Kubernetes cluster.</p>
+<h2 id="setting-up-argocd-for-your-workload">Setting Up ArgoCD for Your Workload</h2>
+<h3 id="1-accessing-the-argocd-dashboard">1. <strong>Accessing the ArgoCD Dashboard</strong></h3>
+<p>To access ArgoCD, follow the link in the platform GitOps repository readme file (<code>README.md</code>),
 or provided by operators (AKA a platform team).</p>
 <p>ArgoCD is configured to use Vault as its OIDC provider.</p>
 <p><img alt="argocd_login.png" src="../../../assets/argocd_login.png" /></p>
-<p>You will need to press the <code>Log in via Vault</code> button, which will redirect you to Vault login page,
-which will look like this:</p>
-<!-- All images on this page can probably be re-shot with a tighter viewport so that the text is larger. -->
+<p>You will need to press the Log in via Vault button, which will redirect you to Vault login page. Log in using the credentials (username/password or token) given to you by your platform operator.</p>
 <p><img alt="vault_login.png" src="../../../assets/vault_login_userpass.png" /></p>
-<p>CG DevX creates one project per workload and applies RBAC to limit access to workload dashboards and management.</p>
-<p>All workload environments will be listed on the ArgoCD project page.</p>
+<p>Once logged in, you’ll see a list of existing ArgoCD applications.</p>
+<p><img alt="argocd_applications.png" src="../../../assets/argocd_applications.png" /></p>
+<p>CG DevX creates one project per workload and applies RBAC to limit access to workload dashboards and management. All workload environments will be listed on the ArgoCD project page.</p>
 <p><img alt="argocd_workload.png" src="../../../assets/argocd_workload.png" /></p>
 <p>ArgoCD also provides a detailed view of all K8s resources associated with a workload,
 statistics on the pod and node level, and ingress configuration.</p>
 <p><img alt="argocd_workload_environment_tree.png" src="../../../assets/argocd_workload_environment_tree.png" />
 <img alt="argocd_workload_environment_resource.png" src="../../../assets/argocd_workload_environment_resource.png" />
 <img alt="argocd_workload_environment_network.png" src="../../../assets/argocd_workload_environment_network.png" /></p>
+<h3 id="2-deploying-an-application">2. <strong>Deploying an Application</strong></h3>
+<p>ArgoCD automatically detects and deploys applications defined in the GitOps Repository. To deploy a workload:</p>
+<ol>
+<li>Add the necessary Kubernetes manifests for your application to the GitOps Repository.</li>
+<li>Commit and push the changes.</li>
+</ol>
+<p>ArgoCD will automatically sync the changes and deploy the application to your cluster.  </p>
+<p><img alt="argocd_workload.png" src="../../../assets/argocd_workload.png" /></p>
+<h3 id="3-syncing-your-application">3. <strong>Syncing Your Application</strong></h3>
+<p>ArgoCD will continuously monitor the GitOps Repository, but you can also trigger a manual sync:</p>
+<ol>
+<li>In the ArgoCD dashboard, find your application.</li>
+<li>Click <strong>Sync</strong> to align the live state with the desired state from the GitOps Repository.</li>
+<li>Monitor the sync process and confirm successful deployment.  </li>
+</ol>
+<p><img alt="argocd_sync.png" src="../../../assets/argocd_sync.png" /></p>
+<h2 id="additional-resources">Additional Resources</h2>
+<ul>
+<li><a href="https://argo-cd.readthedocs.io/">Official ArgoCD Documentation</a></li>
+<li><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/">Kubernetes Getting Started Guide</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/debug/">Debugging Kubernetes Deployments</a></li>
+</ul>
               
             </div>
           </div><footer>

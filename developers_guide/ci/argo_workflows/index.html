@@ -161,6 +161,8 @@
 </ul>
 <p class="caption"><span class="caption-text">Developers Guide</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/">How to Start</a>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../concept/">Concept</a>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#">Workloads</a>
@@ -173,7 +175,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal current" href="#">Pipelines</a>
 <ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../cd/delivery/">Delivery</a>
+<li class="toctree-l2"><a class="reference internal" href="../../cd/delivery/">Continuous Delivery with ArgoCD</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../cd/promotion/">Promotion</a>
 </li>
@@ -181,9 +183,11 @@
 </li>
 <li class="toctree-l2 current"><a class="reference internal current" href="./">Argo workflows: basic flows and templates</a>
 <ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="#basic-workflows">Basic workflows</a>
+<li class="toctree-l3"><a class="reference internal" href="#how-it-works">How It Works</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#cluster-workflow-templates">Cluster workflow templates</a>
+<li class="toctree-l3"><a class="reference internal" href="#basic-workflows">Basic Workflows</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#key-cluster-workflow-templates">Key Cluster Workflow Templates</a>
 </li>
 </ul>
 </li>
@@ -278,37 +282,75 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="argo-workflows-basic-flows-and-templates">Argo workflows: basic flows and templates</h1>
-<p>CG DEVX's argo workflows approach implements following execution scheme:</p>
+<p>CG DevX leverages <strong>Argo Workflows</strong> to streamline CI/CD processes. Workflows defined in the <code>.argo</code> directory of your workload repository.
+These workflows rely on pre-configured <strong>Cluster Workflow Templates (CWFTs)</strong> to perform specific actions, ensuring efficiency and consistency across all workloads.</p>
+<p>CG DevX's argo workflows approach implements following execution scheme:</p>
 <div class="mermaid">flowchart TD
-    node_A["GitHub Action Job Step"] --&gt; node_B["argo workflow in .argo/"]
-    node_B --&gt; node_C["cwft"]
+    node_A["GitHub Action Job Step"]
+    node_A --&gt; node_B["Argo Workflow in .argo/"]
+    node_B --&gt; node_C["CWFT"]
     node_C --&gt; node_D["DAG steps"]
     linkStyle 1 stroke:#000000
 </div>
 <p> </p>
-<h2 id="basic-workflows">Basic workflows</h2>
-<ul>
-<li><strong>build</strong>, which includes <em>build</em>, <em>lint</em> and <em>check</em> steps</li>
-<li><strong>registry_put</strong> places successfully builded image into the Harbor image repository</li>
-<li><strong>crane_img_tag</strong> tags images for unchanged services in the same <em>apps</em> structure</li>
-<li><strong>version_change</strong> promotes version in the version.yaml file in workload's gitops-repo.</li>
-</ul>
-<h2 id="cluster-workflow-templates">Cluster workflow templates</h2>
-<p>For every action workflows use cluster workflow templates consist of one or several steps to perform.
-In case of a list of parameters to process templates from clusterworkflow templates can be called iteratively.
-Cluster workflow templates are used to implement atomic phases of services images build process,
-except  <code>build_chain_p_cwft</code>, which have a DAG inside and called in a special way: inside so-called
-workflow-of-workflows structure in <code>.argo/build-wow-wf.yaml</code>.</p>
-<ul>
-<li>build_chain_p_cwft<ul>
-<li>megalinter-cwft — lints service code using Megalinter</li>
-<li>trivy-fs-s3-cwft — checks service fs with Trivy</li>
-<li>kaniko-s3-p-cwft — builds tar-image with Kaniko</li>
-</ul>
+<h2 id="how-it-works">How It Works</h2>
+<ol>
+<li>
+<p><strong>GitHub Actions Job</strong>: When triggered, a step from your GitHub Actions job submits an Argo Workflow.</p>
 </li>
-<li>crane-s3-p-cwft — tags and puts image into the Harbor image repo</li>
-<li>crane-img-tag-cwft — tags unchanged (if any) services latest images and tag it with the same tag as changed</li>
-<li>version-changer-cwft — change version in version.yaml in gitops-repo</li>
+<li>
+<p><strong>Argo Workflow Submission</strong>: The Argo Workflow acts as orchestrator, submitting tasks to CWFTs.</p>
+</li>
+<li>
+<p><strong>Cluster Workflow Templates (CWFTs)</strong><br/>
+   Cluster Workflow Templates (CWFTs) are reusable building blocks that execute individual tasks, such as building images or scanning code. They are centrally defined and shared across workloads.</p>
+</li>
+<li>
+<p><strong>DAG Steps</strong><br/>
+   Some CWFTs, like <em>build_chain_p_cwft</em>, use a Directed Acyclic Graph (DAG) to handle tasks with dependencies, allowing for parallel execution wherever possible.</p>
+</li>
+</ol>
+<h2 id="basic-workflows">Basic Workflows</h2>
+<p>The <code>.argo</code> directory in your workload repository contains workflows for common CI/CD tasks:</p>
+<ul>
+<li>
+<p><strong>build-wow-wf</strong><br/>
+   Handles building, linting, and running quality checks to prepare your workload for deployment.</p>
+</li>
+<li>
+<p><strong>crane-p-wf</strong><br/>
+   Pushes successfully built Docker images to the Harbor container registry.</p>
+</li>
+<li>
+<p><strong>crane-img-tag-wf</strong><br/>
+   Updates tags for unchanged services to keep their versions aligned with the new ones.</p>
+</li>
+<li>
+<p><strong>version_changer-wf</strong><br/>
+   Updates the <code>version.yaml</code> file in the GitOps repository with the latest versions for deployment.</p>
+</li>
+</ul>
+<h2 id="key-cluster-workflow-templates">Key Cluster Workflow Templates</h2>
+<ul>
+<li><strong>build_chain_p_cwft</strong><br/>
+   Orchestrates the build process through a series of steps:</li>
+<li><strong>megalinter-cwft</strong>: Lints the code to ensure it meets quality standards.</li>
+<li><strong>trivy-fs-s3-cwft</strong>: Scans the filesystem for vulnerabilities.</li>
+<li>
+<p><strong>kaniko-s3-p-cwft</strong>: Builds container tar-images with Kaniko.</p>
+</li>
+<li>
+<p><strong>crane-s3-p-cwft</strong><br/>
+   Pushes built tar-image to the Harbor container registry.</p>
+</li>
+<li>
+<p><strong>crane-img-tag-cwft</strong><br/>
+   Updates tags for unchanged services to keep them consistent with updated ones.</p>
+</li>
+<li>
+<p><strong>version-changer-cwft</strong><br/>
+   Updates the <code>version.yaml</code> file in the GitOps repository for the dev environment to reference the latest image versions.</p>
+</li>
 </ul>
 </div>
 </div><footer>
