@@ -1,46 +1,29 @@
-# Platform Engineering
+# Platform Engineering at CloudGeometry
 
-[//]: # (TODO: recap of PE and IDP key aspects)
+## From DevOps to Platform Engineering
 
-[//]: # (https://humanitec.com/platform-engineering)
+DevOps emerged to bridge the gap between developers and operations. While effective in fostering collaboration, it often resulted in team-specific tooling, tribal knowledge, and a lack of delivery standardization.
 
-[//]: # (https://humanitec.com/blog/what-is-an-internal-developer-platform)
+As delivery complexity increases, this model becomes brittle. Platform Engineering addresses these limitations by introducing shared infrastructure, governance, and delivery contracts that ensure consistency and compliance across teams.
 
+## Platform Engineering as Engineering Discipline
 
-Platform engineering is a new discipline that emerged in response to the growing complexity of modern cloud-native
-architectures. It describes the practice of building and maintaining an integrated product, called an "Internal
-Developer Platform," which acts as a flexible and supported abstraction layer between developers and the underlying
-technologies of their applications.
+At its core, Platform Engineering is about applying engineering rigor to internal tools and services:
 
-The goal of platform engineering is to improve developer productivity through improving the developer experience (
-DevEx).
+- **Version-controlled delivery workflows**
+- **Reusable infrastructure modules**
+- **Defined interface contracts between teams**
+- **Observability and policy enforcement as defaults**
 
-Internal developer platforms improve the velocity and happiness of teams by enabling developer self-service and reducing
-cognitive load on developers.
+Rather than relying on informal practices, platform teams build services that encode delivery best practices as productized capabilities.
 
-Core benefits of Platform Engineering and Internal Developer Platforms:
+## Why Internal Developer Platforms (IDPs) Matter
 
-- **Faster innovation**: Faster time to launch, frequent updates, focus on business problems
-- **Higher quality**: Fewer environment issues, more deterministic test results, faster rollback
-- **Increased reliability**: Observable services, graceful degradation, improved business continuity, optimisation for a
-  fluctuating load
-- **Improved security**: Reduced security engineering overhead, Improved security
-  operations and governance
-- **Improved ways of working**: Define policy via experimentation and simpler processes, apply enabling constraints,
-  zero downtime updates
-- **Reduced costs**: Economies of scale, easier cost management
-- **Better productivity**: Lower cognitive load, easier to identify talent needs
+IDPs created via Platform Engineering empower developers while enforcing guardrails. They simplify workflows, reduce cognitive overhead, and ensure that delivery pipelines meet organizational standards — by design, not convention.
 
-Platform Engineering and the Internal Developer Platform is:
+## Outcomes You Can Expect
 
-- **Not a commodity**: It cannot be bought off the shelf, as it must satisfy the specific needs of your organisation.
-  It’s
-  built by weaving together open-source and bespoke commodity tools to create a technology accelerator.
-- **Not a project**: It isn’t a one-off development with a fixed end date. It will keep changing, as the needs of your
-  teams will change based on their customers’ demands.
-- **Not a universal infrastructure platform**: It cannot run all cloud services for all possible consumers. It needs to
-  focus on a subset of cloud services to support specific workloads.
+- Increased release velocity with fewer regressions
+- Built-in compliance through delivery standardization
+- Lower onboarding costs for new services and teams
 
-It’s important to remember that an Internal Developer Platform isn’t a silver bullet. It’s a long-term commitment to
-providing Services at scale.
-It’s not appropriate for all workloads, teams, or organizations.
